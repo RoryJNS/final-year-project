@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: a25e28a8875b4024192552e84cecba2c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 174943
+  packageName: Time Tracker
+  packageVersion: 1.0
+  assetPath: Assets/TimeTracker/TimeTrackerTask.cs
+  uploadId: 380677

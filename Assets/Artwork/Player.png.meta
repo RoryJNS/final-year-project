@@ -1,0 +1,3973 @@
+fileFormatVersion: 2
+guid: aa02320a5f1c7104bb60725754566501
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8299791271668134697
+    second: 1404594863_preview_Player_RatHighlighted_0
+  - first:
+      213: -1862241659913502031
+    second: 1404594863_preview_Player_RatHighlighted_1
+  - first:
+      213: 4411429876070526531
+    second: 1404594863_preview_Player_RatHighlighted_2
+  - first:
+      213: -8676517961944081931
+    second: 1404594863_preview_Player_RatHighlighted_3
+  - first:
+      213: 6495975286530054664
+    second: 1404594863_preview_Player_RatHighlighted_4
+  - first:
+      213: 6892042869909198279
+    second: 1404594863_preview_Player_RatHighlighted_5
+  - first:
+      213: 6057278557322980829
+    second: 1404594863_preview_Player_RatHighlighted_6
+  - first:
+      213: -5634381299980534577
+    second: 1404594863_preview_Player_RatHighlighted_7
+  - first:
+      213: 6982798455382888143
+    second: 1404594863_preview_Player_RatHighlighted_8
+  - first:
+      213: 1141558053042863514
+    second: 1404594863_preview_Player_RatHighlighted_9
+  - first:
+      213: 6450214910672426635
+    second: 1404594863_preview_Player_RatHighlighted_10
+  - first:
+      213: -729537155986859014
+    second: 1404594863_preview_Player_RatHighlighted_11
+  - first:
+      213: 5040862177807238846
+    second: 1404594863_preview_Player_RatHighlighted_12
+  - first:
+      213: -33516084954879401
+    second: 1404594863_preview_Player_RatHighlighted_13
+  - first:
+      213: 7065610692896696859
+    second: 1404594863_preview_Player_RatHighlighted_14
+  - first:
+      213: 6002339230820887826
+    second: 1404594863_preview_Player_RatHighlighted_15
+  - first:
+      213: -5096041702587956842
+    second: 1404594863_preview_Player_RatHighlighted_16
+  - first:
+      213: -5026324764752853179
+    second: 1404594863_preview_Player_RatHighlighted_17
+  - first:
+      213: 6546985765831440079
+    second: 1404594863_preview_Player_RatHighlighted_18
+  - first:
+      213: 8225508428531625052
+    second: 1404594863_preview_Player_RatHighlighted_19
+  - first:
+      213: 2256735515410660925
+    second: 1404594863_preview_Player_RatHighlighted_20
+  - first:
+      213: 961032822526349947
+    second: 1404594863_preview_Player_RatHighlighted_21
+  - first:
+      213: -8877005703880361718
+    second: 1404594863_preview_Player_RatHighlighted_22
+  - first:
+      213: -1040630051031574312
+    second: 1404594863_preview_Player_RatHighlighted_23
+  - first:
+      213: 8138736639325884100
+    second: 1404594863_preview_Player_RatHighlighted_24
+  - first:
+      213: -8551144392004135581
+    second: 1404594863_preview_Player_RatHighlighted_25
+  - first:
+      213: 6329697853068966518
+    second: 1404594863_preview_Player_RatHighlighted_26
+  - first:
+      213: -6449302274848078404
+    second: 1404594863_preview_Player_RatHighlighted_27
+  - first:
+      213: 3903426580065020691
+    second: 1404594863_preview_Player_RatHighlighted_28
+  - first:
+      213: 2544573992517533823
+    second: 1404594863_preview_Player_RatHighlighted_29
+  - first:
+      213: 7573657835005560855
+    second: 1404594863_preview_Player_RatHighlighted_30
+  - first:
+      213: -5482134229365407388
+    second: 1404594863_preview_Player_RatHighlighted_31
+  - first:
+      213: -3481055509382748079
+    second: 1404594863_preview_Player_RatHighlighted_32
+  - first:
+      213: -8922379593772459444
+    second: 1404594863_preview_Player_RatHighlighted_33
+  - first:
+      213: 364964866162258577
+    second: 1404594863_preview_Player_RatHighlighted_34
+  - first:
+      213: -7497810214633318106
+    second: 1404594863_preview_Player_RatHighlighted_35
+  - first:
+      213: -8989823337944325156
+    second: 1404594863_preview_Player_RatHighlighted_36
+  - first:
+      213: -961048005820492808
+    second: 1404594863_preview_Player_RatHighlighted_37
+  - first:
+      213: 5612992514822325704
+    second: 1404594863_preview_Player_RatHighlighted_38
+  - first:
+      213: 4214398070704334904
+    second: 1404594863_preview_Player_RatHighlighted_39
+  - first:
+      213: 7909554994573568032
+    second: 1404594863_preview_Player_RatHighlighted_40
+  - first:
+      213: -6782925264305581403
+    second: 1404594863_preview_Player_RatHighlighted_41
+  - first:
+      213: 4815181936427754735
+    second: 1404594863_preview_Player_RatHighlighted_42
+  - first:
+      213: 6060795196003176245
+    second: 1404594863_preview_Player_RatHighlighted_43
+  - first:
+      213: -6700525670960058934
+    second: 1404594863_preview_Player_RatHighlighted_44
+  - first:
+      213: 3726586738301442718
+    second: 1404594863_preview_Player_RatHighlighted_45
+  - first:
+      213: 5201311717627283407
+    second: 1404594863_preview_Player_RatHighlighted_46
+  - first:
+      213: 4776922161197511689
+    second: 1404594863_preview_Player_RatHighlighted_47
+  - first:
+      213: 3121069704489291732
+    second: 1404594863_preview_Player_RatHighlighted_48
+  - first:
+      213: -9031098655505096036
+    second: 1404594863_preview_Player_RatHighlighted_49
+  - first:
+      213: -2172301235774836926
+    second: 1404594863_preview_Player_RatHighlighted_50
+  - first:
+      213: 5583634672328181588
+    second: 1404594863_preview_Player_RatHighlighted_51
+  - first:
+      213: 6670750589260826005
+    second: 1404594863_preview_Player_RatHighlighted_52
+  - first:
+      213: 8547475923098768701
+    second: 1404594863_preview_Player_RatHighlighted_53
+  - first:
+      213: 3560985785909005624
+    second: 1404594863_preview_Player_RatHighlighted_54
+  - first:
+      213: -2955570667419729097
+    second: 1404594863_preview_Player_RatHighlighted_55
+  - first:
+      213: 5276920308722407604
+    second: 1404594863_preview_Player_RatHighlighted_56
+  - first:
+      213: -9213257369890862427
+    second: 1404594863_preview_Player_RatHighlighted_57
+  - first:
+      213: -5722801876307510963
+    second: 1404594863_preview_Player_RatHighlighted_58
+  - first:
+      213: -583370727216726305
+    second: 1404594863_preview_Player_RatHighlighted_59
+  - first:
+      213: -5911950330009865779
+    second: 1404594863_preview_Player_RatHighlighted_60
+  - first:
+      213: 5886897972997590441
+    second: 1404594863_preview_Player_RatHighlighted_61
+  - first:
+      213: 7737575439216938351
+    second: 1404594863_preview_Player_RatHighlighted_62
+  - first:
+      213: 8132180455873642899
+    second: 1404594863_preview_Player_RatHighlighted_63
+  - first:
+      213: -6403545274940388227
+    second: 1404594863_preview_Player_RatHighlighted_64
+  - first:
+      213: 1414297765222856271
+    second: 1404594863_preview_Player_RatHighlighted_65
+  - first:
+      213: -625041826983856531
+    second: 1404594863_preview_Player_RatHighlighted_66
+  - first:
+      213: 8012639536631499266
+    second: 1404594863_preview_Player_RatHighlighted_67
+  - first:
+      213: 6126232706502400998
+    second: 1404594863_preview_Player_RatHighlighted_68
+  - first:
+      213: -6483578550899605332
+    second: 1404594863_preview_Player_RatHighlighted_69
+  - first:
+      213: 589355357343296002
+    second: 1404594863_preview_Player_RatHighlighted_70
+  - first:
+      213: 9192555742020532062
+    second: 1404594863_preview_Player_RatHighlighted_71
+  - first:
+      213: -3656911861483079521
+    second: 1404594863_preview_Player_RatHighlighted_72
+  - first:
+      213: 3104684978467192231
+    second: 1404594863_preview_Player_RatHighlighted_73
+  - first:
+      213: -1639269242886632145
+    second: 1404594863_preview_Player_RatHighlighted_74
+  - first:
+      213: -8777850378684859470
+    second: 1404594863_preview_Player_RatHighlighted_75
+  - first:
+      213: 6664830927167139134
+    second: 1404594863_preview_Player_RatHighlighted_76
+  - first:
+      213: 5085029718420452798
+    second: 1404594863_preview_Player_RatHighlighted_77
+  - first:
+      213: 1016755465677095051
+    second: 1404594863_preview_Player_RatHighlighted_78
+  - first:
+      213: 9053000431656832777
+    second: 1404594863_preview_Player_RatHighlighted_79
+  - first:
+      213: -6070557109881006184
+    second: 1404594863_preview_Player_RatHighlighted_80
+  - first:
+      213: -7075786709776643348
+    second: 1404594863_preview_Player_RatHighlighted_81
+  - first:
+      213: -5196997651344965201
+    second: 1404594863_preview_Player_RatHighlighted_82
+  - first:
+      213: -5345064372608161568
+    second: 1404594863_preview_Player_RatHighlighted_83
+  - first:
+      213: 1126249240579033338
+    second: 1404594863_preview_Player_RatHighlighted_84
+  - first:
+      213: 2488424495299278230
+    second: 1404594863_preview_Player_RatHighlighted_85
+  - first:
+      213: 5394751454932622174
+    second: 1404594863_preview_Player_RatHighlighted_86
+  - first:
+      213: 6325323232188216820
+    second: 1404594863_preview_Player_RatHighlighted_87
+  - first:
+      213: -5982834667602689890
+    second: 1404594863_preview_Player_RatHighlighted_88
+  - first:
+      213: -3642952040249738102
+    second: 1404594863_preview_Player_RatHighlighted_89
+  - first:
+      213: 5258720839093743246
+    second: 1404594863_preview_Player_RatHighlighted_90
+  - first:
+      213: -2645583423056883581
+    second: 1404594863_preview_Player_RatHighlighted_91
+  - first:
+      213: -7378580124975346874
+    second: 1404594863_preview_Player_RatHighlighted_92
+  - first:
+      213: -1824098744396592808
+    second: 1404594863_preview_Player_RatHighlighted_93
+  - first:
+      213: -1045251660257490428
+    second: 1404594863_preview_Player_RatHighlighted_94
+  - first:
+      213: -5406592040279759494
+    second: 1404594863_preview_Player_RatHighlighted_95
+  - first:
+      213: 3500015813415296009
+    second: 1404594863_preview_Player_RatHighlighted_96
+  - first:
+      213: -400677552698548857
+    second: 1404594863_preview_Player_RatHighlighted_97
+  - first:
+      213: 2523552735911666319
+    second: 1404594863_preview_Player_RatHighlighted_98
+  - first:
+      213: 5886445265346441814
+    second: 1404594863_preview_Player_RatHighlighted_99
+  - first:
+      213: 3347747108364242343
+    second: 1404594863_preview_Player_RatHighlighted_100
+  - first:
+      213: -3091954444803617232
+    second: 1404594863_preview_Player_RatHighlighted_101
+  - first:
+      213: -2066735795608536002
+    second: 1404594863_preview_Player_RatHighlighted_102
+  - first:
+      213: -2569948859358655780
+    second: 1404594863_preview_Player_RatHighlighted_103
+  - first:
+      213: 637007582587588819
+    second: 1404594863_preview_Player_RatHighlighted_104
+  - first:
+      213: -3175487757172626345
+    second: 1404594863_preview_Player_RatHighlighted_105
+  - first:
+      213: -8450404209568957027
+    second: 1404594863_preview_Player_RatHighlighted_106
+  - first:
+      213: -8468605347647843999
+    second: 1404594863_preview_Player_RatHighlighted_107
+  - first:
+      213: 8969364890640781069
+    second: 1404594863_preview_Player_RatHighlighted_108
+  - first:
+      213: 3670640852804095712
+    second: 1404594863_preview_Player_RatHighlighted_109
+  - first:
+      213: 1483516790566882376
+    second: 1404594863_preview_Player_RatHighlighted_110
+  - first:
+      213: 5332287043404669271
+    second: 1404594863_preview_Player_RatHighlighted_111
+  - first:
+      213: -292916148985469852
+    second: 1404594863_preview_Player_RatHighlighted_112
+  - first:
+      213: -221907368193870243
+    second: 1404594863_preview_Player_RatHighlighted_113
+  - first:
+      213: -2501861112843812978
+    second: 1404594863_preview_Player_RatHighlighted_114
+  - first:
+      213: 4427198024864927600
+    second: 1404594863_preview_Player_RatHighlighted_115
+  - first:
+      213: 2323970419074610042
+    second: 1404594863_preview_Player_RatHighlighted_116
+  - first:
+      213: 7475790283235104534
+    second: 1404594863_preview_Player_RatHighlighted_117
+  - first:
+      213: 6614267912663492543
+    second: 1404594863_preview_Player_RatHighlighted_118
+  - first:
+      213: 8608293654873101284
+    second: 1404594863_preview_Player_RatHighlighted_119
+  - first:
+      213: -5258274623355770113
+    second: 1404594863_preview_Player_RatHighlighted_120
+  - first:
+      213: -6164441408603507222
+    second: 1404594863_preview_Player_RatHighlighted_121
+  - first:
+      213: -1570563248753836008
+    second: 1404594863_preview_Player_RatHighlighted_122
+  - first:
+      213: 8755749411186188074
+    second: 1404594863_preview_Player_RatHighlighted_123
+  - first:
+      213: -6720287048452145545
+    second: 1404594863_preview_Player_RatHighlighted_124
+  - first:
+      213: -4434089708222291661
+    second: 1404594863_preview_Player_RatHighlighted_125
+  - first:
+      213: 5991330805809145560
+    second: 1404594863_preview_Player_RatHighlighted_126
+  - first:
+      213: -8891162538234960322
+    second: 1404594863_preview_Player_RatHighlighted_127
+  - first:
+      213: 2411118047963713609
+    second: 1404594863_preview_Player_RatHighlighted_128
+  - first:
+      213: 8778070856149307108
+    second: 1404594863_preview_Player_RatHighlighted_129
+  - first:
+      213: 2325102785305846278
+    second: 1404594863_preview_Player_RatHighlighted_130
+  - first:
+      213: -7324504655042781998
+    second: 1404594863_preview_Player_RatHighlighted_131
+  - first:
+      213: -5533660784046728276
+    second: 1404594863_preview_Player_RatHighlighted_132
+  - first:
+      213: 4899037960435555787
+    second: 1404594863_preview_Player_RatHighlighted_133
+  - first:
+      213: 1898027388343097277
+    second: 1404594863_preview_Player_RatHighlighted_134
+  - first:
+      213: -1835196695971550767
+    second: 1404594863_preview_Player_RatHighlighted_135
+  - first:
+      213: 6456241854876286443
+    second: 1404594863_preview_Player_RatHighlighted_136
+  - first:
+      213: 5520860220831192928
+    second: 1404594863_preview_Player_RatHighlighted_137
+  - first:
+      213: 6577521144574607733
+    second: 1404594863_preview_Player_RatHighlighted_138
+  - first:
+      213: 3997485718317729106
+    second: 1404594863_preview_Player_RatHighlighted_139
+  - first:
+      213: -7141156636386226181
+    second: 1404594863_preview_Player_RatHighlighted_140
+  - first:
+      213: 187854975716439941
+    second: 1404594863_preview_Player_RatHighlighted_141
+  - first:
+      213: -2727075966301841238
+    second: 1404594863_preview_Player_RatHighlighted_142
+  - first:
+      213: 931066249661969336
+    second: 1404594863_preview_Player_RatHighlighted_143
+  - first:
+      213: 6390591822423509183
+    second: 1404594863_preview_Player_RatHighlighted_144
+  - first:
+      213: -7748838778736287317
+    second: 1404594863_preview_Player_RatHighlighted_145
+  - first:
+      213: 8879745117133087157
+    second: 1404594863_preview_Player_RatHighlighted_146
+  - first:
+      213: 2091276303670867176
+    second: 1404594863_preview_Player_RatHighlighted_147
+  - first:
+      213: 472830133816626695
+    second: 1404594863_preview_Player_RatHighlighted_148
+  - first:
+      213: -570679675225766040
+    second: 1404594863_preview_Player_RatHighlighted_149
+  - first:
+      213: 1943551592116742971
+    second: 1404594863_preview_Player_RatHighlighted_150
+  - first:
+      213: -1099885871339348365
+    second: 1404594863_preview_Player_RatHighlighted_151
+  - first:
+      213: -8338135968196644014
+    second: 1404594863_preview_Player_RatHighlighted_152
+  - first:
+      213: 7864791327247632933
+    second: 1404594863_preview_Player_RatHighlighted_153
+  - first:
+      213: -7122310052693517149
+    second: 1404594863_preview_Player_RatHighlighted_154
+  - first:
+      213: -137516804592312924
+    second: 1404594863_preview_Player_RatHighlighted_155
+  - first:
+      213: -1280036216303967833
+    second: 1404594863_preview_Player_RatHighlighted_156
+  - first:
+      213: 2636678620091432423
+    second: 1404594863_preview_Player_RatHighlighted_157
+  - first:
+      213: -2198419437975063407
+    second: 1404594863_preview_Player_RatHighlighted_158
+  - first:
+      213: -9039263943958415558
+    second: 1404594863_preview_Player_RatHighlighted_159
+  - first:
+      213: -2074083808765953924
+    second: 1404594863_preview_Player_RatHighlighted_160
+  - first:
+      213: 7032858399562024212
+    second: 1404594863_preview_Player_RatHighlighted_161
+  - first:
+      213: -8301387578671743665
+    second: 1404594863_preview_Player_RatHighlighted_162
+  - first:
+      213: 620162279378337571
+    second: 1404594863_preview_Player_RatHighlighted_163
+  - first:
+      213: 8202195653032050556
+    second: 1404594863_preview_Player_RatHighlighted_164
+  - first:
+      213: -3289330000143670857
+    second: 1404594863_preview_Player_RatHighlighted_165
+  - first:
+      213: -219023137487701344
+    second: 1404594863_preview_Player_RatHighlighted_166
+  - first:
+      213: -4798609108788968336
+    second: 1404594863_preview_Player_RatHighlighted_167
+  - first:
+      213: 2805879983927680218
+    second: 1404594863_preview_Player_RatHighlighted_168
+  - first:
+      213: -6109828219883336025
+    second: 1404594863_preview_Player_RatHighlighted_169
+  - first:
+      213: 3229070035358418950
+    second: 1404594863_preview_Player_RatHighlighted_170
+  - first:
+      213: -4681739016975042276
+    second: 1404594863_preview_Player_RatHighlighted_171
+  - first:
+      213: 3822992255172479512
+    second: 1404594863_preview_Player_RatHighlighted_172
+  - first:
+      213: -5129408717334181617
+    second: 1404594863_preview_Player_RatHighlighted_173
+  - first:
+      213: 4517731368347090171
+    second: 1404594863_preview_Player_RatHighlighted_174
+  - first:
+      213: 1756857621648397679
+    second: 1404594863_preview_Player_RatHighlighted_175
+  - first:
+      213: -1046762357706146556
+    second: 1404594863_preview_Player_RatHighlighted_176
+  - first:
+      213: -6110492443807226698
+    second: 1404594863_preview_Player_RatHighlighted_177
+  - first:
+      213: 834763615043298001
+    second: 1404594863_preview_Player_RatHighlighted_178
+  - first:
+      213: -7195503951931112938
+    second: 1404594863_preview_Player_RatHighlighted_179
+  - first:
+      213: -4654050927603042512
+    second: 1404594863_preview_Player_RatHighlighted_180
+  - first:
+      213: -3647582305094095855
+    second: 1404594863_preview_Player_RatHighlighted_181
+  - first:
+      213: 7819891485318647474
+    second: 1404594863_preview_Player_RatHighlighted_182
+  - first:
+      213: -1993722804145134721
+    second: 1404594863_preview_Player_RatHighlighted_183
+  - first:
+      213: -418834551667866040
+    second: 1404594863_preview_Player_RatHighlighted_184
+  - first:
+      213: 1823641499746240869
+    second: 1404594863_preview_Player_RatHighlighted_185
+  - first:
+      213: 2977187143051791093
+    second: 1404594863_preview_Player_RatHighlighted_186
+  - first:
+      213: 6409777144708650526
+    second: 1404594863_preview_Player_RatHighlighted_187
+  - first:
+      213: 2595236118176918861
+    second: 1404594863_preview_Player_RatHighlighted_188
+  - first:
+      213: -1594785664467443006
+    second: 1404594863_preview_Player_RatHighlighted_189
+  - first:
+      213: -8393434001086415522
+    second: 1404594863_preview_Player_RatHighlighted_190
+  - first:
+      213: 1306732255808461255
+    second: 1404594863_preview_Player_RatHighlighted_191
+  - first:
+      213: -7055762003584136621
+    second: 1404594863_preview_Player_RatHighlighted_192
+  - first:
+      213: 5726253451076286308
+    second: 1404594863_preview_Player_RatHighlighted_193
+  - first:
+      213: 1532570697295115307
+    second: 1404594863_preview_Player_RatHighlighted_194
+  - first:
+      213: 4997173687684896738
+    second: 1404594863_preview_Player_RatHighlighted_195
+  - first:
+      213: -4330681514484929646
+    second: 1404594863_preview_Player_RatHighlighted_196
+  - first:
+      213: 8282058398043547896
+    second: 1404594863_preview_Player_RatHighlighted_197
+  - first:
+      213: -2056203083203589698
+    second: 1404594863_preview_Player_RatHighlighted_198
+  - first:
+      213: 8643987125009672737
+    second: 1404594863_preview_Player_RatHighlighted_199
+  - first:
+      213: -9098046629718655332
+    second: 1404594863_preview_Player_RatHighlighted_200
+  - first:
+      213: -3776208388239246677
+    second: 1404594863_preview_Player_RatHighlighted_201
+  - first:
+      213: -5929670834761182501
+    second: 1404594863_preview_Player_RatHighlighted_202
+  - first:
+      213: 2124635616920510495
+    second: 1404594863_preview_Player_RatHighlighted_203
+  - first:
+      213: -5892065980284772256
+    second: 1404594863_preview_Player_RatHighlighted_204
+  - first:
+      213: 5225893460228166098
+    second: 1404594863_preview_Player_RatHighlighted_205
+  - first:
+      213: 7917882532028989109
+    second: 1404594863_preview_Player_RatHighlighted_206
+  - first:
+      213: -1166949762496652161
+    second: 1404594863_preview_Player_RatHighlighted_207
+  - first:
+      213: 1732532612924703673
+    second: 1404594863_preview_Player_RatHighlighted_208
+  - first:
+      213: 1485622514368459975
+    second: 1404594863_preview_Player_RatHighlighted_209
+  - first:
+      213: 2749560016025258353
+    second: 1404594863_preview_Player_RatHighlighted_210
+  - first:
+      213: -8580312471923925522
+    second: 1404594863_preview_Player_RatHighlighted_211
+  - first:
+      213: -1878456808906715244
+    second: 1404594863_preview_Player_RatHighlighted_212
+  - first:
+      213: -599371577596637400
+    second: 1404594863_preview_Player_RatHighlighted_213
+  - first:
+      213: 4842601861435973704
+    second: 1404594863_preview_Player_RatHighlighted_214
+  - first:
+      213: -402734041837432747
+    second: 1404594863_preview_Player_RatHighlighted_215
+  - first:
+      213: 5647456761920060130
+    second: 1404594863_preview_Player_RatHighlighted_216
+  - first:
+      213: 8683536416434442617
+    second: 1404594863_preview_Player_RatHighlighted_217
+  - first:
+      213: -9179757996542856925
+    second: 1404594863_preview_Player_RatHighlighted_218
+  - first:
+      213: -5075988440852517526
+    second: 1404594863_preview_Player_RatHighlighted_219
+  - first:
+      213: -3993929081612283789
+    second: 1404594863_preview_Player_RatHighlighted_220
+  - first:
+      213: -4883694952257442087
+    second: 1404594863_preview_Player_RatHighlighted_221
+  - first:
+      213: 4418470888128314552
+    second: 1404594863_preview_Player_RatHighlighted_222
+  - first:
+      213: 6191898927153337839
+    second: 1404594863_preview_Player_RatHighlighted_223
+  - first:
+      213: -512597390440303497
+    second: 1404594863_preview_Player_RatHighlighted_224
+  - first:
+      213: -9152244539338701767
+    second: 1404594863_preview_Player_RatHighlighted_225
+  - first:
+      213: 3692778651777909396
+    second: 1404594863_preview_Player_RatHighlighted_226
+  - first:
+      213: 6105526400422357546
+    second: 1404594863_preview_Player_RatHighlighted_227
+  - first:
+      213: -3502025376590353236
+    second: 1404594863_preview_Player_RatHighlighted_228
+  - first:
+      213: 8873859657007681789
+    second: 1404594863_preview_Player_RatHighlighted_229
+  - first:
+      213: 4332041781492593967
+    second: 1404594863_preview_Player_RatHighlighted_230
+  - first:
+      213: -6592064754283079948
+    second: 1404594863_preview_Player_RatHighlighted_231
+  - first:
+      213: 3358220329076902396
+    second: 1404594863_preview_Player_RatHighlighted_232
+  - first:
+      213: 6670598233658298994
+    second: 1404594863_preview_Player_RatHighlighted_233
+  - first:
+      213: -6857115544474520462
+    second: 1404594863_preview_Player_RatHighlighted_234
+  - first:
+      213: -405170667817570554
+    second: 1404594863_preview_Player_RatHighlighted_235
+  - first:
+      213: 6975003005087670981
+    second: 1404594863_preview_Player_RatHighlighted_236
+  - first:
+      213: -6735538647410320521
+    second: 1404594863_preview_Player_RatHighlighted_237
+  - first:
+      213: 3916522139368694959
+    second: 1404594863_preview_Player_RatHighlighted_238
+  - first:
+      213: -6363611451427522330
+    second: 1404594863_preview_Player_RatHighlighted_239
+  - first:
+      213: -3929762586871041652
+    second: 1404594863_preview_Player_RatHighlighted_240
+  - first:
+      213: -650458267080592391
+    second: 1404594863_preview_Player_RatHighlighted_241
+  - first:
+      213: 8159214333944472230
+    second: 1404594863_preview_Player_RatHighlighted_242
+  - first:
+      213: -7405741869441184033
+    second: 1404594863_preview_Player_RatHighlighted_243
+  - first:
+      213: 5124759253815300393
+    second: 1404594863_preview_Player_RatHighlighted_244
+  - first:
+      213: -1274393102679254770
+    second: 1404594863_preview_Player_RatHighlighted_245
+  - first:
+      213: 8524038861763542831
+    second: 1404594863_preview_Player_RatHighlighted_246
+  - first:
+      213: -210498585286600132
+    second: 1404594863_preview_Player_RatHighlighted_247
+  - first:
+      213: 610062272409469471
+    second: 1404594863_preview_Player_RatHighlighted_248
+  - first:
+      213: 5047315483015834987
+    second: 1404594863_preview_Player_RatHighlighted_249
+  - first:
+      213: 198867160752686672
+    second: 1404594863_preview_Player_RatHighlighted_250
+  - first:
+      213: -253201988935008267
+    second: 1404594863_preview_Player_RatHighlighted_251
+  - first:
+      213: 7443622639006939534
+    second: 1404594863_preview_Player_RatHighlighted_252
+  - first:
+      213: -2362895616167400575
+    second: 1404594863_preview_Player_RatHighlighted_253
+  - first:
+      213: -1267036351533158836
+    second: 1404594863_preview_Player_RatHighlighted_254
+  - first:
+      213: -1244788403652214469
+    second: 1404594863_preview_Player_RatHighlighted_255
+  - first:
+      213: -8302814604169569592
+    second: 1404594863_preview_Player_RatHighlighted_256
+  - first:
+      213: 6443474872377505189
+    second: 1404594863_preview_Player_RatHighlighted_257
+  - first:
+      213: 900076831639417287
+    second: 1404594863_preview_Player_RatHighlighted_258
+  - first:
+      213: 2069428672156987726
+    second: 1404594863_preview_Player_RatHighlighted_259
+  - first:
+      213: -8703958490871816586
+    second: 1404594863_preview_Player_RatHighlighted_260
+  - first:
+      213: -3845221848066618119
+    second: 1404594863_preview_Player_RatHighlighted_261
+  - first:
+      213: 4152490275015492438
+    second: 1404594863_preview_Player_RatHighlighted_262
+  - first:
+      213: -7364997339750735607
+    second: 1404594863_preview_Player_RatHighlighted_263
+  - first:
+      213: -6389524134308877933
+    second: 1404594863_preview_Player_RatHighlighted_264
+  - first:
+      213: 4287385505979044873
+    second: 1404594863_preview_Player_RatHighlighted_265
+  - first:
+      213: 6213166418787285086
+    second: 1404594863_preview_Player_RatHighlighted_266
+  - first:
+      213: 1228528032932081057
+    second: 1404594863_preview_Player_RatHighlighted_267
+  - first:
+      213: -5980625031881064237
+    second: 1404594863_preview_Player_RatHighlighted_268
+  - first:
+      213: -5818531005229018835
+    second: 1404594863_preview_Player_RatHighlighted_269
+  - first:
+      213: -7836583206850621143
+    second: 1404594863_preview_Player_RatHighlighted_270
+  - first:
+      213: 8213447089266629649
+    second: 1404594863_preview_Player_RatHighlighted_271
+  - first:
+      213: 6688634692814121804
+    second: 1404594863_preview_Player_RatHighlighted_272
+  - first:
+      213: -8416031544155786150
+    second: 1404594863_preview_Player_RatHighlighted_273
+  - first:
+      213: -8452464377417283360
+    second: 1404594863_preview_Player_RatHighlighted_274
+  - first:
+      213: 5628599137247823604
+    second: 1404594863_preview_Player_RatHighlighted_275
+  - first:
+      213: 3582874536253209738
+    second: 1404594863_preview_Player_RatHighlighted_276
+  - first:
+      213: -737376314566827834
+    second: 1404594863_preview_Player_RatHighlighted_277
+  - first:
+      213: 8603264055634755498
+    second: 1404594863_preview_Player_RatHighlighted_278
+  - first:
+      213: -6394773782809502211
+    second: 1404594863_preview_Player_RatHighlighted_279
+  - first:
+      213: 4053863155876732767
+    second: 1404594863_preview_Player_RatHighlighted_280
+  - first:
+      213: -1088710251655536476
+    second: 1404594863_preview_Player_RatHighlighted_281
+  - first:
+      213: -723967882680933143
+    second: 1404594863_preview_Player_RatHighlighted_282
+  - first:
+      213: -6220362898336924866
+    second: 1404594863_preview_Player_RatHighlighted_283
+  - first:
+      213: -3229179674088917088
+    second: 1404594863_preview_Player_RatHighlighted_284
+  - first:
+      213: -4792446972059210074
+    second: 1404594863_preview_Player_RatHighlighted_285
+  - first:
+      213: 1833200059993743661
+    second: 1404594863_preview_Player_RatHighlighted_286
+  - first:
+      213: -5059721207903291633
+    second: 1404594863_preview_Player_RatHighlighted_287
+  - first:
+      213: -6616928976665264693
+    second: 1404594863_preview_Player_RatHighlighted_288
+  - first:
+      213: 1294287955703668339
+    second: 1404594863_preview_Player_RatHighlighted_289
+  - first:
+      213: -5920773874325307447
+    second: 1404594863_preview_Player_RatHighlighted_290
+  - first:
+      213: 5504849205149356023
+    second: 1404594863_preview_Player_RatHighlighted_291
+  - first:
+      213: -7078415054055733744
+    second: 1404594863_preview_Player_RatHighlighted_292
+  - first:
+      213: -5273082099342534232
+    second: 1404594863_preview_Player_RatHighlighted_293
+  - first:
+      213: -8726224689014534130
+    second: 1404594863_preview_Player_RatHighlighted_294
+  - first:
+      213: -5322107994026274814
+    second: 1404594863_preview_Player_RatHighlighted_295
+  - first:
+      213: 7393602953075491543
+    second: 1404594863_preview_Player_RatHighlighted_296
+  - first:
+      213: 6323861647812575308
+    second: 1404594863_preview_Player_RatHighlighted_297
+  - first:
+      213: -4883098901858598842
+    second: 1404594863_preview_Player_RatHighlighted_298
+  - first:
+      213: 4717503675119841833
+    second: 1404594863_preview_Player_RatHighlighted_299
+  - first:
+      213: 2621799988416539746
+    second: 1404594863_preview_Player_RatHighlighted_300
+  - first:
+      213: -3880068534473671264
+    second: 1404594863_preview_Player_RatHighlighted_301
+  - first:
+      213: -960588648142679165
+    second: 1404594863_preview_Player_RatHighlighted_302
+  - first:
+      213: -2500944608548397938
+    second: 1404594863_preview_Player_RatHighlighted_303
+  - first:
+      213: -1452122447271238312
+    second: 1404594863_preview_Player_RatHighlighted_304
+  - first:
+      213: -2897169586291269197
+    second: 1404594863_preview_Player_RatHighlighted_305
+  - first:
+      213: 3312745482090047987
+    second: 1404594863_preview_Player_RatHighlighted_306
+  - first:
+      213: -3670366516004007360
+    second: 1404594863_preview_Player_RatHighlighted_307
+  - first:
+      213: -8808866327956053362
+    second: 1404594863_preview_Player_RatHighlighted_308
+  - first:
+      213: -611980675563997220
+    second: 1404594863_preview_Player_RatHighlighted_309
+  - first:
+      213: 1253538742233629487
+    second: 1404594863_preview_Player_RatHighlighted_310
+  - first:
+      213: 8221890564728585369
+    second: 1404594863_preview_Player_RatHighlighted_311
+  - first:
+      213: 4956442214452315949
+    second: 1404594863_preview_Player_RatHighlighted_312
+  - first:
+      213: -6659455465238202144
+    second: 1404594863_preview_Player_RatHighlighted_313
+  - first:
+      213: 5743240617855593958
+    second: 1404594863_preview_Player_RatHighlighted_314
+  - first:
+      213: -5095462653062577454
+    second: 1404594863_preview_Player_RatHighlighted_315
+  - first:
+      213: -8569827061127535086
+    second: 1404594863_preview_Player_RatHighlighted_316
+  - first:
+      213: -554954547842217752
+    second: 1404594863_preview_Player_RatHighlighted_317
+  - first:
+      213: 8701877463067840669
+    second: 1404594863_preview_Player_RatHighlighted_318
+  - first:
+      213: 5404358100609781217
+    second: 1404594863_preview_Player_RatHighlighted_319
+  - first:
+      213: -625828009033023617
+    second: 1404594863_preview_Player_RatHighlighted_320
+  - first:
+      213: -3129970410398508665
+    second: 1404594863_preview_Player_RatHighlighted_321
+  - first:
+      213: 3843362682618302498
+    second: 1404594863_preview_Player_RatHighlighted_322
+  - first:
+      213: -3501371963441247222
+    second: 1404594863_preview_Player_RatHighlighted_323
+  - first:
+      213: 4841422666068284833
+    second: 1404594863_preview_Player_RatHighlighted_324
+  - first:
+      213: 1551858305496817104
+    second: 1404594863_preview_Player_RatHighlighted_325
+  - first:
+      213: -5572440259424778498
+    second: 1404594863_preview_Player_RatHighlighted_326
+  - first:
+      213: 4928264677385529676
+    second: 1404594863_preview_Player_RatHighlighted_327
+  - first:
+      213: -2707510773228728995
+    second: 1404594863_preview_Player_RatHighlighted_328
+  - first:
+      213: -5749700981466080261
+    second: 1404594863_preview_Player_RatHighlighted_329
+  - first:
+      213: -172561442612905402
+    second: 1404594863_preview_Player_RatHighlighted_330
+  - first:
+      213: 3808683408988374001
+    second: 1404594863_preview_Player_RatHighlighted_331
+  - first:
+      213: 6007709271486313034
+    second: 1404594863_preview_Player_RatHighlighted_332
+  - first:
+      213: -7948251305590755079
+    second: 1404594863_preview_Player_RatHighlighted_333
+  - first:
+      213: 3829742667771357811
+    second: 1404594863_preview_Player_RatHighlighted_334
+  - first:
+      213: -263550191425413952
+    second: 1404594863_preview_Player_RatHighlighted_335
+  - first:
+      213: -3793823854806631809
+    second: 1404594863_preview_Player_RatHighlighted_336
+  - first:
+      213: -5840031383873270270
+    second: 1404594863_preview_Player_RatHighlighted_337
+  - first:
+      213: 622808567324210876
+    second: 1404594863_preview_Player_RatHighlighted_338
+  - first:
+      213: -6173877893873028214
+    second: 1404594863_preview_Player_RatHighlighted_339
+  - first:
+      213: -8618034336090032530
+    second: 1404594863_preview_Player_RatHighlighted_340
+  - first:
+      213: 5109752722548870455
+    second: 1404594863_preview_Player_RatHighlighted_341
+  - first:
+      213: -6127374338191688151
+    second: 1404594863_preview_Player_RatHighlighted_342
+  - first:
+      213: 1711687489146942751
+    second: 1404594863_preview_Player_RatHighlighted_343
+  - first:
+      213: -1792700721749375525
+    second: 1404594863_preview_Player_RatHighlighted_344
+  - first:
+      213: 5285898219058307145
+    second: 1404594863_preview_Player_RatHighlighted_345
+  - first:
+      213: 7990013690779371414
+    second: 1404594863_preview_Player_RatHighlighted_346
+  - first:
+      213: 7177621359849732046
+    second: 1404594863_preview_Player_RatHighlighted_347
+  - first:
+      213: 2969500662529953405
+    second: 1404594863_preview_Player_RatHighlighted_348
+  - first:
+      213: 4331998503210627463
+    second: 1404594863_preview_Player_RatHighlighted_349
+  - first:
+      213: -8862389684856229761
+    second: 1404594863_preview_Player_RatHighlighted_350
+  - first:
+      213: 1811410252645764476
+    second: 1404594863_preview_Player_RatHighlighted_351
+  - first:
+      213: -7455133148978921247
+    second: 1404594863_preview_Player_RatHighlighted_352
+  - first:
+      213: -6292292434585067447
+    second: 1404594863_preview_Player_RatHighlighted_353
+  - first:
+      213: -1036939403987106457
+    second: 1404594863_preview_Player_RatHighlighted_354
+  - first:
+      213: 7410473207945880982
+    second: 1404594863_preview_Player_RatHighlighted_355
+  - first:
+      213: 2800366357981653582
+    second: 1404594863_preview_Player_RatHighlighted_356
+  - first:
+      213: -5457924432002093640
+    second: 1404594863_preview_Player_RatHighlighted_357
+  - first:
+      213: -1026367699043182179
+    second: 1404594863_preview_Player_RatHighlighted_358
+  - first:
+      213: -1079693328942319706
+    second: 1404594863_preview_Player_RatHighlighted_359
+  - first:
+      213: 3683001839703622914
+    second: 1404594863_preview_Player_RatHighlighted_360
+  - first:
+      213: 2847357750934399166
+    second: 1404594863_preview_Player_RatHighlighted_361
+  - first:
+      213: -138952554611965013
+    second: 1404594863_preview_Player_RatHighlighted_362
+  - first:
+      213: 2780299906287724334
+    second: 1404594863_preview_Player_RatHighlighted_363
+  - first:
+      213: 3814655535831272663
+    second: 1404594863_preview_Player_RatHighlighted_364
+  - first:
+      213: -2628941878095685137
+    second: 1404594863_preview_Player_RatHighlighted_365
+  - first:
+      213: -7917269021945046181
+    second: 1404594863_preview_Player_RatHighlighted_366
+  - first:
+      213: -788642869279767302
+    second: 1404594863_preview_Player_RatHighlighted_367
+  - first:
+      213: -4815802330187396663
+    second: 1404594863_preview_Player_RatHighlighted_368
+  - first:
+      213: 3635212988110873243
+    second: 1404594863_preview_Player_RatHighlighted_369
+  - first:
+      213: 3568824018920853489
+    second: 1404594863_preview_Player_RatHighlighted_370
+  - first:
+      213: 6285042291999401371
+    second: 1404594863_preview_Player_RatHighlighted_371
+  - first:
+      213: 8660976125296504284
+    second: 1404594863_preview_Player_RatHighlighted_372
+  - first:
+      213: 1859439721133468148
+    second: 1404594863_preview_Player_RatHighlighted_373
+  - first:
+      213: 6712020228895525764
+    second: 1404594863_preview_Player_RatHighlighted_374
+  - first:
+      213: -1916593350940461787
+    second: 1404594863_preview_Player_RatHighlighted_375
+  - first:
+      213: -7676535561307955464
+    second: 1404594863_preview_Player_RatHighlighted_376
+  - first:
+      213: 3290446419231887197
+    second: 1404594863_preview_Player_RatHighlighted_377
+  - first:
+      213: 6279865191230966425
+    second: 1404594863_preview_Player_RatHighlighted_378
+  - first:
+      213: 6230833487208937466
+    second: 1404594863_preview_Player_RatHighlighted_379
+  - first:
+      213: -2268628007304755857
+    second: 1404594863_preview_Player_RatHighlighted_380
+  - first:
+      213: 3135896301903668393
+    second: 1404594863_preview_Player_RatHighlighted_381
+  - first:
+      213: -5048224296036892836
+    second: 1404594863_preview_Player_RatHighlighted_382
+  - first:
+      213: 306253023420211475
+    second: 1404594863_preview_Player_RatHighlighted_383
+  - first:
+      213: -8750255524043796231
+    second: 1404594863_preview_Player_RatHighlighted_384
+  - first:
+      213: 3134215908239035757
+    second: 1404594863_preview_Player_RatHighlighted_385
+  - first:
+      213: 8697800320813969552
+    second: 1404594863_preview_Player_RatHighlighted_386
+  - first:
+      213: -595340761299679869
+    second: 1404594863_preview_Player_RatHighlighted_387
+  - first:
+      213: 451155782966843250
+    second: 1404594863_preview_Player_RatHighlighted_388
+  - first:
+      213: -4846730065885630053
+    second: 1404594863_preview_Player_RatHighlighted_389
+  - first:
+      213: 4399288728626085026
+    second: 1404594863_preview_Player_RatHighlighted_390
+  - first:
+      213: 5918962515463933229
+    second: 1404594863_preview_Player_RatHighlighted_391
+  - first:
+      213: 836481621282476281
+    second: 1404594863_preview_Player_RatHighlighted_392
+  - first:
+      213: -2652161126008636588
+    second: 1404594863_preview_Player_RatHighlighted_393
+  - first:
+      213: 6533877516460045015
+    second: 1404594863_preview_Player_RatHighlighted_394
+  - first:
+      213: 7336163423957100733
+    second: 1404594863_preview_Player_RatHighlighted_395
+  - first:
+      213: 3653104651293511028
+    second: 1404594863_preview_Player_RatHighlighted_396
+  - first:
+      213: -203219628153476138
+    second: 1404594863_preview_Player_RatHighlighted_397
+  - first:
+      213: 1176747633314599598
+    second: 1404594863_preview_Player_RatHighlighted_398
+  - first:
+      213: -1164827569620713797
+    second: 1404594863_preview_Player_RatHighlighted_399
+  - first:
+      213: -5103322995292636285
+    second: 1404594863_preview_Player_RatHighlighted_400
+  - first:
+      213: 7275002654163245565
+    second: 1404594863_preview_Player_RatHighlighted_401
+  - first:
+      213: 6784779468026824146
+    second: 1404594863_preview_Player_RatHighlighted_402
+  - first:
+      213: 6781721103556002111
+    second: 1404594863_preview_Player_RatHighlighted_403
+  - first:
+      213: 2539222979118868457
+    second: 1404594863_preview_Player_RatHighlighted_404
+  - first:
+      213: 3571134880124161610
+    second: 1404594863_preview_Player_RatHighlighted_405
+  - first:
+      213: -7848760090280894162
+    second: 1404594863_preview_Player_RatHighlighted_406
+  - first:
+      213: -4431176359076501694
+    second: 1404594863_preview_Player_RatHighlighted_407
+  - first:
+      213: 8498457297876603151
+    second: 1404594863_preview_Player_RatHighlighted_408
+  - first:
+      213: 5879191257108321058
+    second: 1404594863_preview_Player_RatHighlighted_409
+  - first:
+      213: 2253110570997583821
+    second: 1404594863_preview_Player_RatHighlighted_410
+  - first:
+      213: 3138060391216109660
+    second: 1404594863_preview_Player_RatHighlighted_411
+  - first:
+      213: 13434520663719411
+    second: 1404594863_preview_Player_RatHighlighted_412
+  - first:
+      213: 4151591949117229939
+    second: 1404594863_preview_Player_RatHighlighted_413
+  - first:
+      213: -113386906820543179
+    second: 1404594863_preview_Player_RatHighlighted_414
+  - first:
+      213: -1618533749699062901
+    second: 1404594863_preview_Player_RatHighlighted_415
+  - first:
+      213: -3054748430195700027
+    second: 1404594863_preview_Player_RatHighlighted_416
+  - first:
+      213: -4423284933368826285
+    second: 1404594863_preview_Player_RatHighlighted_417
+  - first:
+      213: 5166230739370754061
+    second: 1404594863_preview_Player_RatHighlighted_418
+  - first:
+      213: 7668201481403648262
+    second: 1404594863_preview_Player_RatHighlighted_419
+  - first:
+      213: -5966519841674957560
+    second: 1404594863_preview_Player_RatHighlighted_420
+  - first:
+      213: 2974002362198977401
+    second: 1404594863_preview_Player_RatHighlighted_421
+  - first:
+      213: -2990020948027315096
+    second: 1404594863_preview_Player_RatHighlighted_422
+  - first:
+      213: 5307009947031026248
+    second: 1404594863_preview_Player_RatHighlighted_423
+  - first:
+      213: -3670050566614372725
+    second: 1404594863_preview_Player_RatHighlighted_424
+  - first:
+      213: 9028141777671163000
+    second: 1404594863_preview_Player_RatHighlighted_425
+  - first:
+      213: 2464027344393737608
+    second: 1404594863_preview_Player_RatHighlighted_426
+  - first:
+      213: 7215611534432711574
+    second: 1404594863_preview_Player_RatHighlighted_427
+  - first:
+      213: 5176205095212343701
+    second: 1404594863_preview_Player_RatHighlighted_428
+  - first:
+      213: -5181773251535859042
+    second: 1404594863_preview_Player_RatHighlighted_429
+  - first:
+      213: -5017236808132615792
+    second: 1404594863_preview_Player_RatHighlighted_430
+  - first:
+      213: -8806032668005840728
+    second: 1404594863_preview_Player_RatHighlighted_431
+  - first:
+      213: 3429404457229096244
+    second: 1404594863_preview_Player_RatHighlighted_432
+  - first:
+      213: 1104919214570184545
+    second: 1404594863_preview_Player_RatHighlighted_433
+  - first:
+      213: -772890167581234697
+    second: 1404594863_preview_Player_RatHighlighted_434
+  - first:
+      213: -284047735133500589
+    second: 1404594863_preview_Player_RatHighlighted_435
+  - first:
+      213: -2476161356420399196
+    second: 1404594863_preview_Player_RatHighlighted_436
+  - first:
+      213: -2865210000280639574
+    second: 1404594863_preview_Player_RatHighlighted_437
+  - first:
+      213: -8340725548172480040
+    second: 1404594863_preview_Player_RatHighlighted_438
+  - first:
+      213: 3027217363687695072
+    second: 1404594863_preview_Player_RatHighlighted_439
+  - first:
+      213: 1743917628480646341
+    second: 1404594863_preview_Player_RatHighlighted_440
+  - first:
+      213: 6560527964023148294
+    second: 1404594863_preview_Player_RatHighlighted_441
+  - first:
+      213: 2938735778882073035
+    second: 1404594863_preview_Player_RatHighlighted_442
+  - first:
+      213: -6787600955108715036
+    second: 1404594863_preview_Player_RatHighlighted_443
+  - first:
+      213: -718399579387973717
+    second: 1404594863_preview_Player_RatHighlighted_444
+  - first:
+      213: -1447381798238544117
+    second: 1404594863_preview_Player_RatHighlighted_445
+  - first:
+      213: 1440425600894475054
+    second: 1404594863_preview_Player_RatHighlighted_446
+  - first:
+      213: 352504247888609020
+    second: 1404594863_preview_Player_RatHighlighted_447
+  - first:
+      213: -4307726077794570886
+    second: 1404594863_preview_Player_RatHighlighted_448
+  - first:
+      213: -8824612062380534363
+    second: 1404594863_preview_Player_RatHighlighted_449
+  - first:
+      213: 6580251186486888585
+    second: 1404594863_preview_Player_RatHighlighted_450
+  - first:
+      213: 3147886813202060041
+    second: 1404594863_preview_Player_RatHighlighted_451
+  - first:
+      213: -2021949722749010189
+    second: 1404594863_preview_Player_RatHighlighted_452
+  - first:
+      213: -1689599667084906469
+    second: 1404594863_preview_Player_RatHighlighted_453
+  - first:
+      213: -8286066257545665652
+    second: 1404594863_preview_Player_RatHighlighted_454
+  - first:
+      213: 3190156239810744693
+    second: 1404594863_preview_Player_RatHighlighted_455
+  - first:
+      213: 7435296440700707946
+    second: 1404594863_preview_Player_RatHighlighted_456
+  - first:
+      213: 7855165602370014530
+    second: 1404594863_preview_Player_RatHighlighted_457
+  - first:
+      213: -5746428382952581520
+    second: 1404594863_preview_Player_RatHighlighted_458
+  - first:
+      213: -1946746412684705428
+    second: 1404594863_preview_Player_RatHighlighted_459
+  - first:
+      213: 700237009561612372
+    second: 1404594863_preview_Player_RatHighlighted_460
+  - first:
+      213: 7140311105389338339
+    second: 1404594863_preview_Player_RatHighlighted_461
+  - first:
+      213: 607477236762520751
+    second: 1404594863_preview_Player_RatHighlighted_462
+  - first:
+      213: -5014792768808887111
+    second: 1404594863_preview_Player_RatHighlighted_463
+  - first:
+      213: -4258261393326809491
+    second: 1404594863_preview_Player_RatHighlighted_464
+  - first:
+      213: 6784226484638775150
+    second: 1404594863_preview_Player_RatHighlighted_465
+  - first:
+      213: -6465605086037265146
+    second: 1404594863_preview_Player_RatHighlighted_466
+  - first:
+      213: 1864083951113741952
+    second: 1404594863_preview_Player_RatHighlighted_467
+  - first:
+      213: -2842188104341338830
+    second: 1404594863_preview_Player_RatHighlighted_468
+  - first:
+      213: -727755974112392150
+    second: 1404594863_preview_Player_RatHighlighted_469
+  - first:
+      213: 5393952740800871390
+    second: 1404594863_preview_Player_RatHighlighted_470
+  - first:
+      213: -8253389153832523529
+    second: 1404594863_preview_Player_RatHighlighted_471
+  - first:
+      213: 6817396403533873810
+    second: 1404594863_preview_Player_RatHighlighted_472
+  - first:
+      213: -6030256040266853417
+    second: 1404594863_preview_Player_RatHighlighted_473
+  - first:
+      213: -857391688105939693
+    second: 1404594863_preview_Player_RatHighlighted_474
+  - first:
+      213: 8757738758719476085
+    second: 1404594863_preview_Player_RatHighlighted_475
+  - first:
+      213: 6334113752896212595
+    second: 1404594863_preview_Player_RatHighlighted_476
+  - first:
+      213: 2739640959142328528
+    second: 1404594863_preview_Player_RatHighlighted_477
+  - first:
+      213: 7465347769474398449
+    second: 1404594863_preview_Player_RatHighlighted_478
+  - first:
+      213: -570718162101973876
+    second: 1404594863_preview_Player_RatHighlighted_479
+  - first:
+      213: 8380552304932179001
+    second: 1404594863_preview_Player_RatHighlighted_480
+  - first:
+      213: 2209261260065754224
+    second: 1404594863_preview_Player_RatHighlighted_481
+  - first:
+      213: 7474242936601195955
+    second: 1404594863_preview_Player_RatHighlighted_482
+  - first:
+      213: 8408978237004230319
+    second: 1404594863_preview_Player_RatHighlighted_483
+  - first:
+      213: 5156027724058550916
+    second: 1404594863_preview_Player_RatHighlighted_484
+  - first:
+      213: -1475963271511536234
+    second: 1404594863_preview_Player_RatHighlighted_485
+  - first:
+      213: -7732231533927311384
+    second: 1404594863_preview_Player_RatHighlighted_486
+  - first:
+      213: -1323011138813793538
+    second: 1404594863_preview_Player_RatHighlighted_487
+  - first:
+      213: -3271652674858424809
+    second: 1404594863_preview_Player_RatHighlighted_488
+  - first:
+      213: -2251914563545739690
+    second: 1404594863_preview_Player_RatHighlighted_489
+  - first:
+      213: 5586271102604712867
+    second: 1404594863_preview_Player_RatHighlighted_490
+  - first:
+      213: -8959002230166128047
+    second: 1404594863_preview_Player_RatHighlighted_491
+  - first:
+      213: -1819566988714362642
+    second: 1404594863_preview_Player_RatHighlighted_492
+  - first:
+      213: -724881659088947975
+    second: 1404594863_preview_Player_RatHighlighted_493
+  - first:
+      213: 5493859441531417427
+    second: 1404594863_preview_Player_RatHighlighted_494
+  - first:
+      213: -8726817402227248952
+    second: 1404594863_preview_Player_RatHighlighted_495
+  - first:
+      213: 7903490479312416477
+    second: 1404594863_preview_Player_RatHighlighted_496
+  - first:
+      213: 3933250172867457919
+    second: 1404594863_preview_Player_RatHighlighted_497
+  - first:
+      213: -6298592092650659231
+    second: 1404594863_preview_Player_RatHighlighted_498
+  - first:
+      213: 2323210875427770867
+    second: 1404594863_preview_Player_RatHighlighted_499
+  - first:
+      213: 8832816060033391298
+    second: 1404594863_preview_Player_RatHighlighted_500
+  - first:
+      213: 710598010136719648
+    second: 1404594863_preview_Player_RatHighlighted_501
+  - first:
+      213: 2268724323512550803
+    second: 1404594863_preview_Player_RatHighlighted_502
+  - first:
+      213: -4723376037189731660
+    second: 1404594863_preview_Player_RatHighlighted_503
+  - first:
+      213: -6143789934698152621
+    second: 1404594863_preview_Player_RatHighlighted_504
+  - first:
+      213: -782153666772036765
+    second: 1404594863_preview_Player_RatHighlighted_505
+  - first:
+      213: 8050927886450908373
+    second: 1404594863_preview_Player_RatHighlighted_506
+  - first:
+      213: 6564774539742964714
+    second: 1404594863_preview_Player_RatHighlighted_507
+  - first:
+      213: 7340429369762191726
+    second: 1404594863_preview_Player_RatHighlighted_508
+  - first:
+      213: -6847903607032578943
+    second: 1404594863_preview_Player_RatHighlighted_509
+  - first:
+      213: -5406234239028959548
+    second: 1404594863_preview_Player_RatHighlighted_510
+  - first:
+      213: -5661145463474254575
+    second: 1404594863_preview_Player_RatHighlighted_511
+  - first:
+      213: 341059656674238874
+    second: 1404594863_preview_Player_RatHighlighted_512
+  - first:
+      213: 6649344601922833950
+    second: 1404594863_preview_Player_RatHighlighted_513
+  - first:
+      213: 8296443150585440039
+    second: 1404594863_preview_Player_RatHighlighted_514
+  - first:
+      213: 4638823773598404479
+    second: 1404594863_preview_Player_RatHighlighted_515
+  - first:
+      213: -2582638567167816128
+    second: 1404594863_preview_Player_RatHighlighted_516
+  - first:
+      213: -1261894022766568235
+    second: 1404594863_preview_Player_RatHighlighted_517
+  - first:
+      213: -5830698814688702232
+    second: 1404594863_preview_Player_RatHighlighted_518
+  - first:
+      213: 7580509891508305347
+    second: 1404594863_preview_Player_RatHighlighted_519
+  - first:
+      213: 4522864059241827862
+    second: 1404594863_preview_Player_RatHighlighted_520
+  - first:
+      213: -2591588643275359547
+    second: 1404594863_preview_Player_RatHighlighted_521
+  - first:
+      213: 6979472439623455298
+    second: 1404594863_preview_Player_RatHighlighted_522
+  - first:
+      213: 5972657530411275054
+    second: 1404594863_preview_Player_RatHighlighted_523
+  - first:
+      213: -5214596878984045107
+    second: 1404594863_preview_Player_RatHighlighted_524
+  - first:
+      213: -1490353972090706538
+    second: 1404594863_preview_Player_RatHighlighted_525
+  - first:
+      213: -2938106832513766402
+    second: 1404594863_preview_Player_RatHighlighted_526
+  - first:
+      213: -2073811936399697050
+    second: 1404594863_preview_Player_RatHighlighted_527
+  - first:
+      213: 3348917573597122280
+    second: 1404594863_preview_Player_RatHighlighted_528
+  - first:
+      213: 4125146923368592674
+    second: 1404594863_preview_Player_RatHighlighted_529
+  - first:
+      213: 1713475945321996482
+    second: 1404594863_preview_Player_RatHighlighted_530
+  - first:
+      213: 8244178012251574866
+    second: 1404594863_preview_Player_RatHighlighted_531
+  - first:
+      213: -4689426687418080901
+    second: 1404594863_preview_Player_RatHighlighted_532
+  - first:
+      213: -7517074392631589917
+    second: 1404594863_preview_Player_RatHighlighted_533
+  - first:
+      213: -8265257203135390869
+    second: 1404594863_preview_Player_RatHighlighted_534
+  - first:
+      213: 7795075138770536795
+    second: 1404594863_preview_Player_RatHighlighted_535
+  - first:
+      213: -2383989252765723921
+    second: 1404594863_preview_Player_RatHighlighted_536
+  - first:
+      213: 3418183650944191228
+    second: 1404594863_preview_Player_RatHighlighted_537
+  - first:
+      213: -3058592754580523767
+    second: 1404594863_preview_Player_RatHighlighted_538
+  - first:
+      213: 1325010123062897409
+    second: 1404594863_preview_Player_RatHighlighted_539
+  - first:
+      213: -4400354628176141508
+    second: 1404594863_preview_Player_RatHighlighted_540
+  - first:
+      213: 7205464426352676146
+    second: 1404594863_preview_Player_RatHighlighted_541
+  - first:
+      213: 2570937648737897342
+    second: 1404594863_preview_Player_RatHighlighted_542
+  - first:
+      213: 5702033589332451593
+    second: 1404594863_preview_Player_RatHighlighted_543
+  - first:
+      213: 5426666394589408059
+    second: 1404594863_preview_Player_RatHighlighted_544
+  - first:
+      213: -2889875915417902285
+    second: 1404594863_preview_Player_RatHighlighted_545
+  - first:
+      213: -4107876798576495883
+    second: 1404594863_preview_Player_RatHighlighted_546
+  - first:
+      213: -3093653476615815517
+    second: 1404594863_preview_Player_RatHighlighted_547
+  - first:
+      213: 2970641116249968015
+    second: 1404594863_preview_Player_RatHighlighted_548
+  - first:
+      213: -8887215873000941352
+    second: 1404594863_preview_Player_RatHighlighted_549
+  - first:
+      213: 1245341478557751789
+    second: 1404594863_preview_Player_RatHighlighted_550
+  - first:
+      213: -6671956369793182577
+    second: 1404594863_preview_Player_RatHighlighted_551
+  - first:
+      213: 2496724380213917605
+    second: 1404594863_preview_Player_RatHighlighted_552
+  - first:
+      213: -3453968862406286421
+    second: 1404594863_preview_Player_RatHighlighted_553
+  - first:
+      213: -9063597637311914817
+    second: 1404594863_preview_Player_RatHighlighted_554
+  - first:
+      213: 229872343556596091
+    second: 1404594863_preview_Player_RatHighlighted_555
+  - first:
+      213: -1354986542349105994
+    second: 1404594863_preview_Player_RatHighlighted_556
+  - first:
+      213: 4842128131557759967
+    second: 1404594863_preview_Player_RatHighlighted_557
+  - first:
+      213: -3655420607343151425
+    second: 1404594863_preview_Player_RatHighlighted_558
+  - first:
+      213: 5294539293401066251
+    second: 1404594863_preview_Player_RatHighlighted_559
+  - first:
+      213: 5798432937405117064
+    second: 1404594863_preview_Player_RatHighlighted_560
+  - first:
+      213: 4997449825638496217
+    second: 1404594863_preview_Player_RatHighlighted_561
+  - first:
+      213: 8058402260286733551
+    second: 1404594863_preview_Player_RatHighlighted_562
+  - first:
+      213: 4619609443799652168
+    second: 1404594863_preview_Player_RatHighlighted_563
+  - first:
+      213: -3165377296393640165
+    second: 1404594863_preview_Player_RatHighlighted_564
+  - first:
+      213: 5871425623926355965
+    second: 1404594863_preview_Player_RatHighlighted_565
+  - first:
+      213: -8571778125146904712
+    second: 1404594863_preview_Player_RatHighlighted_566
+  - first:
+      213: -4252729139737038854
+    second: 1404594863_preview_Player_RatHighlighted_567
+  - first:
+      213: 987105474406193356
+    second: 1404594863_preview_Player_RatHighlighted_568
+  - first:
+      213: -6412640297646116399
+    second: 1404594863_preview_Player_RatHighlighted_569
+  - first:
+      213: -253707025331879995
+    second: 1404594863_preview_Player_RatHighlighted_570
+  - first:
+      213: -4704364281801508128
+    second: 1404594863_preview_Player_RatHighlighted_571
+  - first:
+      213: -3722364322440745255
+    second: 1404594863_preview_Player_RatHighlighted_572
+  - first:
+      213: 7766400191747330417
+    second: 1404594863_preview_Player_RatHighlighted_573
+  - first:
+      213: -9017066334361029255
+    second: 1404594863_preview_Player_RatHighlighted_574
+  - first:
+      213: 7230980356811587698
+    second: 1404594863_preview_Player_RatHighlighted_575
+  - first:
+      213: -8260948116783942237
+    second: 1404594863_preview_Player_RatHighlighted_576
+  - first:
+      213: 1376911859244386442
+    second: 1404594863_preview_Player_RatHighlighted_577
+  - first:
+      213: -1155707834435870612
+    second: 1404594863_preview_Player_RatHighlighted_578
+  - first:
+      213: -7060610311085793836
+    second: 1404594863_preview_Player_RatHighlighted_579
+  - first:
+      213: -4323250325043265428
+    second: 1404594863_preview_Player_RatHighlighted_580
+  - first:
+      213: 1685336603817402703
+    second: 1404594863_preview_Player_RatHighlighted_581
+  - first:
+      213: 8622693730083375581
+    second: 1404594863_preview_Player_RatHighlighted_582
+  - first:
+      213: 6604165647161516437
+    second: 1404594863_preview_Player_RatHighlighted_583
+  - first:
+      213: -1656456720270070133
+    second: 1404594863_preview_Player_RatHighlighted_584
+  - first:
+      213: -8876178202461329209
+    second: 1404594863_preview_Player_RatHighlighted_585
+  - first:
+      213: -485333911389444285
+    second: 1404594863_preview_Player_RatHighlighted_586
+  - first:
+      213: -3551904898550088904
+    second: 1404594863_preview_Player_RatHighlighted_587
+  - first:
+      213: 8648252094681514768
+    second: 1404594863_preview_Player_RatHighlighted_588
+  - first:
+      213: -5455332297709890373
+    second: 1404594863_preview_Player_RatHighlighted_589
+  - first:
+      213: 3151286393771703829
+    second: 1404594863_preview_Player_RatHighlighted_590
+  - first:
+      213: -6127904487850894284
+    second: 1404594863_preview_Player_RatHighlighted_591
+  - first:
+      213: -4716257594079785239
+    second: 1404594863_preview_Player_RatHighlighted_592
+  - first:
+      213: 2922608771617391978
+    second: 1404594863_preview_Player_RatHighlighted_593
+  - first:
+      213: 678779012113893623
+    second: 1404594863_preview_Player_RatHighlighted_594
+  - first:
+      213: 8670927438959330212
+    second: 1404594863_preview_Player_RatHighlighted_595
+  - first:
+      213: -3257542790559820442
+    second: 1404594863_preview_Player_RatHighlighted_596
+  - first:
+      213: -5926545914649443143
+    second: 1404594863_preview_Player_RatHighlighted_597
+  - first:
+      213: 4405877536797216331
+    second: 1404594863_preview_Player_RatHighlighted_598
+  - first:
+      213: -5906399947388913253
+    second: 1404594863_preview_Player_RatHighlighted_599
+  - first:
+      213: 695140106964295987
+    second: 1404594863_preview_Player_RatHighlighted_600
+  - first:
+      213: 7350747721186844604
+    second: 1404594863_preview_Player_RatHighlighted_601
+  - first:
+      213: -4637252109706308013
+    second: 1404594863_preview_Player_RatHighlighted_602
+  - first:
+      213: -536338378809189783
+    second: 1404594863_preview_Player_RatHighlighted_603
+  - first:
+      213: 2164623137604821951
+    second: 1404594863_preview_Player_RatHighlighted_604
+  - first:
+      213: -8457276150519458549
+    second: 1404594863_preview_Player_RatHighlighted_605
+  - first:
+      213: 9026588446704460145
+    second: 1404594863_preview_Player_RatHighlighted_606
+  - first:
+      213: -4502579284818401
+    second: 1404594863_preview_Player_RatHighlighted_607
+  - first:
+      213: 3904736544832443999
+    second: 1404594863_preview_Player_RatHighlighted_608
+  - first:
+      213: -8877912828577806722
+    second: 1404594863_preview_Player_RatHighlighted_609
+  - first:
+      213: 1513511287640464373
+    second: 1404594863_preview_Player_RatHighlighted_610
+  - first:
+      213: -800470898199812846
+    second: 1404594863_preview_Player_RatHighlighted_611
+  - first:
+      213: 2800487425225340575
+    second: 1404594863_preview_Player_RatHighlighted_612
+  - first:
+      213: -6747805726638411937
+    second: 1404594863_preview_Player_RatHighlighted_613
+  - first:
+      213: 1048467321780086387
+    second: 1404594863_preview_Player_RatHighlighted_614
+  - first:
+      213: 96803796228691743
+    second: 1404594863_preview_Player_RatHighlighted_615
+  - first:
+      213: 8554888433209696746
+    second: 1404594863_preview_Player_RatHighlighted_616
+  - first:
+      213: -7308601849030476235
+    second: 1404594863_preview_Player_RatHighlighted_617
+  - first:
+      213: 7055221569449829020
+    second: 1404594863_preview_Player_RatHighlighted_618
+  - first:
+      213: -3094272379933593974
+    second: 1404594863_preview_Player_RatHighlighted_619
+  - first:
+      213: -4313155586725877680
+    second: 1404594863_preview_Player_RatHighlighted_620
+  - first:
+      213: -5335349713611422653
+    second: 1404594863_preview_Player_RatHighlighted_621
+  - first:
+      213: 9095787895218523366
+    second: 1404594863_preview_Player_RatHighlighted_622
+  - first:
+      213: 3140802519556436249
+    second: 1404594863_preview_Player_RatHighlighted_623
+  - first:
+      213: -5755972705791822519
+    second: 1404594863_preview_Player_RatHighlighted_624
+  - first:
+      213: 5282386310114031065
+    second: 1404594863_preview_Player_RatHighlighted_625
+  - first:
+      213: 754209582933190768
+    second: 1404594863_preview_Player_RatHighlighted_626
+  - first:
+      213: 865051088214740243
+    second: 1404594863_preview_Player_RatHighlighted_627
+  - first:
+      213: -6515836921345449005
+    second: 1404594863_preview_Player_RatHighlighted_628
+  - first:
+      213: 1836677306207247556
+    second: 1404594863_preview_Player_RatHighlighted_629
+  - first:
+      213: -428258541892219045
+    second: 1404594863_preview_Player_RatHighlighted_630
+  - first:
+      213: 1009607416220794358
+    second: 1404594863_preview_Player_RatHighlighted_631
+  - first:
+      213: 3727971119840001767
+    second: 1404594863_preview_Player_RatHighlighted_632
+  - first:
+      213: -63901960834561986
+    second: 1404594863_preview_Player_RatHighlighted_633
+  - first:
+      213: -7336590898508869117
+    second: 1404594863_preview_Player_RatHighlighted_634
+  - first:
+      213: 7668453083425733132
+    second: 1404594863_preview_Player_RatHighlighted_635
+  - first:
+      213: 3874871668886979609
+    second: 1404594863_preview_Player_RatHighlighted_636
+  - first:
+      213: -6201648309837700836
+    second: 1404594863_preview_Player_RatHighlighted_637
+  - first:
+      213: -8356771807940696069
+    second: 1404594863_preview_Player_RatHighlighted_638
+  - first:
+      213: 8220320364967627236
+    second: 1404594863_preview_Player_RatHighlighted_639
+  - first:
+      213: -2105308570499483678
+    second: 1404594863_preview_Player_RatHighlighted_640
+  - first:
+      213: 8932723036678531774
+    second: 1404594863_preview_Player_RatHighlighted_641
+  - first:
+      213: -2090000676863165811
+    second: 1404594863_preview_Player_RatHighlighted_642
+  - first:
+      213: 7512143901366607905
+    second: 1404594863_preview_Player_RatHighlighted_643
+  - first:
+      213: 8256465190169006473
+    second: 1404594863_preview_Player_RatHighlighted_644
+  - first:
+      213: -3676535235029423260
+    second: 1404594863_preview_Player_RatHighlighted_645
+  - first:
+      213: 4625860256158310887
+    second: 1404594863_preview_Player_RatHighlighted_646
+  - first:
+      213: -2273138430549242691
+    second: 1404594863_preview_Player_RatHighlighted_647
+  - first:
+      213: 822402457736183356
+    second: 1404594863_preview_Player_RatHighlighted_648
+  - first:
+      213: 8947397949846461763
+    second: 1404594863_preview_Player_RatHighlighted_649
+  - first:
+      213: -8429070592007634007
+    second: 1404594863_preview_Player_RatHighlighted_650
+  - first:
+      213: -8723523900365607428
+    second: 1404594863_preview_Player_RatHighlighted_651
+  - first:
+      213: 2857786432047020159
+    second: 1404594863_preview_Player_RatHighlighted_652
+  - first:
+      213: 2576542955279416073
+    second: 1404594863_preview_Player_RatHighlighted_653
+  - first:
+      213: -4144007066390084405
+    second: 1404594863_preview_Player_RatHighlighted_654
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player walk shotgun 1
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6416e8e610b32b4f9e84a1ce194fca0
+      internalID: -530122681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 2
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45bb1b7b558a3024585f7d792ad2c9c5
+      internalID: -523973286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 3
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc098a71b52dcb8408840733b6ebc563
+      internalID: -569571479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 4
+      rect:
+        serializedVersion: 2
+        x: 969
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e11dd7218b7e8e54d82c3a5a94eb9d92
+      internalID: -1468665498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 5
+      rect:
+        serializedVersion: 2
+        x: 1019
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6315630fda1e13742b5e091bb7459b25
+      internalID: -64319238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 6
+      rect:
+        serializedVersion: 2
+        x: 1069
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05eea6f3d13c1347994da45393e1a0d
+      internalID: -1565852430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 7
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 659
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f42600a34c78d524785065e277924543
+      internalID: -1821108069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk shotgun 8
+      rect:
+        serializedVersion: 2
+        x: 1171
+        y: 659
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f7784c919c40f14faa129ff6d1dce67
+      internalID: 991093264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 1
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 659
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6fbdda575a2bf4b9fcb6e85a0c5bf8
+      internalID: 826968048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 2
+      rect:
+        serializedVersion: 2
+        x: 1275
+        y: 659
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e040a038790e01e49b8a0fac3c561e68
+      internalID: 1991450695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 3
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 659
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa6a9f4d81fcd74e87ebe660d10d079
+      internalID: -496673482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 1
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 581
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7768b557fb0c9e4fb99478a6db7d7de
+      internalID: 1728591997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 2
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 581
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c59698d770920e49a2ef0e42d54e314
+      internalID: -1627140530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 3
+      rect:
+        serializedVersion: 2
+        x: 1353
+        y: 581
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1772ebe0f2b590947ac318bc89c9e8ef
+      internalID: 451221489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 1
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 557
+        width: 37
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb9338ae7065104d8d65dafd2cfabd9
+      internalID: -713890413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 4
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 540
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19892612ebd8c79489cc34922d41603d
+      internalID: -1974285631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 2
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 524
+        width: 38
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76fc681259ffa9a4f9368db8db7c656f
+      internalID: -883885816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 5
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 504
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f975703e43440548891acd25e6817a2
+      internalID: -820029172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player + Melee_288
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 507
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40273da3d3c874b43b65afc340d13a71
+      internalID: 2115244682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 3
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 490
+        width: 38
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a8df1d873ffc74dba26b3ce9cc4b6a
+      internalID: -1601499077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 6
+      rect:
+        serializedVersion: 2
+        x: 810
+        y: 468
+        width: 34
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdf8ca32e01fe4446a062e2c634ecb47
+      internalID: -806512247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 4
+      rect:
+        serializedVersion: 2
+        x: 935
+        y: 477
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d961b3716947af54bb96cd1a7ea1a0a5
+      internalID: 217402847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 5
+      rect:
+        serializedVersion: 2
+        x: 985
+        y: 477
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04dcd3afbe8ac7b48b3157fa9a738a71
+      internalID: 1859721090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 6
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 477
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c1bc21d38f0dba4993059dd66aaf20d
+      internalID: 1862734424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 7
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 477
+        width: 30
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e08bd53136566bf4dba9c51b9e22db03
+      internalID: -679389419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving rifle 8
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 477
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f664bca61b3cbf74ea042a6f0244a1b8
+      internalID: 1122045652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 4
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 458
+        width: 38
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4c60b8a6cb55a346ad3d3e0d11ef9e5
+      internalID: -1024881622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player + Melee_327
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 462
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11bad4952626af74596659b873b9ef59
+      internalID: -2002541607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 7
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 432
+        width: 32
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c95e431db2eef04ab53269a2819a874
+      internalID: -479424580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 5
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 425
+        width: 37
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4889bf1bd5016f46b817f8507599dfd
+      internalID: -488404441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player + Melee_356
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 417
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 778e31a6b1af9c0409da38e0cd0efaea
+      internalID: 1054364956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 6
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 392
+        width: 36
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d60ff5ba078faac4b9debce80b0d8beb
+      internalID: 1202450838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 8
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 396
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4e8d63b3499f6b4795e00b06cbf6a0a
+      internalID: 898491255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 7
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 360
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b90105a44d15d4a4fbff57b50bd99d20
+      internalID: -1741880128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 9
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 361
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02334f83481a76f4cba7cfedd23f4e65
+      internalID: -394269595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 1
+      rect:
+        serializedVersion: 2
+        x: 987
+        y: 342
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d3a6176bd8a884a83c0f2a05eca57b
+      internalID: 338606324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player moving smg 8
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 326
+        width: 36
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e464fdcd55048743b02d4de88c27658
+      internalID: -588030560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack kick 10
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 324
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464fe117f5f72d549b208f4b37be8233
+      internalID: -1253175283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 2
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 310
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6876fa41c8401c145a373475de27dff8
+      internalID: 496524446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 3
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 274
+        width: 31
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74df676819fdd7f4798d462b94fd8da8
+      internalID: 1610685016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 3
+      rect:
+        serializedVersion: 2
+        x: 1129
+        y: 268
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a6c4dde899a5544a18bc33190998fd
+      internalID: -369137841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_walk_4
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 267
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4d46268ea44454468c9df379cdfa1f1
+      internalID: 364141386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 5
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 267
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d1ca186b814e145b0ddd1b2b6bada5
+      internalID: 47940761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 6
+      rect:
+        serializedVersion: 2
+        x: 1229
+        y: 267
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d62700a81060bf24d900d78d5bbe46c3
+      internalID: -1021198524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 7
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 268
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d5517647f8d58049b7aef643abdbe46
+      internalID: -786093380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 4
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 243
+        width: 31
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 588103c90ee8aea428afcad5884261c9
+      internalID: -1177091221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 5
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 212
+        width: 31
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45ef2e021ccda964f81e8252f4c632bd
+      internalID: 611113529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 6
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 177
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e68a515b4334b64dbd713ae3774553b
+      internalID: -222150054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player attack fist 7
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 144
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf8bb4257d18f54abb4d77385cc4b9d
+      internalID: 1545921643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 1
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 69
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffda163e975ab6e4e8b0add56bd7f750
+      internalID: -818720726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 2
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 36
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d0260739992a6c44b0fa1bb8c881a52
+      internalID: 71786542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player walk 8
+      rect:
+        serializedVersion: 2
+        x: 1295
+        y: 267
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1afbe7c486ce084409e2c51888b2bdaa
+      internalID: -1131559211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Finisher 1
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 201
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1503acfe5c1717942a586d65077ccc59
+      internalID: -985872286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Finisher 2
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 234
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 662459882815afa44bda2c30b438a402
+      internalID: -460024541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Finisher 3
+      rect:
+        serializedVersion: 2
+        x: 1325
+        y: 267
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7317cae46f8a45a48869a30b793e7357
+      internalID: -1420095926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Finisher 4
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 267
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff022a33c2ae8a44b26fe852172c5af
+      internalID: 652850201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8dfa18ee17abf2f45aecf0d70b95b151
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Finisher 1: -985872286
+      Finisher 2: -460024541
+      Finisher 3: -1420095926
+      Finisher 4: 652850201
+      Player + Melee_0: -623374672
+      Player + Melee_1: 1925837840
+      Player + Melee_10: -1857639698
+      Player + Melee_100: -418891025
+      Player + Melee_101: -477403025
+      Player + Melee_102: -1366169985
+      Player + Melee_103: -421551176
+      Player + Melee_104: 1852391470
+      Player + Melee_105: -1240780511
+      Player + Melee_106: -636559247
+      Player + Melee_107: 1568785453
+      Player + Melee_108: -603498703
+      Player + Melee_109: 319590138
+      Player + Melee_11: 1043275895
+      Player + Melee_110: -874741605
+      Player + Melee_111: 1374484601
+      Player + Melee_112: -591215541
+      Player + Melee_113: 1189167032
+      Player + Melee_114: -1158326407
+      Player + Melee_115: 1275456292
+      Player + Melee_116: 2073970409
+      Player + Melee_117: 1409713903
+      Player + Melee_118: 1513309184
+      Player + Melee_119: -50911237
+      Player + Melee_12: 583594624
+      Player + Melee_120: 1877927084
+      Player + Melee_121: -1848525820
+      Player + Melee_122: -1105262688
+      Player + Melee_123: 45814231
+      Player + Melee_124: -481738064
+      Player + Melee_125: -497710080
+      Player + Melee_126: -220398481
+      Player + Melee_127: 1263538044
+      Player + Melee_128: -481091855
+      Player + Melee_129: 2017377647
+      Player + Melee_13: 319709051
+      Player + Melee_130: 1086058881
+      Player + Melee_131: -352172146
+      Player + Melee_132: 258806203
+      Player + Melee_133: 1161148081
+      Player + Melee_134: 352453945
+      Player + Melee_135: -587798747
+      Player + Melee_136: 726195044
+      Player + Melee_137: 806323373
+      Player + Melee_138: 1879539116
+      Player + Melee_139: -1650604610
+      Player + Melee_14: 335549705
+      Player + Melee_140: -1222184719
+      Player + Melee_141: 184081891
+      Player + Melee_142: 937871704
+      Player + Melee_143: -1142410629
+      Player + Melee_144: -730441861
+      Player + Melee_145: 1140451572
+      Player + Melee_146: 56568088
+      Player + Melee_147: -1765658593
+      Player + Melee_148: -1177398425
+      Player + Melee_149: -127279332
+      Player + Melee_15: 810959881
+      Player + Melee_150: -563631147
+      Player + Melee_151: -1587273766
+      Player + Melee_152: -2062011012
+      Player + Melee_153: -1236121946
+      Player + Melee_154: 326223040
+      Player + Melee_155: 135162002
+      Player + Melee_156: -579928597
+      Player + Melee_157: 1944324463
+      Player + Melee_158: 681821177
+      Player + Melee_159: -880523986
+      Player + Melee_16: -1254438522
+      Player + Melee_160: 246081543
+      Player + Melee_161: -370776011
+      Player + Melee_162: 1544759933
+      Player + Melee_163: 2062707044
+      Player + Melee_164: 997121282
+      Player + Melee_165: -1012037706
+      Player + Melee_166: -222504708
+      Player + Melee_167: 637323777
+      Player + Melee_168: 451442123
+      Player + Melee_169: -189213548
+      Player + Melee_17: 475615220
+      Player + Melee_170: 1980215182
+      Player + Melee_171: -1474265089
+      Player + Melee_172: 1569375074
+      Player + Melee_173: -1853509504
+      Player + Melee_174: -24384825
+      Player + Melee_175: 1118148337
+      Player + Melee_176: 1503120986
+      Player + Melee_177: 2027841487
+      Player + Melee_178: -907230777
+      Player + Melee_179: -221697742
+      Player + Melee_18: 835717534
+      Player + Melee_180: 158720147
+      Player + Melee_181: 1350201183
+      Player + Melee_182: 1054284209
+      Player + Melee_183: -590125360
+      Player + Melee_184: 1342357972
+      Player + Melee_185: -500046153
+      Player + Melee_186: 1976496953
+      Player + Melee_187: -1872409972
+      Player + Melee_188: 724995550
+      Player + Melee_189: 978013400
+      Player + Melee_19: -997392171
+      Player + Melee_190: 976001524
+      Player + Melee_191: 1866058118
+      Player + Melee_192: -1733680019
+      Player + Melee_193: -1921931649
+      Player + Melee_194: -48213762
+      Player + Melee_195: 479371795
+      Player + Melee_196: -901805143
+      Player + Melee_197: -1531099503
+      Player + Melee_198: 1681541936
+      Player + Melee_199: -1714694969
+      Player + Melee_2: 473662951
+      Player + Melee_20: -38869633
+      Player + Melee_200: 1234447275
+      Player + Melee_201: -1294989806
+      Player + Melee_21: 958786395
+      Player + Melee_213: -1305384004
+      Player + Melee_214: -381703985
+      Player + Melee_215: 1601443147
+      Player + Melee_216: 1027799020
+      Player + Melee_217: -60130237
+      Player + Melee_218: 2035486464
+      Player + Melee_219: 1475413555
+      Player + Melee_22: 85776269
+      Player + Melee_220: 1957140834
+      Player + Melee_221: 1728542143
+      Player + Melee_222: -769079915
+      Player + Melee_223: 182640616
+      Player + Melee_224: 973577964
+      Player + Melee_225: -1464056613
+      Player + Melee_226: 1596690878
+      Player + Melee_227: -312321586
+      Player + Melee_228: -1627857751
+      Player + Melee_229: -1678332848
+      Player + Melee_23: -1862616442
+      Player + Melee_230: -1216076695
+      Player + Melee_231: -426974486
+      Player + Melee_232: 1447531998
+      Player + Melee_233: -1265928834
+      Player + Melee_234: 1672881458
+      Player + Melee_235: 174993134
+      Player + Melee_236: -190004280
+      Player + Melee_237: -1763193015
+      Player + Melee_238: -1312815199
+      Player + Melee_239: -1795128601
+      Player + Melee_24: -515678073
+      Player + Melee_240: 1472796944
+      Player + Melee_241: 496128696
+      Player + Melee_242: 477117422
+      Player + Melee_243: 1331596258
+      Player + Melee_244: -1531145813
+      Player + Melee_245: 1628478940
+      Player + Melee_246: -1314159121
+      Player + Melee_247: -951506875
+      Player + Melee_248: -1925655754
+      Player + Melee_249: 988145320
+      Player + Melee_25: 1051550203
+      Player + Melee_250: -58369261
+      Player + Melee_251: 1640304185
+      Player + Melee_252: -960665320
+      Player + Melee_253: -1159066892
+      Player + Melee_254: -555314798
+      Player + Melee_258: -1559110951
+      Player + Melee_259: -1129450663
+      Player + Melee_26: 1313415226
+      Player + Melee_260: -278674703
+      Player + Melee_262: 1456705996
+      Player + Melee_263: 1271363747
+      Player + Melee_264: -1041661118
+      Player + Melee_265: -962329910
+      Player + Melee_266: -731007430
+      Player + Melee_267: -1037809001
+      Player + Melee_268: 83476586
+      Player + Melee_269: -257633967
+      Player + Melee_27: 1690513619
+      Player + Melee_271: -616169753
+      Player + Melee_272: -1585181477
+      Player + Melee_273: -633320159
+      Player + Melee_274: -2011690082
+      Player + Melee_275: -1796597848
+      Player + Melee_276: 672232671
+      Player + Melee_277: -891578851
+      Player + Melee_278: 1759014759
+      Player + Melee_279: 1472448498
+      Player + Melee_28: -103920692
+      Player + Melee_280: -42174543
+      Player + Melee_281: 565968363
+      Player + Melee_282: 1038755029
+      Player + Melee_283: 1925142166
+      Player + Melee_284: 1184392578
+      Player + Melee_286: 740872452
+      Player + Melee_288: 2115244682
+      Player + Melee_289: -1574279530
+      Player + Melee_29: -145990851
+      Player + Melee_290: -1507457946
+      Player + Melee_291: 1523523914
+      Player + Melee_292: -310661942
+      Player + Melee_293: -55175391
+      Player + Melee_294: -1718046663
+      Player + Melee_295: 1071114637
+      Player + Melee_296: 546879006
+      Player + Melee_297: -1881815490
+      Player + Melee_298: 67895801
+      Player + Melee_299: -2130980762
+      Player + Melee_3: 365544784
+      Player + Melee_30: -822333287
+      Player + Melee_300: -538649646
+      Player + Melee_301: -1162767918
+      Player + Melee_302: -1918874467
+      Player + Melee_303: 71172738
+      Player + Melee_304: -571612046
+      Player + Melee_305: 927823417
+      Player + Melee_306: 1150615504
+      Player + Melee_308: 965003142
+      Player + Melee_31: -1028059388
+      Player + Melee_310: 208062652
+      Player + Melee_316: -1983291373
+      Player + Melee_317: -916514721
+      Player + Melee_318: -420925053
+      Player + Melee_319: -1985360876
+      Player + Melee_32: 1581636655
+      Player + Melee_320: -153739907
+      Player + Melee_321: 951772395
+      Player + Melee_322: 803248784
+      Player + Melee_323: -33394957
+      Player + Melee_325: -490661452
+      Player + Melee_326: 475172308
+      Player + Melee_327: -2002541607
+      Player + Melee_328: -1547244975
+      Player + Melee_329: 815312011
+      Player + Melee_33: -1061620745
+      Player + Melee_330: 1970674073
+      Player + Melee_331: 1798632429
+      Player + Melee_332: 1273522899
+      Player + Melee_333: -151638074
+      Player + Melee_334: -607551638
+      Player + Melee_335: -908619254
+      Player + Melee_336: -462324341
+      Player + Melee_337: 1468504087
+      Player + Melee_338: 1081526181
+      Player + Melee_339: 1507822216
+      Player + Melee_34: 1897722339
+      Player + Melee_340: 2050033423
+      Player + Melee_341: -611465106
+      Player + Melee_343: 722651419
+      Player + Melee_344: -1556585309
+      Player + Melee_345: 970599053
+      Player + Melee_346: 720517768
+      Player + Melee_35: -535747612
+      Player + Melee_352: -916072782
+      Player + Melee_353: 134274047
+      Player + Melee_354: 970957762
+      Player + Melee_356: 1054364956
+      Player + Melee_357: -1336688953
+      Player + Melee_358: 1991781948
+      Player + Melee_359: 1527338200
+      Player + Melee_36: -112383833
+      Player + Melee_360: 931915125
+      Player + Melee_362: -2022945371
+      Player + Melee_363: 1222589333
+      Player + Melee_364: 860216383
+      Player + Melee_366: -1568773072
+      Player + Melee_367: 1916929820
+      Player + Melee_368: 2025200399
+      Player + Melee_369: 877283948
+      Player + Melee_37: -1251037220
+      Player + Melee_370: 1914610697
+      Player + Melee_371: 428341644
+      Player + Melee_372: -1885940141
+      Player + Melee_373: 342702854
+      Player + Melee_374: 1751637216
+      Player + Melee_375: -1011142453
+      Player + Melee_376: -1171984207
+      Player + Melee_377: 468254070
+      Player + Melee_379: 1510985989
+      Player + Melee_38: -104771767
+      Player + Melee_381: -1230693870
+      Player + Melee_382: 2121975649
+      Player + Melee_383: 1472195084
+      Player + Melee_384: -1977538956
+      Player + Melee_385: 1332007083
+      Player + Melee_386: 679393713
+      Player + Melee_387: 1588750164
+      Player + Melee_388: -1263729461
+      Player + Melee_389: 737156643
+      Player + Melee_39: 657291907
+      Player + Melee_390: 330357450
+      Player + Melee_391: 1853041830
+      Player + Melee_392: -1028288643
+      Player + Melee_393: -1272108904
+      Player + Melee_394: -1444982631
+      Player + Melee_395: -1850763684
+      Player + Melee_396: 1593691112
+      Player + Melee_397: -1258562581
+      Player + Melee_398: -1698892700
+      Player + Melee_399: -1736335686
+      Player + Melee_4: 331324307
+      Player + Melee_40: 628549791
+      Player + Melee_402: 1974865419
+      Player + Melee_403: -1645688389
+      Player + Melee_404: 1989346178
+      Player + Melee_405: 49826869
+      Player + Melee_406: -2130333556
+      Player + Melee_407: 1822074292
+      Player + Melee_408: 1432037352
+      Player + Melee_409: 1619025732
+      Player + Melee_41: 419965195
+      Player + Melee_410: 574638039
+      Player + Melee_411: 1680038504
+      Player + Melee_412: -1075528136
+      Player + Melee_414: 475186848
+      Player + Melee_416: -1602585018
+      Player + Melee_419: 1677018362
+      Player + Melee_42: -1566879584
+      Player + Melee_420: -1202871974
+      Player + Melee_421: 1661761318
+      Player + Melee_422: 2125197956
+      Player + Melee_423: -792661778
+      Player + Melee_424: 844583120
+      Player + Melee_425: -281637495
+      Player + Melee_426: -91341851
+      Player + Melee_427: 1330422003
+      Player + Melee_428: -335429325
+      Player + Melee_429: 732498009
+      Player + Melee_43: 327268678
+      Player + Melee_430: 1587732447
+      Player + Melee_431: 817251867
+      Player + Melee_432: 1118604206
+      Player + Melee_433: 841792210
+      Player + Melee_434: -148752563
+      Player + Melee_435: -682248762
+      Player + Melee_436: -414588580
+      Player + Melee_437: 404598368
+      Player + Melee_438: 907959808
+      Player + Melee_439: -1839787739
+      Player + Melee_44: 591227387
+      Player + Melee_440: -595123605
+      Player + Melee_441: 1125008894
+      Player + Melee_442: 193595889
+      Player + Melee_443: -720525246
+      Player + Melee_444: -1814571016
+      Player + Melee_446: -132235331
+      Player + Melee_447: -347083644
+      Player + Melee_448: -2008015500
+      Player + Melee_45: 1255156728
+      Player + Melee_455: -478636964
+      Player + Melee_456: 1556242578
+      Player + Melee_457: 1020506269
+      Player + Melee_458: 1650338270
+      Player + Melee_459: -1949608136
+      Player + Melee_46: -508500584
+      Player + Melee_460: 833579802
+      Player + Melee_461: 655098009
+      Player + Melee_462: 1251534460
+      Player + Melee_463: -816066331
+      Player + Melee_464: -569932265
+      Player + Melee_465: 1960520453
+      Player + Melee_466: -1721609632
+      Player + Melee_467: -552405454
+      Player + Melee_468: 838925593
+      Player + Melee_469: 1306494443
+      Player + Melee_47: 1976129084
+      Player + Melee_470: 1820811328
+      Player + Melee_471: -878236168
+      Player + Melee_472: -311954374
+      Player + Melee_474: 606289521
+      Player + Melee_475: -1751642850
+      Player + Melee_476: -2100107242
+      Player + Melee_477: -152982807
+      Player + Melee_478: -2059387586
+      Player + Melee_479: 1500147473
+      Player + Melee_48: -325220424
+      Player + Melee_480: -1595396143
+      Player + Melee_481: 1000165953
+      Player + Melee_482: -603600851
+      Player + Melee_483: -1038206508
+      Player + Melee_484: -1526101925
+      Player + Melee_485: 608978541
+      Player + Melee_486: -620162277
+      Player + Melee_487: 1238313744
+      Player + Melee_488: 110121322
+      Player + Melee_489: 2093196157
+      Player + Melee_49: 1017312395
+      Player + Melee_490: -502680184
+      Player + Melee_491: -943773335
+      Player + Melee_492: 492688997
+      Player + Melee_493: -609852744
+      Player + Melee_494: -852122588
+      Player + Melee_495: 857329189
+      Player + Melee_496: -64564483
+      Player + Melee_497: 888755641
+      Player + Melee_498: -34942630
+      Player + Melee_5: 1958843745
+      Player + Melee_50: -152394323
+      Player + Melee_500: 503112356
+      Player + Melee_501: -1573191011
+      Player + Melee_502: 1321939302
+      Player + Melee_503: -1507867902
+      Player + Melee_504: 2068773896
+      Player + Melee_505: -790641749
+      Player + Melee_506: 535525993
+      Player + Melee_507: -730124910
+      Player + Melee_508: 693232676
+      Player + Melee_509: 1388670887
+      Player + Melee_51: -177426387
+      Player + Melee_510: -232830147
+      Player + Melee_511: 317360229
+      Player + Melee_512: -605496789
+      Player + Melee_513: -1941683156
+      Player + Melee_514: -1822669900
+      Player + Melee_515: -547829280
+      Player + Melee_516: 1443597261
+      Player + Melee_517: -553533006
+      Player + Melee_518: -1002344121
+      Player + Melee_519: -1835503809
+      Player + Melee_52: -1618048161
+      Player + Melee_520: -2105947704
+      Player + Melee_521: -868497057
+      Player + Melee_522: -535174317
+      Player + Melee_523: -889636950
+      Player + Melee_524: 1183720830
+      Player + Melee_525: 1329348378
+      Player + Melee_526: -201255532
+      Player + Melee_527: -808809512
+      Player + Melee_528: -846337882
+      Player + Melee_529: 1886254688
+      Player + Melee_53: 547507310
+      Player + Melee_531: 1989183773
+      Player + Melee_532: 147892693
+      Player + Melee_533: -678721110
+      Player + Melee_534: -1932278127
+      Player + Melee_535: -281374857
+      Player + Melee_536: 145982583
+      Player + Melee_537: 454899243
+      Player + Melee_538: 365995801
+      Player + Melee_539: 2058109866
+      Player + Melee_54: 846443006
+      Player + Melee_540: 775753207
+      Player + Melee_541: 1768121734
+      Player + Melee_542: -1577142199
+      Player + Melee_543: -1026519926
+      Player + Melee_544: 671072632
+      Player + Melee_545: 2026321530
+      Player + Melee_546: 874195639
+      Player + Melee_547: -1760363298
+      Player + Melee_548: 658232622
+      Player + Melee_549: 1297376244
+      Player + Melee_55: 1409420545
+      Player + Melee_550: -570205237
+      Player + Melee_551: 581552154
+      Player + Melee_552: 1283587429
+      Player + Melee_554: -861572967
+      Player + Melee_555: -2144476010
+      Player + Melee_556: 1722157036
+      Player + Melee_557: -614034914
+      Player + Melee_558: 773504832
+      Player + Melee_559: 623589904
+      Player + Melee_56: 1788654893
+      Player + Melee_560: -1498612364
+      Player + Melee_561: -1718630693
+      Player + Melee_562: -791923198
+      Player + Melee_563: 1484296046
+      Player + Melee_564: -1687377926
+      Player + Melee_565: 383960369
+      Player + Melee_566: -169057446
+      Player + Melee_567: -1255701505
+      Player + Melee_568: 37131348
+      Player + Melee_569: 709570109
+      Player + Melee_57: -923419373
+      Player + Melee_570: 1024688955
+      Player + Melee_571: 1614395909
+      Player + Melee_572: -1953173023
+      Player + Melee_573: 681868160
+      Player + Melee_574: -894726570
+      Player + Melee_575: -1914735558
+      Player + Melee_576: -1101597582
+      Player + Melee_577: 1470741838
+      Player + Melee_578: -1678676277
+      Player + Melee_579: -405212591
+      Player + Melee_58: 1404965222
+      Player + Melee_580: -1513242809
+      Player + Melee_581: 1790559699
+      Player + Melee_583: -2102972931
+      Player + Melee_584: -1868192943
+      Player + Melee_585: 1652538688
+      Player + Melee_586: 1700206426
+      Player + Melee_587: -611065554
+      Player + Melee_588: -1995695810
+      Player + Melee_589: -261470963
+      Player + Melee_59: 1934851288
+      Player + Melee_590: 1121132877
+      Player + Melee_591: 2104712986
+      Player + Melee_592: 1922033465
+      Player + Melee_593: -1081645424
+      Player + Melee_594: -294441857
+      Player + Melee_595: -457347851
+      Player + Melee_596: 1578815428
+      Player + Melee_597: 888769527
+      Player + Melee_598: 1253732625
+      Player + Melee_599: -968662721
+      Player + Melee_6: -1227155633
+      Player + Melee_60: -689178582
+      Player + Melee_600: -1212840339
+      Player + Melee_601: 2000787709
+      Player + Melee_602: -2041642535
+      Player + Melee_603: -2043006555
+      Player + Melee_604: 912181919
+      Player + Melee_605: -1653694715
+      Player + Melee_606: -424554960
+      Player + Melee_607: 1044340859
+      Player + Melee_609: 1380220172
+      Player + Melee_61: -1085384666
+      Player + Melee_610: 1353608083
+      Player + Melee_611: -1349219179
+      Player + Melee_612: 984443451
+      Player + Melee_613: -39597577
+      Player + Melee_614: 1775223515
+      Player + Melee_615: -917270525
+      Player + Melee_616: -1010991671
+      Player + Melee_617: -1035673748
+      Player + Melee_618: 1599847831
+      Player + Melee_619: 290872463
+      Player + Melee_62: -1961599886
+      Player + Melee_620: -240384624
+      Player + Melee_621: -2028975747
+      Player + Melee_622: 702900525
+      Player + Melee_623: -571913851
+      Player + Melee_624: -203521303
+      Player + Melee_625: 1254208958
+      Player + Melee_626: 789759897
+      Player + Melee_627: 462521248
+      Player + Melee_628: -1143023190
+      Player + Melee_629: 1267371728
+      Player + Melee_63: 288829341
+      Player + Melee_630: 1366566799
+      Player + Melee_632: 2132635183
+      Player + Melee_633: -2124074119
+      Player + Melee_634: 1783564317
+      Player + Melee_635: -741145358
+      Player + Melee_636: -1149343453
+      Player + Melee_637: -525865247
+      Player + Melee_638: -1169860454
+      Player + Melee_639: -1402719519
+      Player + Melee_64: -1741951750
+      Player + Melee_640: 1886146176
+      Player + Melee_641: 1269608598
+      Player + Melee_642: 38599561
+      Player + Melee_643: 1498774382
+      Player + Melee_644: -74027640
+      Player + Melee_645: -1667432302
+      Player + Melee_646: 1420031134
+      Player + Melee_647: 1076805706
+      Player + Melee_648: -228951901
+      Player + Melee_649: 686508091
+      Player + Melee_65: -198997687
+      Player + Melee_650: -609942267
+      Player + Melee_651: -1210303935
+      Player + Melee_652: -425527232
+      Player + Melee_653: 2081598232
+      Player + Melee_654: -390486336
+      Player + Melee_66: 1845784710
+      Player + Melee_67: 1740889806
+      Player + Melee_68: -611434382
+      Player + Melee_69: 1713146223
+      Player + Melee_7: 828887358
+      Player + Melee_70: -1332342192
+      Player + Melee_71: 679979182
+      Player + Melee_72: 855200180
+      Player + Melee_73: -719595967
+      Player + Melee_74: -135429042
+      Player + Melee_75: 763849664
+      Player + Melee_76: 1523397336
+      Player + Melee_77: -271184997
+      Player + Melee_78: -1870432755
+      Player + Melee_79: -611974078
+      Player + Melee_8: 2099376147
+      Player + Melee_80: -428917463
+      Player + Melee_81: -1826683082
+      Player + Melee_82: -2018896787
+      Player + Melee_83: -1152371297
+      Player + Melee_84: 81221737
+      Player + Melee_85: -1387167608
+      Player + Melee_86: 1640867360
+      Player + Melee_87: 2029764063
+      Player + Melee_88: 1837006686
+      Player + Melee_89: -1819200921
+      Player + Melee_9: 954424578
+      Player + Melee_90: -1256281299
+      Player + Melee_91: -1351364025
+      Player + Melee_92: 1386089959
+      Player + Melee_93: 324730753
+      Player + Melee_94: 939595548
+      Player + Melee_95: -1456969182
+      Player + Melee_96: -1107303881
+      Player + Melee_97: 144629022
+      Player + Melee_98: 1465351109
+      Player + Melee_99: -1588898463
+      Player attack fist 1: 338606324
+      Player attack fist 2: 496524446
+      Player attack fist 3: 1610685016
+      Player attack fist 4: -1177091221
+      Player attack fist 5: 611113529
+      Player attack fist 6: -222150054
+      Player attack fist 7: 1545921643
+      Player attack fist 8: 1797382176
+      Player attack kick 1: 1728591997
+      Player attack kick 10: -1253175283
+      Player attack kick 2: -1627140530
+      Player attack kick 3: 451221489
+      Player attack kick 4: -1974285631
+      Player attack kick 5: -820029172
+      Player attack kick 6: -806512247
+      Player attack kick 7: -479424580
+      Player attack kick 8: 898491255
+      Player attack kick 9: -394269595
+      Player attack rifle: 1664675912
+      Player attack rifle 1: 665977398
+      Player attack shotgun 1: 1795813532
+      Player attack shotgun 2: -1513417449
+      Player attack shotgun 4: -457372783
+      Player attack shotgun 5: -158215178
+      Player attack smg: 665977398
+      Player moving rifle 1: 826968048
+      Player moving rifle 2: 1991450695
+      Player moving rifle 3: -496673482
+      Player moving rifle 4: 217402847
+      Player moving rifle 5: 1859721090
+      Player moving rifle 6: 1862734424
+      Player moving rifle 7: -679389419
+      Player moving rifle 8: 1122045652
+      Player moving smg 1: -713890413
+      Player moving smg 2: -883885816
+      Player moving smg 3: -1601499077
+      Player moving smg 4: -1024881622
+      Player moving smg 5: -488404441
+      Player moving smg 6: 1202450838
+      Player moving smg 7: -1741880128
+      Player moving smg 8: -588030560
+      Player walk 1: -818720726
+      Player walk 2: 71786542
+      Player walk 3: -369137841
+      Player walk 5: 47940761
+      Player walk 6: -1021198524
+      Player walk 7: -786093380
+      Player walk 8: 2140006259
+      Player walk shotgun 1: -530122681
+      Player walk shotgun 2: -523973286
+      Player walk shotgun 3: -569571479
+      Player walk shotgun 4: -1468665498
+      Player walk shotgun 5: -64319238
+      Player walk shotgun 6: -1565852430
+      Player walk shotgun 7: -1821108069
+      Player walk shotgun 8: 991093264
+      Player_walk_4: 364141386
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

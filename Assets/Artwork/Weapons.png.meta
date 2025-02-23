@@ -1,0 +1,561 @@
+fileFormatVersion: 2
+guid: 17da851da66ecff43a6699c798fc7359
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4896216874119287778
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_0
+  - first:
+      213: -5384493168950580751
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_1
+  - first:
+      213: 3951034858747798309
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_2
+  - first:
+      213: -8701106711125392191
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_3
+  - first:
+      213: -3001028988598759109
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_4
+  - first:
+      213: -1108071410821563353
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_5
+  - first:
+      213: -7527433354489825035
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_6
+  - first:
+      213: 8119929882425664095
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_7
+  - first:
+      213: 3471697079517331157
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_8
+  - first:
+      213: 1637506539847043005
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_9
+  - first:
+      213: -7897311353403377783
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_10
+  - first:
+      213: 8941978184523763189
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_11
+  - first:
+      213: -8590485278957806689
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_12
+  - first:
+      213: 447748421548614690
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_13
+  - first:
+      213: -2550374714790925280
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_14
+  - first:
+      213: -6660739565452048231
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_15
+  - first:
+      213: 8888834591108485957
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_16
+  - first:
+      213: -6571151906628041364
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_17
+  - first:
+      213: 8197371698479896664
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_18
+  - first:
+      213: -6581713312055352432
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_19
+  - first:
+      213: 6283298798221836855
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_20
+  - first:
+      213: 8010793660597309970
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_21
+  - first:
+      213: 1305548062002029281
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_22
+  - first:
+      213: 6682607019760856599
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_23
+  - first:
+      213: -2886647494150663574
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_24
+  - first:
+      213: 1833043002413713251
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_25
+  - first:
+      213: 1376664028931180389
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_26
+  - first:
+      213: -7976482314790086837
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_27
+  - first:
+      213: 3143942978215776657
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_28
+  - first:
+      213: -6543165328016371816
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_29
+  - first:
+      213: 2717315145942744719
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_30
+  - first:
+      213: 3330150211869336028
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_31
+  - first:
+      213: -3897702384456628577
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_32
+  - first:
+      213: 3089080375887490131
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_33
+  - first:
+      213: -134854155842502367
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_34
+  - first:
+      213: -2846542704409494362
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_35
+  - first:
+      213: -5847675684679690813
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_36
+  - first:
+      213: -2673976393400445302
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_37
+  - first:
+      213: -2401329985277061597
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_38
+  - first:
+      213: -3493647146456975510
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_39
+  - first:
+      213: -2114542702320591553
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_40
+  - first:
+      213: 7159717397603852509
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_41
+  - first:
+      213: 3146902177942615809
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_42
+  - first:
+      213: 525358676253896354
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_43
+  - first:
+      213: -1836916554966992191
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_44
+  - first:
+      213: 8699449047367530089
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_45
+  - first:
+      213: 3378378579595281412
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_46
+  - first:
+      213: 8147418571536720245
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_47
+  - first:
+      213: -6907161898960940888
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_48
+  - first:
+      213: -7045634112314654179
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_49
+  - first:
+      213: -1621859529165596223
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_50
+  - first:
+      213: -7241354119160507310
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_51
+  - first:
+      213: -3941864746200438452
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_52
+  - first:
+      213: -2616271124680910901
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_53
+  - first:
+      213: 1398459079986013508
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_54
+  - first:
+      213: -285397942316775110
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_55
+  - first:
+      213: 283906533526995020
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_56
+  - first:
+      213: -754077408079261811
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_57
+  - first:
+      213: 7416646832153076876
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_58
+  - first:
+      213: 3622159787714499411
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_59
+  - first:
+      213: 4370131594142779207
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_60
+  - first:
+      213: -8846973439794659856
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_61
+  - first:
+      213: -38250980497503431
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_62
+  - first:
+      213: -2283562737778253666
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_63
+  - first:
+      213: 6079358222280481342
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_64
+  - first:
+      213: 3235023152358768267
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_65
+  - first:
+      213: -4768896913351120419
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_66
+  - first:
+      213: 5235213033401305083
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_67
+  - first:
+      213: -7792417291303421315
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_68
+  - first:
+      213: 3664339326191168487
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_69
+  - first:
+      213: -1438389058387304343
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_70
+  - first:
+      213: -4873972485533233653
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_71
+  - first:
+      213: -6164211904291009742
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_72
+  - first:
+      213: 5398237348571119188
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_73
+  - first:
+      213: 2513171095489232719
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_74
+  - first:
+      213: -2888932435790350388
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_75
+  - first:
+      213: 882564514179895453
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_76
+  - first:
+      213: 3939844303601056921
+    second: PC Computer - Hotline Miami 2 Wrong Number - Weapons_77
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SMG pickup
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 352
+        width: 14
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35a0fb6269653564d907511940afc874
+      internalID: -2119560716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ammo pickup large
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 44
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 126952df332103b4e88a4b5e1a3fc56c
+      internalID: -79341879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shotgun pickup
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 23
+        width: 28
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06feef1486e5a8c4f8e647d0f3127016
+      internalID: -66488956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ammo pickup medium
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 23
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77c04c157fab8134c88c1ff5a5ec4174
+      internalID: -894148198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ammo pickup small
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 5
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01d36562ce01b542b83a7f285651108
+      internalID: -1896773663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Rifle pickup
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 45
+        width: 31
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0962c0dab477f0741a5aea948017b64b
+      internalID: -1074423698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 8088c48e57ca8db4b83a206396bb55b1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Ammo pickup large: -79341879
+      Ammo pickup medium: -894148198
+      Ammo pickup small: -1896773663
+      Melee pickup: -1422742137
+      Rifle pickup: -1074423698
+      SMG pickup: -2119560716
+      Shotgun pickup: -66488956
+      Weapon pickups_1: 617994678
+      Weapon pickups_10: 1140225179
+      Weapon pickups_11: -660457308
+      Weapon pickups_12: 401829294
+      Weapon pickups_13: -1108686991
+      Weapon pickups_14: 1870285687
+      Weapon pickups_15: -48329577
+      Weapon pickups_16: -1331215361
+      Weapon pickups_17: -1167871148
+      Weapon pickups_18: -615798818
+      Weapon pickups_19: -185506663
+      Weapon pickups_2: -372617640
+      Weapon pickups_20: 565703631
+      Weapon pickups_21: -1938405384
+      Weapon pickups_22: 1961709194
+      Weapon pickups_23: 419613928
+      Weapon pickups_24: 174739430
+      Weapon pickups_26: -105366360
+      Weapon pickups_27: -534829903
+      Weapon pickups_28: -1308098820
+      Weapon pickups_29: -1831165203
+      Weapon pickups_3: 1700624936
+      Weapon pickups_30: -1708377748
+      Weapon pickups_31: 576263951
+      Weapon pickups_32: 293174894
+      Weapon pickups_33: -1090666767
+      Weapon pickups_34: -1840225928
+      Weapon pickups_35: -1372621513
+      Weapon pickups_36: -947284930
+      Weapon pickups_37: -1647843140
+      Weapon pickups_38: -1701672077
+      Weapon pickups_39: -826714237
+      Weapon pickups_4: 603405262
+      Weapon pickups_40: -1374803103
+      Weapon pickups_41: 666652111
+      Weapon pickups_42: 1014855949
+      Weapon pickups_44: 958760237
+      Weapon pickups_45: -1636849923
+      Weapon pickups_46: -1906533137
+      Weapon pickups_48: -506358272
+      Weapon pickups_49: -883906133
+      Weapon pickups_5: -626272789
+      Weapon pickups_50: -1960347483
+      Weapon pickups_51: 1215075635
+      Weapon pickups_52: -317871294
+      Weapon pickups_53: -1863677875
+      Weapon pickups_54: -1118547252
+      Weapon pickups_55: -1677875126
+      Weapon pickups_56: 951248787
+      Weapon pickups_57: 1234674272
+      Weapon pickups_59: 1235792536
+      Weapon pickups_6: 1347474971
+      Weapon pickups_60: -2131952105
+      Weapon pickups_61: 2072188497
+      Weapon pickups_63: 1326905211
+      Weapon pickups_64: -1391702234
+      Weapon pickups_65: 1323703283
+      Weapon pickups_66: -1072758069
+      Weapon pickups_67: -157480058
+      Weapon pickups_68: 336438184
+      Weapon pickups_69: 933114918
+      Weapon pickups_7: -1324252191
+      Weapon pickups_70: 2087512168
+      Weapon pickups_71: 1068754844
+      Weapon pickups_72: -301886495
+      Weapon pickups_74: -416958740
+      Weapon pickups_75: -842458601
+      Weapon pickups_76: -818287912
+      Weapon pickups_77: -1262213044
+      Weapon pickups_8: 1091022254
+      Weapon pickups_9: -766545502
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

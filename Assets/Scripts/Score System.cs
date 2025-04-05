@@ -8,13 +8,32 @@ public class ScoreSystem : MonoBehaviour
 {
     public static ScoreSystem Instance { get; private set; }
 
+    [SerializeField] private int killCount, roomsCleared;
     [SerializeField] private int killScore, comboScore, varietyScore, roomScore, maxRoomScore, totalScore, currentCombo;
     [SerializeField] private Transform playerPos;
     [SerializeField] private TextMeshProUGUI totalScoreText;
-    [SerializeField] private ObjectPooler pooler;
+    [SerializeField] private Color highScoreColor;
+    [SerializeField] private HudManager hudManager;
 
-    private readonly Dictionary<PlayerAttack.WeaponType, float> attackFrequency = new();
     private Coroutine comboResetCoroutine;
+    private readonly Dictionary<PlayerAttack.WeaponType, float> attackFrequency = new();
+    private readonly List<RoomScoreData> roomScores = new();
+
+    private class RoomScoreData
+    {
+        public int KillScore { get; }
+        public int ComboScore { get; }
+        public int VarietyScore { get; }
+        public int RoomScore { get; }
+
+        public RoomScoreData(int killScore, int comboScore, int varietyScore, int roomScore)
+        {
+            KillScore = killScore;
+            ComboScore = comboScore;
+            VarietyScore = varietyScore;
+            RoomScore = roomScore;
+        }
+    }
 
     private void Awake()
     {
@@ -30,10 +49,14 @@ public class ScoreSystem : MonoBehaviour
 
     public void ProceedToNextRoom()
     {
-        HudManager.Instance.ForceHideResults();
-        killScore = comboScore = varietyScore = roomScore = currentCombo = 0;
+        hudManager.ForceHideResults();
         attackFrequency.Clear();
         maxRoomScore = (DungeonGenerator.Instance.currentMainRoom.enemyPositions.Count * 125) + 250 + 1000;
+    }
+
+    public void ProceedToNextLevel()
+    {
+        roomScores.Clear();
     }
 
     public void RegisterHit(PlayerAttack.WeaponType weaponType, float firerate)
@@ -44,10 +67,12 @@ public class ScoreSystem : MonoBehaviour
 
     public void RegisterKill(Transform enemyPos, bool wasFinisher)
     {
+        if (wasFinisher) { RegisterHit(PlayerAttack.WeaponType.Melee, 1); } // Finishers count as melee hits
+        else { hudManager.ShowKillMarker(); }
+
+        killCount++;
         int scoreToAdd = wasFinisher ? 125 : 100;
         killScore += scoreToAdd;
-        if (wasFinisher) { RegisterHit(PlayerAttack.WeaponType.Melee, 1); } // Finishers count as melee hits
-
         currentCombo++;
         StartCoroutine(ScorePopup(scoreToAdd, enemyPos, false));
 
@@ -61,12 +86,12 @@ public class ScoreSystem : MonoBehaviour
 
     private IEnumerator ResetCombo()
     {
-        yield return new WaitForSeconds(3);
-        if (currentCombo > 1) 
+        yield return new WaitForSeconds(6);
+        if (currentCombo > 1)
         {
             int scoreToAdd = currentCombo * 50;
             comboScore += scoreToAdd;
-            StartCoroutine(ScorePopup(scoreToAdd, playerPos, true)); 
+            StartCoroutine(ScorePopup(scoreToAdd, playerPos, true));
         }
         currentCombo = 0;
         comboResetCoroutine = null;
@@ -77,7 +102,11 @@ public class ScoreSystem : MonoBehaviour
         roomScore += score;
         totalScore += score;
         totalScoreText.text = totalScore.ToString();
-        GameObject popup = pooler.GetFromPool("Score Popup", target.position, Quaternion.identity);
+        if (totalScore > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            totalScoreText.color = highScoreColor;
+        }
+        GameObject popup = ObjectPooler.Instance.GetFromPool("Score Popup", target.position, Quaternion.identity);
         popup.GetComponent<MeshRenderer>().sortingLayerName = "UI";
         popup.GetComponent<MeshRenderer>().sortingOrder = 100;
         popup.GetComponent<TextMesh>().text = comboEnding ? $"{currentCombo}X COMBO\n+{score}" : $"+{score}";
@@ -87,7 +116,9 @@ public class ScoreSystem : MonoBehaviour
 
     public void RoomCleared()
     {
+        roomsCleared++;
         float totalFrequency = attackFrequency.Values.Sum();
+
         if (totalFrequency == 0) return;
 
         float hhi = attackFrequency.Values.Sum(frequency =>
@@ -101,6 +132,11 @@ public class ScoreSystem : MonoBehaviour
         totalScore += varietyScore;
         totalScoreText.text = totalScore.ToString();
 
+        if (totalScore > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            totalScoreText.color = highScoreColor;
+        }
+
         // Ensure any active combo is finalised before updating the HUD
         if (currentCombo > 1)
         {
@@ -110,6 +146,32 @@ public class ScoreSystem : MonoBehaviour
             currentCombo = 0;
         }
 
-        HudManager.Instance.LevelResults(killScore, comboScore, varietyScore, roomScore);
+        hudManager.RoomResults(killScore, comboScore, varietyScore, roomScore);
+        roomScores.Add(new RoomScoreData(killScore, comboScore, varietyScore, roomScore));
+        killScore = comboScore = varietyScore = roomScore = currentCombo = 0;
+    }
+
+    public void LevelCleared()
+    {
+        int levelKillScore = roomScores.Sum(room => room.KillScore);
+        int levelComboScore = roomScores.Sum(room => room.ComboScore);
+        int levelVarietyScore = roomScores.Sum(room => room.VarietyScore);
+        int levelScore = roomScores.Sum(room => room.RoomScore);
+        hudManager.LevelResults(levelKillScore, levelComboScore, levelVarietyScore, levelScore, totalScore);
+    }
+
+    public void OnRunEnded()
+    {
+        StartCoroutine(hudManager.OnRunEnded(killCount, roomsCleared, totalScore));
+    }
+
+    public void SaveHighScore()
+    {
+        int currentHighScore = PlayerPrefs.GetInt("HighScore", 0);
+        if (totalScore > currentHighScore)
+        {
+            PlayerPrefs.SetInt("HighScore", totalScore);
+            PlayerPrefs.Save();
+        }
     }
 }

@@ -99,7 +99,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -146,89 +146,23 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Armour pickup
+      name: Armour
       rect:
         serializedVersion: 2
-        x: 37
+        x: 71
         y: 69
-        width: 22
-        height: 22
+        width: 18
+        height: 21
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c4fb7bc3bcd627a90800000000000000
-      internalID: -7317665724859170996
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2D Pickups v6.2 spritesheet (1)_3
-      rect:
-        serializedVersion: 2
-        x: 5
-        y: 39
-        width: 22
-        height: 17
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3faca7ab26fbe88a0800000000000000
-      internalID: -6300888397888435469
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2D Pickups v6.2 spritesheet (1)_4
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 36
-        width: 22
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d3f35d5cd216d2c80800000000000000
-      internalID: -8345907685227151555
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2D Pickups v6.2 spritesheet (1)_7
-      rect:
-        serializedVersion: 2
-        x: 37
-        y: 4
-        width: 22
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2530cfb7f42a39370800000000000000
-      internalID: 8328178598204408658
+      spriteID: 9bf1b6266f2849140b2dd3bd02c5f470
+      internalID: 1268530875
       vertices: []
       indices: 
       edges: []
@@ -254,6 +188,7 @@ TextureImporter:
       2D Pickups v6.2 spritesheet (1)_6: 4550622063035428295
       2D Pickups v6.2 spritesheet (1)_7: 8328178598204408658
       2D Pickups v6.2 spritesheet (1)_8: -8544432126021894754
+      Armour: 1268530875
       Armour pickup: -7317665724859170996
       Health pickup: 6495835775126012814
   mipmapLimitGroupName: 

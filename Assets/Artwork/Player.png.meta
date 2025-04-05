@@ -3214,7 +3214,7 @@ TextureImporter:
         width: 23
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3236,7 +3236,7 @@ TextureImporter:
         width: 24
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3258,7 +3258,7 @@ TextureImporter:
         width: 27
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3280,7 +3280,7 @@ TextureImporter:
         width: 26
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -3289,6 +3289,138 @@ TextureImporter:
       bones: []
       spriteID: cff022a33c2ae8a44b26fe852172c5af
       internalID: 652850201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Death 1
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 878
+        width: 37
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134b6915e9d7ad049ae1a5de470827cb
+      internalID: 887504930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Death 2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 836
+        width: 46
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00344c8a34c9a744eadddbf9654fd6b6
+      internalID: 877610083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Death 3
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 791
+        width: 57
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2885097e146d929468a77ba3a93384d1
+      internalID: 898263391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Death 4
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 740
+        width: 52
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2103c56baee464e45885f6b447c6dec0
+      internalID: -1180025035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Death 5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 703
+        width: 53
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b52cdc52fa3bc1a40924f31df721dde5
+      internalID: -1668276065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Death 6
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 661
+        width: 54
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 231ab77492b2b5141b79876791133827
+      internalID: -50078233
       vertices: []
       indices: 
       edges: []
@@ -3307,6 +3439,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      1: 887504930
       Finisher 1: -985872286
       Finisher 2: -460024541
       Finisher 3: -1420095926
@@ -3909,6 +4042,12 @@ TextureImporter:
       Player + Melee_97: 144629022
       Player + Melee_98: 1465351109
       Player + Melee_99: -1588898463
+      Player Death 1: 887504930
+      Player Death 2: 877610083
+      Player Death 3: 898263391
+      Player Death 4: -1180025035
+      Player Death 5: -1668276065
+      Player Death 6: -50078233
       Player attack fist 1: 338606324
       Player attack fist 2: 496524446
       Player attack fist 3: 1610685016

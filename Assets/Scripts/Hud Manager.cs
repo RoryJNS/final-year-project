@@ -2,59 +2,80 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using System.Collections;
 using TMPro;
 
 public class HudManager : MonoBehaviour
 {
-    public static HudManager Instance { get; private set; }
-
-    [SerializeField] private bool isGamepad;
-    [SerializeField] private float mouseSensitivity = 1.0f, controllerSensitivity = 50f, pulseSpeed = 5.0f;
+    [SerializeField] private float mouseSensitivity, controllerSensitivity, aimAssistRange, pulseSpeed;
     [SerializeField] private Image reticle;
-    [SerializeField] private Sprite melee, rifle, smg, shotgun, rpg;
+    [SerializeField] private Sprite melee, rifle, smg, shotgun;
     [SerializeField] private Slider progressWheel, healthBar;
     [SerializeField] private Slider[] armourBar;
     [SerializeField] private Transform followsCursor;
     [SerializeField] private CinemachineCamera virtualCamera;
+    [SerializeField] private float lockOnRadius;
+    [SerializeField] private Texture2D customCursor;
 
-    [SerializeField] private RectTransform levelClearText;
-    [SerializeField] private GameObject levelResultsPanel;
-    [SerializeField] private TextMeshProUGUI killText, comboText, varietyText, levelScoreText, totalScoreText;
+    [SerializeField] private RectTransform killMarker, roomClearText, levelClearText;
+    [SerializeField] private GameObject roomResultsPanel, pauseMenu, optionsMenu;
+    [SerializeField] private CanvasGroup levelResultsPanel, runResultsPanel;
+    [SerializeField] Slider mouseSensSlider, controllerSensSlider, controllerDeadzoneSlider, aimAssistSlider, sfxSlider, musicSlider;
 
-    private Coroutine zoomCoroutine, levelResults;
-    private Controls controls;
+    [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI killText, comboText, varietyText, roomScoreText;
+    [SerializeField] private TextMeshProUGUI levelKillScoreText, levelComboScoreText, levelVarietyScoreText, levelScoreText, totalScoreText;
+    [SerializeField] private TextMeshProUGUI killCountText, roomsClearedText, finalScoreText;
+
+    [SerializeField] private GameObject pauseMenuFirst, levelResultsFirst, runResultsFirst;
+
+    private Coroutine zoomCoroutine, roomResults;
     private Vector2 lookInput;
     private int maxArmourPerBar;
+    private bool isPaused;
 
-    private void Awake()
+    private void Start()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Cursor.visible = false;
+        Cursor.SetCursor(customCursor, Vector2.zero, CursorMode.Auto);
 
-        controls = new Controls();
-        controls.Player.Look.performed += ctx => lookInput = ctx.ReadValue<Vector2>();
+        mouseSensSlider.value = (PlayerPrefs.GetFloat("MouseSensitivity", 3f) - 1f) / 0.4f;
+        controllerSensSlider.value = (PlayerPrefs.GetInt("ControllerSensitivity", 2000) - 1000) / 200;
+        controllerDeadzoneSlider.value = PlayerPrefs.GetFloat("ControllerDeadzone", 0.1f) / 0.05f;
+        aimAssistSlider.value = PlayerPrefs.GetFloat("AimAssistStrength", 1) / 0.2f;
+        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1) / 0.1f;
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1) / 0.1f;
+
+        // Add listeners to sliders after they are initialised
+        mouseSensSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+        controllerSensSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+        controllerDeadzoneSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+        aimAssistSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+        sfxSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+        musicSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+
+        ApplyOptions();
     }
 
     private void OnEnable()
     {
-        controls.Player.Enable();
+        if (PlayerController.PlayerInput)
+        {
+            PlayerController.PlayerInput.actions["Look"].performed += ctx => lookInput = ctx.ReadValue<Vector2>();
+            PlayerController.PlayerInput.actions["Pause"].performed += ctx => TogglePause();
+            PlayerController.PlayerInput.actions["MenuClose"].performed += ctx => MenuClosed();
+        }
     }
 
     private void OnDisable()
     {
-        controls.Player.Disable();
-    }
-
-    private void Start()
-    {
-        //Cursor.visible = false;
+        if (PlayerController.PlayerInput)
+        {
+            PlayerController.PlayerInput.actions["Look"].performed -= ctx => lookInput = ctx.ReadValue<Vector2>();
+            PlayerController.PlayerInput.actions["Pause"].performed -= ctx => TogglePause();
+            PlayerController.PlayerInput.actions["MenuClose"].performed -= ctx => MenuClosed();
+        }
     }
 
     public void InitialiseHealthAndArmour(int maxHealth, int maxArmour)
@@ -73,22 +94,48 @@ public class HudManager : MonoBehaviour
     private void Update()
     {
         // Calculate the size using Mathf.Sin for a smoother pulse effect
-        float size = Mathf.Lerp(0.53f, 0.6f, (Mathf.Sin(Time.time * pulseSpeed) + 1) / 2);
+        float size = Mathf.Lerp(0.55f, 0.6f, (Mathf.Sin(Time.time * pulseSpeed) + 1) / 2);
 
         // Make the reticle and progress wheel pulse
         followsCursor.localScale = new Vector3(size, size, 1);
 
-        // Move reticle and progress wheel to where the player is aiming
-        if (isGamepad)
+        if (Gamepad.current != null && Gamepad.current.rightStick.ReadValue().magnitude > 0.2f)
         {
-            Vector2 stickDelta = lookInput;
-            Vector3 currentPosition = followsCursor.position;
-            currentPosition += controllerSensitivity * Time.deltaTime * (Vector3)stickDelta;
-            followsCursor.position = currentPosition;
+            followsCursor.position += controllerSensitivity * Time.deltaTime * (Vector3) lookInput;
+            if (Gamepad.current.rightStick.ReadValue().magnitude < 1) { ApplyAimAssist(); };
         }
-        else
+        else if (Mouse.current != null && Mouse.current.delta.ReadValue().magnitude > 0.1f)
         {
-            followsCursor.position = Mouse.current.position.ReadValue() * mouseSensitivity;
+            followsCursor.position += (Vector3)(Mouse.current.delta.ReadValue() * mouseSensitivity);
+            if (Mouse.current.delta.ReadValue().magnitude < 15) { ApplyAimAssist(); };
+        }
+
+        // Clamp the reticle within screen bounds
+        Vector3 clampedPosition = followsCursor.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, 0, Screen.width);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, 0, Screen.height);
+        followsCursor.position = clampedPosition;
+    }
+
+    private void ApplyAimAssist()
+    {
+        Transform closestEnemy = null;
+        float closestDistance = aimAssistRange;
+        Vector2 cursorWorldPos = Camera.main.ScreenToWorldPoint(followsCursor.position);
+
+        foreach (var enemy in DungeonGenerator.Instance.enemies)
+        {
+            float distance = Vector2.Distance(cursorWorldPos, enemy.transform.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestEnemy = enemy.transform;
+            }
+        }
+
+        if (closestEnemy != null)
+        {
+            followsCursor.position = Camera.main.WorldToScreenPoint(closestEnemy.position);
         }
     }
 
@@ -108,10 +155,61 @@ public class HudManager : MonoBehaviour
             case 3:
                 reticle.sprite = shotgun;
                 break;
-            case 4:
-                reticle.sprite = rpg;
-                break;
         }
+    }
+
+    public void TogglePause()
+    {
+        isPaused = !isPaused;
+        Cursor.visible = isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+
+        if (levelResultsPanel != null && levelResultsPanel.isActiveAndEnabled) return;
+        if (runResultsPanel != null && runResultsPanel.isActiveAndEnabled) return;
+        if (levelClearText != null && levelClearText.gameObject.activeSelf) return;
+        if (pauseMenu != null) pauseMenu.SetActive(isPaused);
+        if (followsCursor != null) followsCursor.gameObject.SetActive(!isPaused);
+
+        if (isPaused && pauseMenuFirst != null)
+        {
+            PlayerController.PlayerInput.SwitchCurrentActionMap("UI");
+            EventSystem.current.SetSelectedGameObject(pauseMenuFirst);
+        }
+        else
+        {
+            PlayerController.PlayerInput.SwitchCurrentActionMap("Player");
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+    }
+
+    public void MenuClosed()
+    {
+        if (pauseMenu != null && pauseMenu.activeSelf) { TogglePause(); }
+        else if (optionsMenu != null && optionsMenu.activeSelf)
+        {
+            optionsMenu.SetActive(false);
+            pauseMenu.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(pauseMenuFirst);
+        }
+    }
+
+    public void UpdateOptions()
+    {
+        PlayerPrefs.SetFloat("MouseSensitivity", 1f + (mouseSensSlider.value * 0.4f)); // Maps 0-10 to 1-5, 0.4 increments
+        PlayerPrefs.SetInt("ControllerSensitivity", (int)(1000 + (controllerSensSlider.value * 200))); // Maps 0-10 to 1000 to 3000
+        PlayerPrefs.SetFloat("ControllerDeadzone", controllerDeadzoneSlider.value * 0.05f); // Maps 0-10 to 0 to 0.5
+        PlayerPrefs.SetFloat("AimAssistStrength", aimAssistSlider.value * 0.2f); // Maps 0-10 to 0-2
+        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value * 0.1f);
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value * 0.1f);
+        ApplyOptions();
+    }
+
+    public void ApplyOptions()
+    {
+        mouseSensitivity = PlayerPrefs.GetFloat("MouseSensitivity");
+        controllerSensitivity = PlayerPrefs.GetInt("ControllerSensitivity");
+        PlayerController.Instance.controllerDeadzone = PlayerPrefs.GetFloat("ControllerDeadzone");
+        aimAssistRange = PlayerPrefs.GetFloat("AimAssistStrength");
     }
 
     public void SetProgressWheel(float value)
@@ -168,20 +266,97 @@ public class HudManager : MonoBehaviour
         virtualCamera.Lens.OrthographicSize = targetSize;
     }
 
-    public void LevelResults(int killScore, int comboScore, int varietyScore, int roomScore)
+    public void ShowKillMarker()
     {
-        levelResults = StartCoroutine(ShowLevelResults(killScore, comboScore, varietyScore, roomScore));
+        StartCoroutine(ScaleKillMarker());
     }
 
-    private IEnumerator ShowLevelResults(int killScore, int comboScore, int varietyScore, int roomScore)
+    private IEnumerator ScaleKillMarker()
+    {
+        killMarker.localScale = Vector3.zero;
+        Vector3 targetScale = new(4f, 4f, 1f);
+        float elapsed = 0f;
+
+        while (elapsed < .3f)
+        {
+            elapsed += Time.deltaTime;
+            killMarker.localScale = Vector3.Lerp(Vector3.zero, targetScale, elapsed / .3f);
+            yield return null;
+        }
+
+        elapsed = 0f;
+        while (elapsed < .3f)
+        {
+            elapsed += Time.deltaTime;
+            killMarker.localScale = Vector3.Lerp(targetScale, Vector3.zero, elapsed / .3f);
+            yield return null;
+        }
+    }
+
+    public void RoomResults(int killScore, int comboScore, int varietyScore, int roomScore)
+    {
+        roomResults = StartCoroutine(ShowRoomResults(killScore, comboScore, varietyScore, roomScore));
+    }
+
+    private IEnumerator ShowRoomResults(int killScore, int comboScore, int varietyScore, int roomScore)
     {
         // Fade out top-right score text
-        yield return FadeText(totalScoreText, 1, 0, 0.3f);
-
+        yield return FadeText(scoreText, 1, 0, 0.3f);
         float duration = 0.2f;
-        Vector2 startPos = new (-Screen.width * 2, levelClearText.anchoredPosition.y);
-        Vector2 centerPos = new (0, levelClearText.anchoredPosition.y);
-        Vector2 endPos = new (Screen.width * 2, levelClearText.anchoredPosition.y);
+        Vector2 startPos = new (-Screen.width * 2, roomClearText.anchoredPosition.y);
+        Vector2 centerPos = new (0, roomClearText.anchoredPosition.y);
+        Vector2 endPos = new (Screen.width * 2, roomClearText.anchoredPosition.y);
+        roomClearText.anchoredPosition = startPos;
+        roomClearText.gameObject.SetActive(true);
+        yield return AnimateSlide(roomClearText, startPos, centerPos, 0.5f);
+        yield return new WaitForSeconds(1);
+        yield return AnimateSlide(roomClearText, centerPos, endPos, 0.5f);
+        roomClearText.gameObject.SetActive(false);
+
+        // Scale in panel
+        killText.text = comboText.text = varietyText.text = roomScoreText.text = "";
+        roomResultsPanel.SetActive(true);
+        yield return AnimateScale(roomResultsPanel.transform, new(1, 0, 1), new(1, 1, 1), duration);
+
+        // Count-up animations for each score
+        yield return AnimateCountUp(killText, killScore, .5f);
+        yield return AnimateCountUp(comboText, comboScore, .5f);
+        yield return AnimateCountUp(varietyText, varietyScore, .5f);
+        yield return AnimateCountUp(roomScoreText, roomScore, 1f);
+        yield return new WaitForSeconds(4f);
+
+        // Scale out panel
+        yield return AnimateScale(roomResultsPanel.transform, new(1, 1, 1), new(1, 0, 1), duration);
+        roomResultsPanel.SetActive(false);
+
+        // Fade in top-right score text again
+        yield return FadeText(scoreText, 0, 1, 0.3f);
+    }
+
+    public void ForceHideResults()
+    {
+        if (roomResults != null)
+        {
+            StopCoroutine(roomResults);
+            roomResults = null;
+            roomClearText.gameObject.SetActive(false);
+            roomResultsPanel.SetActive(false);
+            StartCoroutine(FadeText(scoreText, 0, 1, 0.3f));
+        }
+    }
+
+    public void LevelResults(int levelKillScore, int levelComboScore, int levelVarietyScore, int levelScore, int totalScore)
+    {
+        StartCoroutine(ShowLevelResults(levelKillScore, levelComboScore, levelVarietyScore, levelScore, totalScore));
+    }
+
+    private IEnumerator ShowLevelResults(int levelKillScore, int levelComboScore, int levelVarietyScore, int levelScore, int totalScore)
+    {
+        PlayerController.PlayerInput.SwitchCurrentActionMap("UI");
+        EventSystem.current.SetSelectedGameObject(levelResultsFirst);
+        Vector2 startPos = new(-Screen.width * 2, levelClearText.anchoredPosition.y);
+        Vector2 centerPos = new(0, levelClearText.anchoredPosition.y);
+        Vector2 endPos = new(Screen.width * 2, levelClearText.anchoredPosition.y);
         levelClearText.anchoredPosition = startPos;
         levelClearText.gameObject.SetActive(true);
         yield return AnimateSlide(levelClearText, startPos, centerPos, 0.5f);
@@ -189,50 +364,54 @@ public class HudManager : MonoBehaviour
         yield return AnimateSlide(levelClearText, centerPos, endPos, 0.5f);
         levelClearText.gameObject.SetActive(false);
 
-        // Scale in panel
-        killText.text = comboText.text = varietyText.text = totalScoreText.text = "";
-        levelResultsPanel.SetActive(true);
-        yield return AnimateScale(levelResultsPanel.transform, new(1, 0, 1), new(1, 1, 1), duration);
+        // Fade in the panel
+        yield return FadeInCanvasGroup(levelResultsPanel, 0.5f);
+        Cursor.visible = true;
 
-        // Count-up animations for each score
-        yield return AnimateCountUp(killText, killScore, .5f);
-        yield return AnimateCountUp(comboText, comboScore, .5f);
-        yield return AnimateCountUp(varietyText, varietyScore, .5f);
-        yield return AnimateCountUp(totalScoreText, roomScore, 1f);
-        yield return new WaitForSeconds(4f);
-
-        // Scale out panel
-        yield return AnimateScale(levelResultsPanel.transform, new(1, 1, 1), new(1, 0, 1), duration);
-        levelResultsPanel.SetActive(false);
-
-        // Fade in top-right score text again
-        yield return FadeText(totalScoreText, 0, 1, 0.3f);
+        yield return AnimateCountUp(levelKillScoreText, levelKillScore, .5f);
+        yield return AnimateCountUp(levelComboScoreText, levelComboScore, .5f);
+        yield return AnimateCountUp(levelVarietyScoreText, levelVarietyScore, .5f);
+        yield return AnimateCountUp(levelScoreText, levelScore, 1f);
+        yield return AnimateCountUp(totalScoreText, totalScore, 1f);
     }
 
-    public void ForceHideResults()
+    public IEnumerator FadeInCanvasGroup(CanvasGroup canvasGroup, float duration)
     {
-        if (levelResults != null)
+        canvasGroup.gameObject.SetActive(true);
+        float elapsed = 0f;
+
+        while (elapsed < duration)
         {
-            StopCoroutine(levelResults);
-            levelResults = null;
-            levelClearText.gameObject.SetActive(false);
-            levelResultsPanel.SetActive(false);
-            StartCoroutine(FadeText(totalScoreText, 0, 1, 0.3f));
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0, 1, elapsed / duration);
+            yield return null;
         }
     }
 
-    private IEnumerator AnimateCountUp(TextMeshProUGUI textElement, int targetValue, float duration)
+    public IEnumerator OnRunEnded(int kills, int rooms, int finalScore)
+    {
+        PlayerController.PlayerInput.SwitchCurrentActionMap("UI");
+        EventSystem.current.SetSelectedGameObject(runResultsFirst);
+        yield return FadeInCanvasGroup(runResultsPanel, 0.5f);
+        yield return GameManager.Instance.FadeCanvas(0, 0.5f);
+        Cursor.visible = true;
+        yield return AnimateCountUp(killCountText, kills, 0.5f, "x");
+        yield return AnimateCountUp(roomsClearedText, rooms, 0.5f, "x");
+        yield return AnimateCountUp(finalScoreText, finalScore, 3f);
+    }
+
+    private IEnumerator AnimateCountUp(TextMeshProUGUI textElement, int targetValue, float duration, string prefix="")
     {
         float elapsed = 0;
         int startValue = 0;
+
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             int currentValue = Mathf.RoundToInt(Mathf.Lerp(startValue, targetValue, elapsed / duration));
-            textElement.text = currentValue.ToString();
+            textElement.text = prefix + currentValue.ToString();
             yield return null;
         }
-        textElement.text = targetValue.ToString(); // Ensure exact final value
     }
 
     private IEnumerator AnimateSlide(RectTransform element, Vector2 start, Vector2 end, float duration)
@@ -276,8 +455,11 @@ public class HudManager : MonoBehaviour
         textElement.color = color;
     }
 
-    public void OnDeviceChange(PlayerInput pi)
+    private void OnDrawGizmos()
     {
-        isGamepad = pi.currentControlScheme.Equals("Gamepad");
+        Gizmos.color = Color.red;
+        Vector3 worldCursorPos = Camera.main.ScreenToWorldPoint(followsCursor.position);
+        worldCursorPos.z = 0f; // Ensure it's on the 2D plane
+        Gizmos.DrawWireSphere(worldCursorPos, aimAssistRange);
     }
 }

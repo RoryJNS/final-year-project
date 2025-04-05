@@ -5,7 +5,6 @@ public class LootSystem : MonoBehaviour
 {
     public static LootSystem Instance { get; private set; }
     public List<LootTable> lootTables = new(); // Stores all loot tables
-    [SerializeField] ObjectPooler pooler;
 
     [System.Serializable]
     public class LootTable
@@ -34,13 +33,13 @@ public class LootSystem : MonoBehaviour
         }
     }
 
-    public void DropLoot(string tableName, Vector3 position)
+    public GameObject DropLoot(string tableName, Vector3 position)
     {
         LootTable table = lootTables.Find(t => t.tableName == tableName);
         if (table == null)
         {
             Debug.LogWarning($"No loot table found for: {tableName}");
-            return;
+            return null;
         }
 
         float roll = Random.value;
@@ -52,13 +51,15 @@ public class LootSystem : MonoBehaviour
             if (roll <= cumulativeChance)
             {
                 int amount = Random.Range(entry.minAmount, entry.maxAmount);
-                GameObject loot = pooler.GetFromPool(entry.itemPrefab.name, position, Quaternion.identity);
+                GameObject loot = ObjectPooler.Instance.GetFromPool(entry.itemPrefab.name, position, Quaternion.identity);
                 if (loot.TryGetComponent<ResourcePickup>(out var resourcePickup))
                 {
                     resourcePickup.amount = amount;
                 }
-                return; // Only drop one item per call
+                return loot; // Only drop one item per call
             }
         }
+
+        return null;
     }
 }

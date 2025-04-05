@@ -1193,6 +1193,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Cover
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 64
+        width: 6
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d15087741c2ea4f92ba2a10f761e8e
+      internalID: -26579931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1234,6 +1256,7 @@ TextureImporter:
       Centre floor 7: -9000362276992120081
       Centre floor 8: -3317108722525156635
       Centre floor 9: 1600971620
+      Cover: -563522503
       Dungeon_Tileset_22: 153854092
       Dungeon_Tileset_23: 439317513
       Dungeon_Tileset_36: -646084898
@@ -1295,7 +1318,6 @@ TextureImporter:
       Left wall 1: -8474740879727053552
       Left wall 2: -8355083117788888566
       Left wall 3: 1709604659
-      Level_0: -563522503
       Right floor: 102882991
       Right wall 1: -3624728776038038798
       Right wall 1 2: 8938356945095094423

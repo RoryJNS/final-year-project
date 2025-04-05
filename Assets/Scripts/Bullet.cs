@@ -5,7 +5,7 @@ public class Bullet : MonoBehaviour
 {
     public GameObject Shooter;
     private Coroutine fadeCoroutine;
-    private readonly int damage = 5;
+    public int damage = 5;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -36,11 +36,13 @@ public class Bullet : MonoBehaviour
         {
             enemy.TakeDamage(damage);
             ScoreSystem.Instance.RegisterHit(PlayerAttack.WeaponType.Shotgun, 0.2f);
+            gameObject.SetActive(false);
         }
 
         else if (collision.gameObject.TryGetComponent<PlayerAttack>(out var playerAttack))
         {
             playerAttack.TakeDamage(damage);
+            gameObject.SetActive(false);
         }
 
         else if (collision.gameObject.TryGetComponent<DestructibleObject>(out var destructible))

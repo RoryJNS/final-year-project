@@ -4,18 +4,18 @@ using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-    private enum WeaponType { Rifle, SMG, Shotgun };
+    public enum WeaponType { Rifle, SMG, Shotgun };
     private enum State { Roaming, Investigating, Chasing, Attacking, Staggered };
     private Vector3 startingPosition, roamPosition;
     private float angleStep, startAngle, timeSinceLastLOS;
     private PlayerAttack playerAttack;
-    private ObjectPooler pooler;
     private EnemyCluster cluster;
-    private Coroutine staggeredCoroutine;
+    private Coroutine staggeredCoroutine, deathCoroutine, reactionCoroutine;
 
     private readonly Color originalColor = Color.white;
     private readonly int FOV = 80;
     private bool hasBeenStaggered;
+    private Vector3 previousPlayerPos;
 
     [Header("Taking damage")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -33,29 +33,36 @@ public class Enemy : MonoBehaviour
     [Header("Attacking")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private WeaponType weaponType;
-    [SerializeField] private float reloadSpeed, attackRange, fireRate, lastAttackTime, waitTime, shotgunSpreadAngle, accuracy;
-    [SerializeField] private int damage, ammo, maxAmmo;
+    [SerializeField] private float reloadSpeed, attackRange, fireRate, lastAttackTime, waitTime, shotgunSpreadAngle, baseAccuracy, accuracy;
+    [SerializeField] private int damage, currentAmmo, ammoPerClip;
 
     private void Awake()
     {
         playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
-        pooler = GameObject.Find("Game Manager").GetComponent<ObjectPooler>();
         agent.updateRotation = false;
         agent.updateUpAxis = false; // Needed for 2D NavMesh
     }
 
-    public void SetCluster(EnemyCluster cluster)
-    {
-        this.cluster = cluster;
-    }
-
     private void Start()
     {
-        ResetEnemy();
-
         // Calculate the angle offset for each shotgun pellet to be evenly distributed within the spread angle
         angleStep = shotgunSpreadAngle / (4);
         startAngle = -shotgunSpreadAngle / 2; // Start at half of the spread angle to the left
+        previousPlayerPos = playerAttack.transform.position;
+        AssignWeapon();
+    }
+
+    private void AssignWeapon()
+    {
+        weaponType = (WeaponType)Random.Range(0, System.Enum.GetValues(typeof(WeaponType)).Length);
+        GeneticAlgorithm.EnemyWeaponStats stats = GeneticAlgorithm.Instance.enemyWeaponStats[(int)weaponType];
+        damage = stats.damage;
+        ammoPerClip = stats.ammoPerClip;
+        fireRate = stats.fireRate;
+        reloadSpeed = stats.reloadSpeed;
+        attackRange = stats.attackRange;
+        accuracy = baseAccuracy = stats.accuracy;
+        currentAmmo = ammoPerClip;
     }
 
     public void ResetEnemy()
@@ -69,8 +76,18 @@ public class Enemy : MonoBehaviour
         state = State.Roaming;
         coll.enabled = true;
         hasBeenStaggered = false;
-        health = maxHealth;
         spriteRenderer.color = originalColor;
+        AssignWeapon();
+    }
+
+    public void SetCluster(EnemyCluster cluster, GeneticAlgorithm.DifficultyChromosome difficulty)
+    {
+        this.cluster = cluster;
+        maxHealth = difficulty.health;
+        health = maxHealth;
+        attackRange = difficulty.attackRangeModifier;
+        accuracy = baseAccuracy = difficulty.accuracyModifier;
+        damage = (int)(damage * difficulty.damageModifier);
     }
 
     public void TakeDamage(int damage)
@@ -78,27 +95,30 @@ public class Enemy : MonoBehaviour
         health -= damage;
         cluster.Alert(playerAttack.transform.position);
 
-        if (health <= 0)
+        if (health <= 0 && deathCoroutine == null)
         {
             animator.SetTrigger("Death"); // Trigger death animation
-            StartCoroutine(Die(false)); // Start fading after 1s, fade over 2s
+            deathCoroutine = StartCoroutine(Die(false)); // Start fading after 1s, fade over 2s
         }
-        else if (health < maxHealth * 0.4 && !hasBeenStaggered) // Less than 40% health and hasn't been staggered
+        else if (health < maxHealth * 0.3 && !hasBeenStaggered) // Less than 30% health and hasn't been staggered
         {
             animator.SetBool("Alert", false);
             animator.SetTrigger("Staggered");
             state = State.Staggered;
             hasBeenStaggered = true;
             agent.isStopped = true;
-            cluster.staggeredEnemies.Add(this);
+            DungeonGenerator.Instance.staggeredEnemies.Add(this);
             staggeredCoroutine = StartCoroutine(Staggered());
         }
-        else if (state != State.Staggered) // More than 40% health and not staggered
+        else if (state != State.Staggered) // More than 30% health and not staggered
         {
             flash.CallDamageFlash();
             animator.SetBool("Alert", true);
             timeSinceLastLOS = 0;
-            state = State.Chasing;
+            if (state != State.Chasing && reactionCoroutine == null)
+            {
+                reactionCoroutine = StartCoroutine(ReactionDelay());
+            }
         }
     }
 
@@ -111,11 +131,11 @@ public class Enemy : MonoBehaviour
             StopCoroutine(staggeredCoroutine);
             staggeredCoroutine = null;
             spriteRenderer.color = originalColor;
-            cluster.staggeredEnemies.Remove(this);
+            DungeonGenerator.Instance.staggeredEnemies.Remove(this);
         }
 
         cluster.RemoveEnemy(this);
-        cluster.staggeredEnemies.Remove(this);
+        DungeonGenerator.Instance.staggeredEnemies.Remove(this);
         agent.isStopped = true;
         coll.enabled = false;
         LootSystem.Instance.DropLoot(weaponType.ToString() + " Enemy", transform.position); // Drop loot according to this enemy type
@@ -131,6 +151,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
+        deathCoroutine = null;
         gameObject.SetActive(false); // Return this object to the pool
     }
 
@@ -151,7 +172,7 @@ public class Enemy : MonoBehaviour
 
         spriteRenderer.color = originalColor; // Reset color after stagger ends
         agent.isStopped = false; // Re-enable agent movement
-        cluster.staggeredEnemies.Remove(this);
+        DungeonGenerator.Instance.staggeredEnemies.Remove(this);
         animator.SetBool("Alert", true);
         state = State.Chasing; // Return to normal AI behavior
     }
@@ -166,9 +187,19 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if (agent.isStopped) { return; } // This enemy has been killed or staggered
-
         timeSinceLastLOS += Time.deltaTime;
         CheckForPlayer();
+
+        if ((playerAttack.transform.position - previousPlayerPos).sqrMagnitude < 0.01f)
+        {
+            accuracy = baseAccuracy * 1.1f; // Player is standing still
+        }
+        else
+        {
+            accuracy = baseAccuracy; // Player is moving
+        }
+
+        previousPlayerPos = playerAttack.transform.position;
 
         switch (state)
         {
@@ -206,7 +237,7 @@ public class Enemy : MonoBehaviour
 
     private void CheckForPlayer()
     {
-        int rayCount = 10; // Number of rays to cast
+        int rayCount = 5; // Number of rays to cast
         float angleStep = FOV / (rayCount - 1); // Angle difference between rays
 
         for (int i = 0; i < rayCount; i++)
@@ -245,7 +276,7 @@ public class Enemy : MonoBehaviour
         if (timeSinceLastLOS == 0)
         {
             animator.SetBool("Alert", true);
-            state = State.Chasing;
+            reactionCoroutine = StartCoroutine(ReactionDelay());
         }
 
         // This or another enemy detected the player nearby
@@ -261,13 +292,26 @@ public class Enemy : MonoBehaviour
         if (timeSinceLastLOS == 0)
         {
             state = State.Attacking; // Start shooting player
+            return;
         }
-        else if (timeSinceLastLOS < 1) 
+        else if (timeSinceLastLOS < 2f) 
         {
             agent.SetDestination(playerAttack.transform.position); // Infer where the player is and go there
+            accuracy = baseAccuracy * 0.9f; // Decrease accuracy by 10% when chasing
+            if (currentAmmo > 0 && Time.time - lastAttackTime > fireRate * 2) // Shoot at half the fire rate
+            {
+                lastAttackTime = Time.time;
+                Attack();
+            }
+            else if (currentAmmo <= 0 && Time.time - lastAttackTime > reloadSpeed) // Reload if out of ammo
+            {
+                currentAmmo = ammoPerClip;
+                lastAttackTime = Time.time;
+            }
         }
         else
         {
+            accuracy = baseAccuracy;
             cluster.investigatePos = playerAttack.transform.position;
             state = State.Investigating;
         }
@@ -279,14 +323,21 @@ public class Enemy : MonoBehaviour
 
         if (timeSinceLastLOS == 0) // Investigation successful and player found
         {
-            state = State.Attacking;
+            state = State.Chasing;
         }
-        
-        if (cluster.investigateTimer > 5) // 5 seconds have passed since this enemy was alerted
+
+        if (cluster.investigateTimer > 6) // 5 seconds have passed since this enemy was alerted
         {
             animator.SetBool("Alert", false);
             state = State.Roaming;
         }
+    }
+
+    private IEnumerator ReactionDelay()
+    {
+        yield return new WaitForSeconds(1f);
+        state = State.Chasing;
+        reactionCoroutine = null;
     }
 
     private void HandleAttacking()
@@ -296,16 +347,17 @@ public class Enemy : MonoBehaviour
         if (timeSinceLastLOS != 0) // Go back to chasing if can't see the player
         {
             state = State.Chasing;
+            return;
         }
 
-        if (ammo > 0 && Time.time - lastAttackTime > fireRate) // Fire if there is ammo
+        if (currentAmmo > 0 && Time.time - lastAttackTime > fireRate) // Fire if there is ammo
         {
             lastAttackTime = Time.time;
             Attack();
         }
-        else if (ammo <= 0 && Time.time - lastAttackTime > reloadSpeed) // Reload if out of ammo
+        else if (currentAmmo <= 0 && Time.time - lastAttackTime > reloadSpeed) // Reload if out of ammo
         {
-            ammo = maxAmmo;
+            currentAmmo = ammoPerClip;
             lastAttackTime = Time.time;
         }
 
@@ -337,7 +389,7 @@ public class Enemy : MonoBehaviour
         {
             FireProjectile();
         }
-        ammo--;
+        currentAmmo--;
     }
 
     private void FireRaycast()
@@ -347,7 +399,7 @@ public class Enemy : MonoBehaviour
         Vector2 firingDirection = Quaternion.Euler(0, 0, angleOffset) * firePoint.right;
         RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firingDirection, 25, LayerMask.GetMask("Default", "Player"));
         Vector2 targetPosition = hit.collider ? hit.point : (Vector2)firePoint.position + (firingDirection * 25);
-        GameObject trail = pooler.GetFromPool("Bullet Trail", firePoint.position, Quaternion.identity);
+        GameObject trail = ObjectPooler.Instance.GetFromPool("Bullet Trail", firePoint.position, Quaternion.identity);
         StartCoroutine(MoveTrail(trail, targetPosition));
 
         if (hit.collider)
@@ -379,13 +431,12 @@ public class Enemy : MonoBehaviour
             for (int i = 0; i < 5; i++)
             {
                 Quaternion pelletRotation = firePoint.rotation * Quaternion.Euler(0, 0, startAngle + (angleStep * i));
-                GameObject bullet = pooler.GetFromPool("Bullet", firePoint.position, pelletRotation);
+                GameObject bullet = ObjectPooler.Instance.GetFromPool("Bullet", firePoint.position, pelletRotation);
                 bullet.GetComponent<Bullet>().Shooter = gameObject;
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
                 bulletRb.AddForce(bullet.transform.right * 20f, ForceMode2D.Impulse);
             }
         }
-        // add rpg logic here
     }
 
     private void OnDrawGizmosSelected()
@@ -396,7 +447,6 @@ public class Enemy : MonoBehaviour
         Vector2 rightBound = Quaternion.Euler(0, 0, maxAngle) * firePoint.right;
         Gizmos.DrawRay(firePoint.position, leftBound * attackRange);  // Left boundary
         Gizmos.DrawRay(firePoint.position, rightBound * attackRange); // Right boundary
-
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, attackRange + 2); // Hearing range
     }

@@ -109,6 +109,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockIcon: {fileID: 6512450011403243875}
   collider2d: {fileID: 8775680739858244083}
+  linkedMainRoom:
+    center: {x: 0, y: 0}
+    size: {x: 0, y: 0}
+    roomNumber: 0
+    coverCount: 0
+    enemyCluster: {fileID: 0}
 --- !u!61 &8775680739858244083
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -230,7 +236,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,12 +257,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -168421969075237668, guid: 25a3eb0197aaf5e4980cb50924696cf9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25a3eb0197aaf5e4980cb50924696cf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.16}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

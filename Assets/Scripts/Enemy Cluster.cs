@@ -1,12 +1,8 @@
 using UnityEngine;
-using System.Collections.Generic;
 
 public class EnemyCluster : MonoBehaviour
 {
-    [SerializeField] private float aggressionLevel, healthModifier, damageModifier;
-    [SerializeField] private List<Enemy> enemies = new();
-    public List<Enemy> staggeredEnemies = new();
-
+    public GeneticAlgorithm.DifficultyChromosome difficulty;
     public Vector3 investigatePos;
     public float investigateTimer; // How long since investigatePos was updated
 
@@ -18,16 +14,19 @@ public class EnemyCluster : MonoBehaviour
     public void InitialiseEnemy(Enemy enemy)
     {
         enemy.enabled = true;
-        enemies.Add(enemy);
-        enemy.SetCluster(this);
+        DungeonGenerator.Instance.enemies.Add(enemy);
         enemy.ResetEnemy();
+        enemy.SetCluster(this, difficulty); // Assign enemy to this cluster and apply this cluster's difficulty
     }
 
     public void RemoveEnemy(Enemy enemy)
     {
-        enemies.Remove(enemy);
-        if (enemies.Count == 0)
+        DungeonGenerator.Instance.enemies.Remove(enemy);
+        if (DungeonGenerator.Instance.enemies.Count == 0)
         {
+            int idx = GeneticAlgorithm.Instance.population.IndexOf(difficulty);
+            GeneticAlgorithm.Instance.population[idx].EvaluateFairness();
+            ScoreSystem.Instance.RoomCleared();
             DungeonGenerator.Instance.currentMainRoom.RoomCleared();
         }
     }

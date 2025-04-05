@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class ObjectPooler : MonoBehaviour
 {
+    public static ObjectPooler Instance { get; private set; }
+
     [System.Serializable]
     public class Pool
     {
@@ -16,6 +18,15 @@ public class ObjectPooler : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
         // Initialise pools
@@ -57,7 +68,6 @@ public class ObjectPooler : MonoBehaviour
 
         if (objectToReuse == null)
         {
-            Debug.Log(tag + " pool is empty or all objects are in use! Instantiating a new one and adding it to the pool.");
             Pool pool = pools.Find(p => p.tag == tag);
             GameObject poolParent = GameObject.Find(pool.tag + " Pool");
             objectToReuse = Instantiate(pool.prefab, poolParent.transform);
@@ -90,6 +100,14 @@ public class ObjectPooler : MonoBehaviour
         foreach (GameObject obj in poolQueue)
         {
             obj.SetActive(false);
+        }
+    }
+
+    public void ClearAllPools()
+    {
+        foreach (Pool pool in pools)
+        {
+            ClearPool(pool.tag);
         }
     }
 }

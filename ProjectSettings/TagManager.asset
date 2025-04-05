@@ -10,6 +10,8 @@ TagManager:
   - Bullet
   - Armour
   - Enemy
+  - Chest
+  - Exit
   layers:
   - Default
   - TransparentFX

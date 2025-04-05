@@ -23,11 +23,10 @@ public class Teleporter : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            yield return StartCoroutine(FadeOut()); // Wait for fade-out to complete
-            
             // Temporarily disable camera damping
-            Vector2 originalDamping = composer.Damping;
             composer.Damping = Vector2.zero;
+
+            yield return StartCoroutine(FadeOut()); // Wait for fade-out to complete
 
             // Teleport the player
             collider.transform.position = destination.transform.position + 2 * (destination.transform.position - transform.position).normalized;
@@ -43,7 +42,7 @@ public class Teleporter : MonoBehaviour
             yield return StartCoroutine(FadeIn()); // Wait for fade-out to complete
 
             // Restore original damping
-            composer.Damping = originalDamping;
+            composer.Damping = new(0.3f, 0.3f);
         }
     }
 

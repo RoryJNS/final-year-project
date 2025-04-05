@@ -6,22 +6,23 @@ using System.Linq;
 public class DungeonGenerator : MonoBehaviour
 {
     public static DungeonGenerator Instance { get; private set; }
-    public MainRoom currentMainRoom; 
+    public MainRoom currentMainRoom;
 
     [SerializeField] private int minMainRoomSize, maxMainRoomSize;
     [SerializeField] private float sideRoomProbability;
-    [SerializeField] private GameObject enemyClusterParent, enemyClusterPrefab, chestPrefab;
+    [SerializeField] private GameObject enemyClusterPrefab, chestPrefab;
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private TileBase dungeonTile;
-    [SerializeField] private ObjectPooler pooler;
     [SerializeField] private NavMeshPlus.Components.NavMeshSurface navMeshSurface;
-    [SerializeField] private int mainRoomCount = 5;
     [SerializeField] private HashSet<MainRoom> mainRooms = new();
-
+    [SerializeField] private PlayerAttack playerAttack;
+    
+    public int mainRoomCount = 5;
     private readonly Vector2Int[] Directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
     private readonly Vector2Int sideRoomSize = new(10, 10);
     private readonly HashSet<Room> otherRooms = new();
     private Vector2Int endRoomCenter = Vector2Int.zero;
+    public List<Enemy> enemies, staggeredEnemies = new();
 
     [System.Serializable]
     public class Room
@@ -60,8 +61,6 @@ public class DungeonGenerator : MonoBehaviour
 
         public void RoomCleared()
         {
-            ScoreSystem.Instance.RoomCleared();
-
             foreach (Teleporter teleporter in teleporters)
             {
                 teleporter.Unlock();
@@ -81,18 +80,12 @@ public class DungeonGenerator : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        GenerateDungeon();
-        navMeshSurface.BuildNavMesh();
-    }
-
-    private void GenerateDungeon()
+    public void GenerateDungeon()
     {
         tilemap.ClearAllTiles();
-        foreach (ObjectPooler.Pool pool in pooler.pools)
+        foreach (ObjectPooler.Pool pool in ObjectPooler.Instance.pools)
         {
-            pooler.ClearPool(pool.tag);
+            ObjectPooler.Instance.ClearPool(pool.tag);
         }
         mainRooms.Clear();
         otherRooms.Clear();
@@ -106,7 +99,7 @@ public class DungeonGenerator : MonoBehaviour
         DrawRoom(startRoom);
         Vector2Int previousCenter = startRoom.center;
 
-        for (int i = 1; i <= mainRoomCount; i++)
+        for (int i = 0; i < mainRoomCount; i++)
         {
             Vector2Int newRoomCenter;
             Vector2Int roomSize = GetRandomRoomSize(minMainRoomSize, maxMainRoomSize);
@@ -124,6 +117,8 @@ public class DungeonGenerator : MonoBehaviour
             previousCenter = newRoomCenter;
         }
 
+        navMeshSurface.BuildNavMesh();
+
         Room previousRoom = startRoom;
         foreach (Room room in mainRooms)
         {
@@ -140,7 +135,7 @@ public class DungeonGenerator : MonoBehaviour
         endRoomCenter = tempEndRoomCenter;
         Room endRoom = new(endRoomCenter, sideRoomSize);
         DrawRoom(endRoom);
-        pooler.GetFromPool("Floor Exit", (Vector2)endRoomCenter, Quaternion.identity);
+        ObjectPooler.Instance.GetFromPool("Level Exit", (Vector2)endRoomCenter, Quaternion.identity);
         DrawCorridor(previousRoom, endRoom);
     }
 
@@ -156,7 +151,7 @@ public class DungeonGenerator : MonoBehaviour
                     Room sideRoom = new(sideRoomCenter, sideRoomSize);
                     otherRooms.Add(sideRoom);
                     DrawRoom(sideRoom);
-                    pooler.GetFromPool("Chest", (Vector2)sideRoom.center, Quaternion.identity);
+                    ObjectPooler.Instance.GetFromPool("Chest", (Vector2)sideRoom.center, Quaternion.identity);
                     DrawCorridor(mainRoom, sideRoom);
                 }
             }
@@ -208,8 +203,8 @@ public class DungeonGenerator : MonoBehaviour
             0
         );
 
-        pooler.GetFromPool("Teleporter", teleportTherePos, Quaternion.identity).TryGetComponent(out Teleporter teleporter1);
-        pooler.GetFromPool("Teleporter", teleportBackPos, Quaternion.identity).TryGetComponent(out Teleporter teleporter2);
+        ObjectPooler.Instance.GetFromPool("Teleporter", teleportTherePos, Quaternion.identity).TryGetComponent(out Teleporter teleporter1);
+        ObjectPooler.Instance.GetFromPool("Teleporter", teleportBackPos, Quaternion.identity).TryGetComponent(out Teleporter teleporter2);
         teleporter1.SetDestination(teleporter2);
         teleporter2.SetDestination(teleporter1);
 
@@ -249,7 +244,9 @@ public class DungeonGenerator : MonoBehaviour
 
     private void PopulateMainRoom(MainRoom room) // Determine enemy positions and spawn cover
     {
-        room.enemyCluster = Instantiate(enemyClusterPrefab, (Vector2)room.center, Quaternion.identity, enemyClusterParent.transform).GetComponent<EnemyCluster>();
+        GameObject enemyClusterObject = ObjectPooler.Instance.GetFromPool("Enemy Cluster", (Vector2)room.center, Quaternion.identity);
+        room.enemyCluster = enemyClusterObject.GetComponent<EnemyCluster>();
+        room.enemyCluster.difficulty = GeneticAlgorithm.Instance.population[room.roomNumber];
         List<Vector2Int> availablePositions = new();
 
         // Generate grid positions
@@ -264,8 +261,8 @@ public class DungeonGenerator : MonoBehaviour
         // Shuffle positions for randomness
         availablePositions = availablePositions.OrderBy(p => Random.value).ToList();
 
-        // Place enemies first
-        for (int i = 0; i < 5 && availablePositions.Count > 0; i++)
+        // Determine where to place enemies
+        for (int i = 0; i < room.enemyCluster.difficulty.enemyCount && availablePositions.Count > 0; i++)
         {
             Vector2Int enemyPos = availablePositions.FirstOrDefault(pos =>
                 room.enemyPositions.All(e => (e - pos).sqrMagnitude >= 9)); // At least 3 units apart
@@ -293,22 +290,18 @@ public class DungeonGenerator : MonoBehaviour
 
                 Quaternion rotation = shouldRotate ? Quaternion.Euler(0, 0, 90) : Quaternion.identity;
                 shouldRotate = !shouldRotate;
-                pooler.GetFromPool("Cover", new Vector3(coverPos.x, coverPos.y, 0), rotation);
+                ObjectPooler.Instance.GetFromPool("Cover", new Vector3(coverPos.x, coverPos.y, 0), rotation);
             }
         }
     }
 
     public void SpawnEnemies()
     {
+        playerAttack.ProceedToNextRoom();
         foreach (Vector2 position in currentMainRoom.enemyPositions)
         {
-            GameObject newEnemy = pooler.GetFromPool("Rifle Enemy", position, Quaternion.identity);
+            GameObject newEnemy = ObjectPooler.Instance.GetFromPool("Enemy", position, Quaternion.identity);
             currentMainRoom.enemyCluster.InitialiseEnemy(newEnemy.GetComponent<Enemy>());
         }
-    }
-
-    public List<Enemy> FindStaggeredEnemies()
-    {
-        return currentMainRoom.enemyCluster.staggeredEnemies;
     }
 }

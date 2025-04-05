@@ -3,71 +3,93 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 10f, controllerDeadzone = 0.1f;
-    [SerializeField] private bool isGamepad;
+    public static PlayerController Instance { get; private set; }
+    public static PlayerInput PlayerInput;
+    public float controllerDeadzone;
+    [SerializeField] private float moveSpeed;
     [SerializeField] private Transform reticle;
     [SerializeField] private Animator animator;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private PlayerAttack playerAttack;
-    [SerializeField] private ObjectPooler pooler;
     [SerializeField] private HudManager hudManager;
 
     private Vector3 reticleWorldPos;
     private Vector2 moveInput, lookDirection;
-    private Controls controls;
+    private bool movementLocked;
 
     private void Awake()
     {
-        controls = new Controls();
+        if (Instance == null)
+        {
+            Instance = this;
+            PlayerInput = gameObject.GetComponent<PlayerInput>();
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    private void Start()
+    {
+        controllerDeadzone = PlayerPrefs.GetFloat("ControllerDeadzone", 0.1f);
     }
 
     private void OnEnable()
     {
-        controls.Enable();
-        controls.Player.Attack.started += OnAttack;
-        controls.Player.Attack.canceled += OnAttack;
-        controls.Player.Interact.performed += OnInteract;
-        controls.Player.Finisher.started += OnFinisher;
-        controls.Player.DropWeapon.performed += OnForceDropWeapon;
-        controls.Player.Reload.performed += OnReload;
+        PlayerInput.actions["Attack"].started += OnAttack;
+        PlayerInput.actions["Attack"].canceled += OnAttack;
+        PlayerInput.actions["Interact"].performed += OnInteract;
+        PlayerInput.actions["Finisher"].started += OnFinisher;
+        PlayerInput.actions["Drop Weapon"].performed += OnForceDropWeapon;
+        PlayerInput.actions["Reload"].performed += OnReload;
     }
 
     private void OnDisable()
     {
-        controls.Disable();
-        controls.Player.Attack.started -= OnAttack;
-        controls.Player.Attack.canceled -= OnAttack;
-        controls.Player.Interact.performed -= OnInteract;
-        controls.Player.Finisher.started -= OnFinisher;
-        controls.Player.DropWeapon.performed -= OnForceDropWeapon;
-        controls.Player.Attack.performed -= OnReload;
+        PlayerInput.actions["Attack"].started -= OnAttack;
+        PlayerInput.actions["Attack"].canceled -= OnAttack;
+        PlayerInput.actions["Interact"].performed -= OnInteract;
+        PlayerInput.actions["Finisher"].started -= OnFinisher;
+        PlayerInput.actions["Drop Weapon"].performed -= OnForceDropWeapon;
+        PlayerInput.actions["Reload"].performed -= OnReload;
     }
 
     private void FixedUpdate()
     {
         if (playerAttack.meleeAttacking) return;
         if (playerAttack.performingFinisher) return;
+        if (movementLocked) return;
         HandleMovement();
         HandleRotation();
         rb.linearVelocity = Vector2.zero;
     }
 
+    public void SetMovementLocked(bool movementLocked)
+    {
+        this.movementLocked = movementLocked;
+        animator.SetBool("Moving", false);
+    }
+
     private void HandleMovement()
     {
-        moveInput = controls.Player.Move.ReadValue<Vector2>();
-        animator.SetBool("Moving", moveInput != Vector2.zero);
+        moveInput = PlayerInput.actions["Move"].ReadValue<Vector2>();
         if (moveInput.sqrMagnitude > controllerDeadzone * controllerDeadzone)
         {
             transform.position += (Vector3)(moveSpeed * Time.deltaTime * moveInput);
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
         }
     }
 
     private void HandleRotation()
     {
         reticleWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(reticle.position.x, reticle.position.y, mainCamera.nearClipPlane));
-        lookDirection = (Vector2) reticleWorldPos - (Vector2) mainCamera.transform.position; // Reticle position relative to the camera
-
+        lookDirection = (Vector2) reticleWorldPos - rb.position; // Reticle position relative to the camera
         if (lookDirection.sqrMagnitude > 0.001f) // Avoid jittering or dividing by zero
         {
             lookDirection += rb.position - (Vector2) mainCamera.transform.position; // Factor the camera offset from the player, caused by 'look ahead', into where to look
@@ -83,7 +105,6 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerAttack.WeaponType.Melee:
                 case PlayerAttack.WeaponType.Shotgun:
-                case PlayerAttack.WeaponType.RPG:
                     playerAttack.Attack();
                     break;
                 case PlayerAttack.WeaponType.Rifle:
@@ -102,17 +123,22 @@ public class PlayerController : MonoBehaviour
     
     private void OnInteract(InputAction.CallbackContext context)
     {
-        Collider2D interactCollider = Physics2D.OverlapCircle(transform.position, 0.7f, LayerMask.GetMask("Pickups"));
+        Collider2D interactCollider = Physics2D.OverlapCircle(transform.position, 0.7f, LayerMask.GetMask("Pickups", "Default"));
 
         if (interactCollider == null) return;
 
         if (interactCollider.CompareTag("Weapon"))
         {
             if (!interactCollider.TryGetComponent<ResourcePickup>(out var newWeapon)) return;
-
             DropWeapon(interactCollider.transform.position);
             interactCollider.gameObject.SetActive(false);
             playerAttack.SetWeapon((PlayerAttack.WeaponType)newWeapon.type, newWeapon.amount);
+        }
+
+        if (interactCollider.CompareTag("Chest"))
+        {
+            if (!interactCollider.TryGetComponent<Chest>(out var chest)) return;
+            chest.Open();
         }
     }
     
@@ -124,9 +150,9 @@ public class PlayerController : MonoBehaviour
         float nearestDistance = float.MaxValue;
         float finisherRange = 4f; // Adjust the range as needed
 
-        if (DungeonGenerator.Instance.currentMainRoom.roomNumber > 0) // Check there is an active enemy cluster
+        if (DungeonGenerator.Instance.currentMainRoom.roomNumber >= 0) // Check there is an active enemy cluster
         {
-            foreach (Enemy enemy in DungeonGenerator.Instance.FindStaggeredEnemies()) // Find the nearest staggered enemy
+            foreach (Enemy enemy in DungeonGenerator.Instance.staggeredEnemies) // Find the nearest staggered enemy
             {
                 float distance = Vector2.Distance(transform.position, enemy.transform.position);
                 if (distance < finisherRange && distance < nearestDistance)
@@ -155,7 +181,6 @@ public class PlayerController : MonoBehaviour
         if (enemy.TryGetComponent(out Collider2D collider))
         {
             collider.enabled = false; // Allow for some overlapping during animation
-
         }
 
         // Snap the enemy to face the player
@@ -196,7 +221,7 @@ public class PlayerController : MonoBehaviour
         if (playerAttack.weaponType == PlayerAttack.WeaponType.Melee) return;
 
         // Get a pickup from the pool
-        GameObject droppedWeapon = pooler.GetFromPool(playerAttack.weaponType.ToString(), dropPosition, Quaternion.identity);
+        GameObject droppedWeapon = ObjectPooler.Instance.GetFromPool(playerAttack.weaponType.ToString(), dropPosition, Quaternion.identity);
 
         if (droppedWeapon.TryGetComponent(out ResourcePickup resourcePickup))
         {
@@ -214,27 +239,34 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.TryGetComponent<ResourcePickup>(out var resourcePickup)) return;
+        if (collision.TryGetComponent<ResourcePickup>(out var resourcePickup))
+        {
+            if (collision.CompareTag("Health"))
+            {
+                playerAttack.AddHealth(resourcePickup.amount);
+                collision.gameObject.SetActive(false);
+            }
+            else if (collision.CompareTag("Armour"))
+            {
+                playerAttack.ReplenishArmour(4);
+                collision.gameObject.SetActive(false);
+            }
+            else if (collision.CompareTag("Ammo"))
+            {
+                playerAttack.AddReserveAmmo(resourcePickup.type, resourcePickup.amount);
+                collision.gameObject.SetActive(false);
+            }
+        }
 
-        if (collision.CompareTag("Health"))
+        else if (collision.CompareTag("Exit"))
         {
-            playerAttack.AddHealth(resourcePickup.amount);
-            collision.gameObject.SetActive(false);
-        }
-        else if (collision.CompareTag("Armour"))
-        {
-            playerAttack.ReplenishArmour(4);
-            collision.gameObject.SetActive(false);
-        }
-        else if (collision.CompareTag("Ammo"))
-        {
-            playerAttack.AddReserveAmmo(resourcePickup.type, resourcePickup.amount);
-            collision.gameObject.SetActive(false);
+            SetMovementLocked(true);
+            ScoreSystem.Instance.LevelCleared();
         }
     }
 
-    public void OnDeviceChange(PlayerInput pi)
+    public void PlayFootstep()
     {
-        isGamepad = pi.currentControlScheme.Equals("Gamepad");
+        SoundManager.PlaySound(SoundManager.SoundType.FOOTSTEP);
     }
 }

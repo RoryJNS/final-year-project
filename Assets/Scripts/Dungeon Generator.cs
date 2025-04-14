@@ -8,16 +8,15 @@ public class DungeonGenerator : MonoBehaviour
     public static DungeonGenerator Instance { get; private set; }
     public MainRoom currentMainRoom;
 
-    [SerializeField] private int minMainRoomSize, maxMainRoomSize;
+    [SerializeField] private int minMainRoomSize, maxMainRoomSize, mainRoomCount = 5;
     [SerializeField] private float sideRoomProbability;
-    [SerializeField] private GameObject enemyClusterPrefab, chestPrefab;
+    [SerializeField] private GameObject enemyClusterPrefab;
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private TileBase dungeonTile;
     [SerializeField] private NavMeshPlus.Components.NavMeshSurface navMeshSurface;
     [SerializeField] private HashSet<MainRoom> mainRooms = new();
     [SerializeField] private PlayerAttack playerAttack;
-    
-    public int mainRoomCount = 5;
+
     private readonly Vector2Int[] Directions = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
     private readonly Vector2Int sideRoomSize = new(10, 10);
     private readonly HashSet<Room> otherRooms = new();
@@ -71,22 +70,14 @@ public class DungeonGenerator : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
-            Destroy(gameObject); // Prevent duplicates
-        }
+            Destroy(gameObject);
     }
 
     public void GenerateDungeon()
     {
         tilemap.ClearAllTiles();
-        foreach (ObjectPooler.Pool pool in ObjectPooler.Instance.pools)
-        {
-            ObjectPooler.Instance.ClearPool(pool.tag);
-        }
         mainRooms.Clear();
         otherRooms.Clear();
         GenerateMainRooms();
@@ -151,7 +142,10 @@ public class DungeonGenerator : MonoBehaviour
                     Room sideRoom = new(sideRoomCenter, sideRoomSize);
                     otherRooms.Add(sideRoom);
                     DrawRoom(sideRoom);
-                    ObjectPooler.Instance.GetFromPool("Chest", (Vector2)sideRoom.center, Quaternion.identity);
+                    ObjectPooler.Instance.GetFromPool("Chest", (Vector2)sideRoom.center, Quaternion.identity).TryGetComponent<Chest>(out var chest);
+                    {
+                        chest.dropLootCoroutine = null; // Allow this chest to be opened again if it has been reloaded from a previous level
+                    }
                     DrawCorridor(mainRoom, sideRoom);
                 }
             }
@@ -246,7 +240,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         GameObject enemyClusterObject = ObjectPooler.Instance.GetFromPool("Enemy Cluster", (Vector2)room.center, Quaternion.identity);
         room.enemyCluster = enemyClusterObject.GetComponent<EnemyCluster>();
-        room.enemyCluster.difficulty = GeneticAlgorithm.Instance.population[room.roomNumber];
+        room.enemyCluster.difficulty = DifficultyManager.Instance.population[room.roomNumber];
         List<Vector2Int> availablePositions = new();
 
         // Generate grid positions
@@ -261,8 +255,8 @@ public class DungeonGenerator : MonoBehaviour
         // Shuffle positions for randomness
         availablePositions = availablePositions.OrderBy(p => Random.value).ToList();
 
-        // Determine where to place enemies
-        for (int i = 0; i < room.enemyCluster.difficulty.enemyCount && availablePositions.Count > 0; i++)
+        // Determine where to place enemies (5 per room)
+        for (int i = 0; i < 5 && availablePositions.Count > 0; i++)
         {
             Vector2Int enemyPos = availablePositions.FirstOrDefault(pos =>
                 room.enemyPositions.All(e => (e - pos).sqrMagnitude >= 9)); // At least 3 units apart

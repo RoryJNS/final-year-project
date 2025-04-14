@@ -15,24 +15,22 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
     {
-        GeneticAlgorithm.Instance.InitialisePopulation();
+        DifficultyManager.Instance.InitialiseDifficulties();
         DungeonGenerator.Instance.GenerateDungeon();
+        SoundManager.ChooseLevelMusic();
         StartCoroutine(FadeCanvas(0, 1f));
     }
 
     public void EnterNextLevel()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.UICONFIRM);
         StartCoroutine(LoadNextLevel());
     }
 
@@ -44,7 +42,10 @@ public class GameManager : MonoBehaviour
         composer.Damping = Vector2.zero;
         playerController.gameObject.transform.position = Vector2.zero;
         ObjectPooler.Instance.ClearAllPools();
-        GeneticAlgorithm.Instance.GenerateNewPopulation();
+
+        if (DifficultyManager.Instance.dynamic)
+            DifficultyManager.Instance.GenerateNewDifficulties();
+
         DungeonGenerator.Instance.GenerateDungeon();
         DungeonGenerator.Instance.currentMainRoom.roomNumber = -1;
         ScoreSystem.Instance.ProceedToNextLevel();
@@ -54,16 +55,19 @@ public class GameManager : MonoBehaviour
         playerController.SetMovementLocked(false);
         PlayerController.PlayerInput.SwitchCurrentActionMap("Player");
         Cursor.visible = false;
+        SoundManager.ChooseLevelMusic();
         yield return FadeCanvas(0f, 1f);
     }
 
     public void ExitToMenu()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.UIBACK);
         StartCoroutine(FadeToBlackAndLoadScene(0));
     }
 
     public void StartNewRun()
     {
+        SoundManager.PlaySound(SoundManager.SoundType.UICONFIRM);
         StartCoroutine(FadeToBlackAndLoadScene(1));
     }
 
@@ -92,7 +96,8 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator OnPlayerDeath()
     {
+        SoundManager.FadeOutMusic();
         yield return FadeCanvas(1, 2); // Fade to black
-        ScoreSystem.Instance.OnRunEnded(); // Show results for the run
+        ScoreSystem.Instance.OnRunEnded(false); // Show results for the run
     }
 }

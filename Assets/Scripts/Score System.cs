@@ -7,13 +7,14 @@ using System.Linq;
 public class ScoreSystem : MonoBehaviour
 {
     public static ScoreSystem Instance { get; private set; }
+    public int killCount, totalScore, roomsCleared;
 
-    [SerializeField] private int killCount, roomsCleared;
-    [SerializeField] private int killScore, comboScore, varietyScore, roomScore, maxRoomScore, totalScore, currentCombo;
+    [SerializeField] private int killScore, comboScore, varietyScore, roomScore, currentCombo;
     [SerializeField] private Transform playerPos;
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private Color highScoreColor;
     [SerializeField] private HudManager hudManager;
+    [SerializeField] private PlayerAttack playerAttack;
 
     private Coroutine comboResetCoroutine;
     private readonly Dictionary<PlayerAttack.WeaponType, float> attackFrequency = new();
@@ -23,13 +24,15 @@ public class ScoreSystem : MonoBehaviour
     {
         public int KillScore { get; }
         public int ComboScore { get; }
+        public int AggressivenessBonus { get; }
         public int VarietyScore { get; }
         public int RoomScore { get; }
 
-        public RoomScoreData(int killScore, int comboScore, int varietyScore, int roomScore)
+        public RoomScoreData(int killScore, int comboScore, int aggressivenessBonus, int varietyScore, int roomScore)
         {
             KillScore = killScore;
             ComboScore = comboScore;
+            AggressivenessBonus = aggressivenessBonus;
             VarietyScore = varietyScore;
             RoomScore = roomScore;
         }
@@ -51,7 +54,6 @@ public class ScoreSystem : MonoBehaviour
     {
         hudManager.ForceHideResults();
         attackFrequency.Clear();
-        maxRoomScore = (DungeonGenerator.Instance.currentMainRoom.enemyPositions.Count * 125) + 250 + 1000;
     }
 
     public void ProceedToNextLevel()
@@ -99,6 +101,7 @@ public class ScoreSystem : MonoBehaviour
 
     private IEnumerator ScorePopup(int score, Transform target, bool comboEnding)
     {
+        SoundManager.PlaySound(SoundManager.SoundType.SCOREPOPUP);
         roomScore += score;
         totalScore += score;
         totalScoreText.text = totalScore.ToString();
@@ -117,6 +120,7 @@ public class ScoreSystem : MonoBehaviour
     public void RoomCleared()
     {
         roomsCleared++;
+        int aggressivenessScore = Mathf.RoundToInt(playerAttack.aggression * 800);
         float totalFrequency = attackFrequency.Values.Sum();
 
         if (totalFrequency == 0) return;
@@ -128,8 +132,8 @@ public class ScoreSystem : MonoBehaviour
         });
 
         varietyScore = Mathf.RoundToInt((1 - hhi) * 1000);
-        roomScore += varietyScore;
-        totalScore += varietyScore;
+        roomScore += aggressivenessScore + varietyScore;
+        totalScore += aggressivenessScore + varietyScore;
         totalScoreText.text = totalScore.ToString();
 
         if (totalScore > PlayerPrefs.GetInt("HighScore", 0))
@@ -146,8 +150,8 @@ public class ScoreSystem : MonoBehaviour
             currentCombo = 0;
         }
 
-        hudManager.RoomResults(killScore, comboScore, varietyScore, roomScore);
-        roomScores.Add(new RoomScoreData(killScore, comboScore, varietyScore, roomScore));
+        hudManager.RoomResults(killScore, comboScore, aggressivenessScore, varietyScore, roomScore);
+        roomScores.Add(new RoomScoreData(killScore, comboScore, aggressivenessScore, varietyScore, roomScore));
         killScore = comboScore = varietyScore = roomScore = currentCombo = 0;
     }
 
@@ -155,13 +159,16 @@ public class ScoreSystem : MonoBehaviour
     {
         int levelKillScore = roomScores.Sum(room => room.KillScore);
         int levelComboScore = roomScores.Sum(room => room.ComboScore);
+        int levelAggressivenessScore = roomScores.Sum(room => room.AggressivenessBonus);
         int levelVarietyScore = roomScores.Sum(room => room.VarietyScore);
         int levelScore = roomScores.Sum(room => room.RoomScore);
-        hudManager.LevelResults(levelKillScore, levelComboScore, levelVarietyScore, levelScore, totalScore);
+        hudManager.LevelResults(levelKillScore, levelComboScore, levelAggressivenessScore, levelVarietyScore, levelScore, totalScore);
     }
 
-    public void OnRunEnded()
+    public void OnRunEnded(bool playerIsAlive)
     {
+        PlayerPrefs.SetInt("RunNumber", PlayerPrefs.GetInt("RunNumber", 0) + 1);
+        if (AnalyticsManager.Instance != null) { AnalyticsManager.Instance.RunEnded(playerIsAlive); }
         StartCoroutine(hudManager.OnRunEnded(killCount, roomsCleared, totalScore));
     }
 

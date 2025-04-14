@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - Chest
   - Exit
+  - Start Chest
   layers:
   - Default
   - TransparentFX

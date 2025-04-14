@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using System.Collections;
 using TMPro;
+using UnityEngine.Audio;
 
 public class HudManager : MonoBehaviour
 {
@@ -22,13 +23,14 @@ public class HudManager : MonoBehaviour
     [SerializeField] private GameObject roomResultsPanel, pauseMenu, optionsMenu;
     [SerializeField] private CanvasGroup levelResultsPanel, runResultsPanel;
     [SerializeField] Slider mouseSensSlider, controllerSensSlider, controllerDeadzoneSlider, aimAssistSlider, sfxSlider, musicSlider;
+    [SerializeField] private AudioMixer audioMixer;
 
     [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI killText, comboText, varietyText, roomScoreText;
-    [SerializeField] private TextMeshProUGUI levelKillScoreText, levelComboScoreText, levelVarietyScoreText, levelScoreText, totalScoreText;
+    [SerializeField] private TextMeshProUGUI killText, comboText, aggressivenessText, varietyText, roomScoreText;
+    [SerializeField] private TextMeshProUGUI levelKillText, levelComboText, levelAggressivenessText, levelVarietyText, levelScoreText, totalScoreText;
     [SerializeField] private TextMeshProUGUI killCountText, roomsClearedText, finalScoreText;
-
     [SerializeField] private GameObject pauseMenuFirst, levelResultsFirst, runResultsFirst;
+    [SerializeField] private AudioSource scoreCounting;
 
     private Coroutine zoomCoroutine, roomResults;
     private Vector2 lookInput;
@@ -37,14 +39,13 @@ public class HudManager : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
         Cursor.SetCursor(customCursor, Vector2.zero, CursorMode.Auto);
-
+        Cursor.visible = false;
         mouseSensSlider.value = (PlayerPrefs.GetFloat("MouseSensitivity", 3f) - 1f) / 0.4f;
         controllerSensSlider.value = (PlayerPrefs.GetInt("ControllerSensitivity", 2000) - 1000) / 200;
         controllerDeadzoneSlider.value = PlayerPrefs.GetFloat("ControllerDeadzone", 0.1f) / 0.05f;
         aimAssistSlider.value = PlayerPrefs.GetFloat("AimAssistStrength", 1) / 0.2f;
-        sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1) / 0.1f;
+        sfxSlider.value = PlayerPrefs.GetFloat("SfxVolume", 1) / 0.1f;
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 1) / 0.1f;
 
         // Add listeners to sliders after they are initialised
@@ -160,15 +161,19 @@ public class HudManager : MonoBehaviour
 
     public void TogglePause()
     {
-        isPaused = !isPaused;
-        Cursor.visible = isPaused;
-        Time.timeScale = isPaused ? 0 : 1;
-
         if (levelResultsPanel != null && levelResultsPanel.isActiveAndEnabled) return;
         if (runResultsPanel != null && runResultsPanel.isActiveAndEnabled) return;
         if (levelClearText != null && levelClearText.gameObject.activeSelf) return;
+        
+        isPaused = !isPaused;
         if (pauseMenu != null) pauseMenu.SetActive(isPaused);
         if (followsCursor != null) followsCursor.gameObject.SetActive(!isPaused);
+        Cursor.visible = isPaused;
+        AudioListener.pause = isPaused;
+        Time.timeScale = isPaused ? 0 : 1;
+
+        if (isPaused ) { SoundManager.PlaySound(SoundManager.SoundType.UICONFIRM); }
+        else { SoundManager.PlaySound(SoundManager.SoundType.UIBACK); }
 
         if (isPaused && pauseMenuFirst != null)
         {
@@ -189,8 +194,17 @@ public class HudManager : MonoBehaviour
         {
             optionsMenu.SetActive(false);
             pauseMenu.SetActive(true);
+            SoundManager.PlaySound(SoundManager.SoundType.UIBACK);
             EventSystem.current.SetSelectedGameObject(pauseMenuFirst);
         }
+    }
+
+    public void OpenOptions()
+    {
+        pauseMenu.SetActive(false);
+        optionsMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(mouseSensSlider.gameObject);
+        SoundManager.PlaySound(SoundManager.SoundType.UICONFIRM);
     }
 
     public void UpdateOptions()
@@ -201,6 +215,7 @@ public class HudManager : MonoBehaviour
         PlayerPrefs.SetFloat("AimAssistStrength", aimAssistSlider.value * 0.2f); // Maps 0-10 to 0-2
         PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value * 0.1f);
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value * 0.1f);
+        SoundManager.PlaySound(SoundManager.SoundType.UICONFIRM);
         ApplyOptions();
     }
 
@@ -210,6 +225,8 @@ public class HudManager : MonoBehaviour
         controllerSensitivity = PlayerPrefs.GetInt("ControllerSensitivity");
         PlayerController.Instance.controllerDeadzone = PlayerPrefs.GetFloat("ControllerDeadzone");
         aimAssistRange = PlayerPrefs.GetFloat("AimAssistStrength");
+        audioMixer.SetFloat("SfxVolume", Mathf.Log10(Mathf.Clamp(sfxSlider.value * 0.1f, 0.0001f, 1f)) * 20);
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Clamp(musicSlider.value * 0.1f, 0.0001f, 1f)) * 20);
     }
 
     public void SetProgressWheel(float value)
@@ -293,12 +310,12 @@ public class HudManager : MonoBehaviour
         }
     }
 
-    public void RoomResults(int killScore, int comboScore, int varietyScore, int roomScore)
+    public void RoomResults(int killScore, int comboScore, int aggressivenessScore, int varietyScore, int roomScore)
     {
-        roomResults = StartCoroutine(ShowRoomResults(killScore, comboScore, varietyScore, roomScore));
+        roomResults = StartCoroutine(ShowRoomResults(killScore, comboScore, aggressivenessScore, varietyScore, roomScore));
     }
 
-    private IEnumerator ShowRoomResults(int killScore, int comboScore, int varietyScore, int roomScore)
+    private IEnumerator ShowRoomResults(int killScore, int comboScore, int aggressivenessScore, int varietyScore, int roomScore)
     {
         // Fade out top-right score text
         yield return FadeText(scoreText, 1, 0, 0.3f);
@@ -314,14 +331,15 @@ public class HudManager : MonoBehaviour
         roomClearText.gameObject.SetActive(false);
 
         // Scale in panel
-        killText.text = comboText.text = varietyText.text = roomScoreText.text = "";
+        killText.text = comboText.text = aggressivenessText.text = varietyText.text = roomScoreText.text = "";
         roomResultsPanel.SetActive(true);
         yield return AnimateScale(roomResultsPanel.transform, new(1, 0, 1), new(1, 1, 1), duration);
 
         // Count-up animations for each score
-        yield return AnimateCountUp(killText, killScore, .5f);
-        yield return AnimateCountUp(comboText, comboScore, .5f);
-        yield return AnimateCountUp(varietyText, varietyScore, .5f);
+        yield return AnimateCountUp(killText, killScore, .4f);
+        yield return AnimateCountUp(comboText, comboScore, .4f);
+        yield return AnimateCountUp(aggressivenessText, aggressivenessScore, .4f);
+        yield return AnimateCountUp(varietyText, varietyScore, .4f);
         yield return AnimateCountUp(roomScoreText, roomScore, 1f);
         yield return new WaitForSeconds(4f);
 
@@ -341,16 +359,17 @@ public class HudManager : MonoBehaviour
             roomResults = null;
             roomClearText.gameObject.SetActive(false);
             roomResultsPanel.SetActive(false);
+            scoreCounting.Stop();
             StartCoroutine(FadeText(scoreText, 0, 1, 0.3f));
         }
     }
 
-    public void LevelResults(int levelKillScore, int levelComboScore, int levelVarietyScore, int levelScore, int totalScore)
+    public void LevelResults(int levelKillScore, int levelComboScore, int aggressivenessBonus, int levelVarietyScore, int levelScore, int totalScore)
     {
-        StartCoroutine(ShowLevelResults(levelKillScore, levelComboScore, levelVarietyScore, levelScore, totalScore));
+        StartCoroutine(ShowLevelResults(levelKillScore, levelComboScore, aggressivenessBonus, levelVarietyScore, levelScore, totalScore));
     }
 
-    private IEnumerator ShowLevelResults(int levelKillScore, int levelComboScore, int levelVarietyScore, int levelScore, int totalScore)
+    private IEnumerator ShowLevelResults(int levelKillScore, int levelComboScore, int aggressivenessScore,int levelVarietyScore, int levelScore, int totalScore)
     {
         PlayerController.PlayerInput.SwitchCurrentActionMap("UI");
         EventSystem.current.SetSelectedGameObject(levelResultsFirst);
@@ -367,10 +386,12 @@ public class HudManager : MonoBehaviour
         // Fade in the panel
         yield return FadeInCanvasGroup(levelResultsPanel, 0.5f);
         Cursor.visible = true;
+        levelKillText.text = levelComboText.text = levelAggressivenessText.text = levelVarietyText.text = levelScoreText.text = totalScoreText.text = "";
 
-        yield return AnimateCountUp(levelKillScoreText, levelKillScore, .5f);
-        yield return AnimateCountUp(levelComboScoreText, levelComboScore, .5f);
-        yield return AnimateCountUp(levelVarietyScoreText, levelVarietyScore, .5f);
+        yield return AnimateCountUp(levelKillText, levelKillScore, .5f);
+        yield return AnimateCountUp(levelComboText, levelComboScore, .5f);
+        yield return AnimateCountUp(levelAggressivenessText, aggressivenessScore, .5f);
+        yield return AnimateCountUp(levelVarietyText, levelVarietyScore, .5f);
         yield return AnimateCountUp(levelScoreText, levelScore, 1f);
         yield return AnimateCountUp(totalScoreText, totalScore, 1f);
     }
@@ -390,7 +411,8 @@ public class HudManager : MonoBehaviour
 
     public IEnumerator OnRunEnded(int kills, int rooms, int finalScore)
     {
-        PlayerController.PlayerInput.SwitchCurrentActionMap("UI");
+        scoreCounting.Stop();
+        SoundManager.PlaySound(SoundManager.SoundType.UIBACK);
         EventSystem.current.SetSelectedGameObject(runResultsFirst);
         yield return FadeInCanvasGroup(runResultsPanel, 0.5f);
         yield return GameManager.Instance.FadeCanvas(0, 0.5f);
@@ -402,6 +424,7 @@ public class HudManager : MonoBehaviour
 
     private IEnumerator AnimateCountUp(TextMeshProUGUI textElement, int targetValue, float duration, string prefix="")
     {
+        scoreCounting.Play();
         float elapsed = 0;
         int startValue = 0;
 
@@ -412,6 +435,8 @@ public class HudManager : MonoBehaviour
             textElement.text = prefix + currentValue.ToString();
             yield return null;
         }
+
+        scoreCounting.Stop();
     }
 
     private IEnumerator AnimateSlide(RectTransform element, Vector2 start, Vector2 end, float duration)

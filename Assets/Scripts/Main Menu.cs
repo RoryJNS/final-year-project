@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 using System.Collections;
 
 public class MainMenu : MonoBehaviour
@@ -10,6 +11,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI highScoreText;
     [SerializeField] private Texture2D customCursor;
     [SerializeField] Slider mouseSensSlider, controllerSensSlider, controllerDeadzoneSlider, aimAssistSlider, sfxSlider, musicSlider;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private AudioSource menuMusic;
+    [SerializeField] private Camera cam;
 
     private void Start()
     {
@@ -32,6 +36,13 @@ public class MainMenu : MonoBehaviour
         aimAssistSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
         sfxSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
         musicSlider.onValueChanged.AddListener(delegate { UpdateOptions(); });
+
+        ApplyOptions();
+    }
+
+    private void Update()
+    {
+        cam.transform.position += Time.deltaTime * Vector3.right;
     }
 
     public void UpdateOptions()
@@ -40,13 +51,20 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetInt("ControllerSensitivity", (int)(1000 + (controllerSensSlider.value * 200))); // Maps 0-10 to 1000 to 3000
         PlayerPrefs.SetFloat("ControllerDeadzone", controllerDeadzoneSlider.value * 0.05f); // Maps 0-10 to 0 to 0.5
         PlayerPrefs.SetFloat("AimAssistStrength", aimAssistSlider.value * 0.2f); // Maps 0-10 to 0-2
-        PlayerPrefs.SetFloat("sfxVolume", sfxSlider.value * 0.1f);
+        PlayerPrefs.SetFloat("SfxVolume", sfxSlider.value * 0.1f);
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value * 0.1f);
+        SoundManager.PlaySound(SoundManager.SoundType.UICONFIRM);
+        ApplyOptions();
+    }
+
+    public void ApplyOptions()
+    {
+        audioMixer.SetFloat("SfxVolume", Mathf.Log10(Mathf.Clamp(sfxSlider.value * 0.1f, 0.0001f, 1f)) * 20);
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(Mathf.Clamp(musicSlider.value * 0.1f, 0.0001f, 1f)) * 20);
     }
 
     public void MenuClosed()
     {
-        Debug.Log("menu closed");
         optionsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
@@ -58,7 +76,22 @@ public class MainMenu : MonoBehaviour
 
     private IEnumerator FadeAndLoad()
     {
-        yield return StartCoroutine(FadeCanvas(1, 1f));
+        float startVolume = menuMusic.volume;
+        float startAlpha = fadeCanvas.alpha;
+        fadeCanvas.gameObject.SetActive(true);
+        float time = 0f;
+
+        while (time < 1)
+        {
+            time += Time.deltaTime;
+            float t = time / 1;
+            menuMusic.volume = Mathf.Lerp(startVolume, 0f, t);
+            fadeCanvas.alpha = Mathf.Lerp(startAlpha, 1f, t);
+            yield return null;
+        }
+
+        menuMusic.Stop();
+        menuMusic.volume = startVolume;
         SceneManager.LoadScene(1);
     }
 

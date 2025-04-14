@@ -1,62 +1,134 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class LootSystem : MonoBehaviour
 {
     public static LootSystem Instance { get; private set; }
-    public List<LootTable> lootTables = new(); // Stores all loot tables
-
-    [System.Serializable]
-    public class LootTable
-    {
-        public string tableName; // Name of the loot table (e.g., "Goblin", "Chest", etc.)
-        public LootEntry[] lootEntries;
-    }
+    [SerializeField] private LootEntry[] baseLootTable;
+    [SerializeField] private PlayerAttack playerAttack;
+    [SerializeField] private List<DebugLootWeight> debugLootWeights = new();
 
     [System.Serializable]
     public class LootEntry
     {
-        public GameObject itemPrefab;
-        [Range(0f, 1f)] public float dropChance;
-        public int minAmount = 1, maxAmount = 3;
+        public GameObject prefab;
+        public float baseDropRate;
+        public int minAmount, maxAmount;
+    }
+
+    [System.Serializable]
+    public class DebugLootWeight
+    {
+        public string itemName;
+        public float weight;
     }
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
-    public GameObject DropLoot(string tableName, Vector3 position)
+    public GameObject DropLoot(Vector3 position, string enemyType = null)
     {
-        LootTable table = lootTables.Find(t => t.tableName == tableName);
-        if (table == null)
+        List<(LootEntry item, float weight)> adjustedLoot = new(); // Clear old weights first
+
+        var (healthRatio, armourRatio, weaponType, rifleAmmoRatio, smgAmmoRatio, shotgunAmmoRatio) = playerAttack.GetInventory(); // Get inventory info
+
+        // Calculate a new weight for each item based on need
+        foreach (var item in baseLootTable)
         {
-            Debug.LogWarning($"No loot table found for: {tableName}");
-            return null;
+            float weight = item.baseDropRate;
+
+            // Restrict loot by enemyType
+            if (!string.IsNullOrEmpty(enemyType))
+            {
+                if ((item.prefab.name == "Rifle Ammo" && enemyType != "Rifle") ||
+                    (item.prefab.name == "SMG Ammo" && enemyType != "SMG") ||
+                    (item.prefab.name == "Shotgun Ammo" && enemyType != "Shotgun"))
+                {
+                    continue;
+                }
+
+                else if (item.prefab.CompareTag("Weapon") && item.prefab.name != enemyType)
+                {
+                    continue;
+                }
+
+                else if (item.prefab.CompareTag("Armour"))
+                {
+                    continue; // Enemies don't drop armour unless via a finisher
+                }
+            }
+
+            switch (item.prefab.name)
+            {
+                case "Health":
+                    float healthNeed = 1f - healthRatio;
+                    weight *= Mathf.Lerp(0, 2.0f, healthNeed);
+                    break;
+
+                case "Armour":
+                    float armourNeed = 1f - armourRatio;
+                    weight *= Mathf.Lerp(0, 2.0f, armourNeed);
+                    break;
+
+                case "Rifle Ammo":
+                    weight *= Mathf.Lerp(0.5f, 2.0f, 1f - rifleAmmoRatio);
+                    break;
+
+                case "SMG Ammo":
+                    weight *= Mathf.Lerp(0.5f, 2.0f, 1f - smgAmmoRatio);
+                    break;
+
+                case "Shotgun Ammo":
+                    weight *= Mathf.Lerp(0.5f, 2.0f, 1f - shotgunAmmoRatio);
+                    break;
+            }
+
+            if (item.prefab.name == weaponType)
+                weight *= 0.5f;
+            else if (item.prefab.CompareTag("Weapon"))
+                weight *= 2.5f;
+
+            adjustedLoot.Add((item, weight));
+
         }
 
-        float roll = Random.value;
-        float cumulativeChance = 0f;
-
-        foreach (var entry in table.lootEntries)
+        debugLootWeights.Clear();
+        foreach (var (item, weight) in adjustedLoot)
         {
-            cumulativeChance += entry.dropChance;
-            if (roll <= cumulativeChance)
+            debugLootWeights.Add(new DebugLootWeight
             {
-                int amount = Random.Range(entry.minAmount, entry.maxAmount);
-                GameObject loot = ObjectPooler.Instance.GetFromPool(entry.itemPrefab.name, position, Quaternion.identity);
-                if (loot.TryGetComponent<ResourcePickup>(out var resourcePickup))
+                itemName = item.prefab.name,
+                weight = weight
+            });
+        }
+
+        // Weighted random selection
+        float total = adjustedLoot.Sum(entry => entry.weight);
+        float rand = Random.Range(0, total);
+        float running = 0;
+
+        foreach (var (item, weight) in adjustedLoot)
+        {
+            running += weight;
+            if (rand <= running)
+            {
+                // Use object pooling to spawn
+                GameObject loot = ObjectPooler.Instance.GetFromPool(item.prefab.name, position, Quaternion.identity);
+
+                // Apply amount if applicable
+                if (loot.TryGetComponent<ResourcePickup>(out var pickup))
                 {
-                    resourcePickup.amount = amount;
+                    int amount = Random.Range(item.minAmount, item.maxAmount + 1);
+                    pickup.amount = amount;
                 }
-                return loot; // Only drop one item per call
+
+                return loot;
             }
         }
 

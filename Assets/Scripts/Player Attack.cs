@@ -5,8 +5,10 @@ public class PlayerAttack : MonoBehaviour
 {
     public enum WeaponType { Melee, Rifle, SMG, Shotgun };
     public WeaponType weaponType;
+    public WeaponStats[] weaponStats; // Array to store stats for each weapon type
     public int currentAmmo;
     public bool meleeAttacking, performingFinisher;
+    public float percent_health_armour_remaining;
 
     [SerializeField] private int health, maxHealth, armour, maxArmour;
     [SerializeField] private DamageFlash damageFlash;
@@ -16,21 +18,23 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text ammoText;
     [SerializeField] private HudManager hudManager;
     [SerializeField] private Animator animator;
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private WeaponStats[] weaponStats; // Array to store stats for each weapon type
-    [SerializeField] private int shotgunPelletCount, maxMeleeDamage;
+    [SerializeField] private int shotgunPelletCount;
     [SerializeField] private float shotgunSpreadAngle, maxMeleeChargeTime;
     [SerializeField] private Collider2D collider2d;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private AudioSource heartbeat;
 
     private Coroutine holdFireCoroutine, reloadCoroutine, ammoGainedCoroutine;
     public float lastAttackTime;
     private float angleStep, startAngle;
     [SerializeField] private bool holdFiring, isAlternateAttack;
-    [SerializeField] private int initialHealthArmour;
+
+    [SerializeField] private int maxHealthArmour;
+    [SerializeField] private float aggressiveAttackTime, totalAttackTime, damageTakenInCurrentRoom, aggressionDistance;
+    public float aggression;
 
     [System.Serializable]
-    private struct WeaponStats
+    public struct WeaponStats
     {
         public int damage;
         public float fireRate, recoil, reloadSpeed;
@@ -43,7 +47,16 @@ public class PlayerAttack : MonoBehaviour
         angleStep = shotgunSpreadAngle / (shotgunPelletCount - 1);
         startAngle = -shotgunSpreadAngle / 2; // Start at half of the spread angle to the left
         hudManager.InitialiseHealthAndArmour(maxHealth, maxArmour);
-        initialHealthArmour = health + armour;
+        maxHealthArmour = maxHealth + maxArmour;
+    }
+
+    public (float healthRatio, float armourRatio, string weaponType, float rifleAmmoRatio, float smgAmmoRatio, float shotgunAmmoRatio) GetInventory()
+    {
+        float rifleAmmoRatio = (float)weaponStats[1].reserveAmmo / weaponStats[1].ammoPerClip*1.5f; // Ideally have 45 reserve rifle ammo
+        float smgAmmoRatio = (float)weaponStats[2].reserveAmmo / weaponStats[2].ammoPerClip*2.7f; // Ideally have 67.5 reserve smg ammo
+        float shotgunAmmoRatio = (float)weaponStats[3].reserveAmmo / weaponStats[3].ammoPerClip; // Ideally have 5 reserve shotgun ammo
+
+        return ((float)health/maxHealth, (float)armour/maxArmour, weaponType.ToString(), rifleAmmoRatio, smgAmmoRatio, shotgunAmmoRatio); 
     }
 
     public void SetWeapon(WeaponType type, int ammo)
@@ -77,6 +90,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (currentAmmo == 0)
         {
+            SoundManager.PlaySound(SoundManager.SoundType.NOAMMO);
             Reload();
             return;
         }
@@ -86,13 +100,20 @@ public class PlayerAttack : MonoBehaviour
         switch (weaponType)
         {
             case WeaponType.Rifle:
+                SoundManager.PlaySound(SoundManager.SoundType.RIFLESHOT);
+                FireRaycast();
+                currentAmmo--;
+                break;
             case WeaponType.SMG:
+                SoundManager.PlaySound(SoundManager.SoundType.SMGSHOT);
                 FireRaycast();
                 currentAmmo--;
                 break;
             case WeaponType.Shotgun:
+                SoundManager.PlaySound(SoundManager.SoundType.SHOTGUNSHOT);
                 FireProjectile();
                 currentAmmo--;
+                if (currentAmmo > 0) { SoundManager.PlaySound(SoundManager.SoundType.SHOTGUNPUMP); }
                 break;
             case WeaponType.Melee:
                 holdFiring = true;
@@ -109,6 +130,7 @@ public class PlayerAttack : MonoBehaviour
         if (holdFiring) return;
         if (currentAmmo <= 0)
         {
+            SoundManager.PlaySound(SoundManager.SoundType.NOAMMO);
             Reload();
             return;
         }
@@ -118,7 +140,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator HoldFireRoutine()
     {
         holdFiring = true;
-        while (currentAmmo > 0 && reloadCoroutine == null)
+        while (currentAmmo >= 0 && reloadCoroutine == null)
         {
             Attack();
             yield return new WaitForSeconds(weaponStats[(int)weaponType].fireRate);
@@ -149,7 +171,7 @@ public class PlayerAttack : MonoBehaviour
         if (weaponType == WeaponType.Melee && holdFiring) // Unarmed charge attack
         {
             StopCoroutine(ChargeMeleeAttack());
-            ExecuteMeleeAttack();
+            StartCoroutine(MeleeAttack());
         }
         else if (holdFireCoroutine != null)
         {
@@ -158,20 +180,18 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void ExecuteMeleeAttack()
+    private IEnumerator MeleeAttack()
     {
+        if (performingFinisher) { yield return null; }
+
         holdFiring = false;
         progressWheel.SetActive(false);
         float chargeDuration = Mathf.Clamp(Time.time - lastAttackTime, 0, maxMeleeChargeTime);
         float chargeFactor = chargeDuration / maxMeleeChargeTime;
-        float scaledDamage = Mathf.Lerp(2, weaponStats[0].damage, chargeFactor);
-        StartCoroutine(MeleeAttack((int)scaledDamage, chargeFactor));
-    }
-
-    private IEnumerator MeleeAttack(int scaledDamage, float chargeFactor)
-    {
+        float scaledDamage = Mathf.Lerp(20, weaponStats[0].damage, chargeFactor);
         animator.SetTrigger(isAlternateAttack ? "Kick" : "Punch");
         isAlternateAttack = !isAlternateAttack;
+        SoundManager.PlaySound(SoundManager.SoundType.MELEEATTACK);
 
         if (chargeFactor == 1)
         {
@@ -206,13 +226,15 @@ public class PlayerAttack : MonoBehaviour
         {
             if (enemyCollider.TryGetComponent<Enemy>(out var enemy))
             {
-                enemy.TakeDamage(scaledDamage);
+                enemy.TakeDamage((int)scaledDamage);
+                aggressiveAttackTime += chargeDuration + 0.3f; // Melee attacks are inherently aggressive
+                totalAttackTime += chargeDuration + 0.3f;
                 ScoreSystem.Instance.RegisterHit(weaponType, weaponStats[(int)weaponType].fireRate);
             }
         }
     }
 
-    public void Reload()    
+    public void Reload()
     {
         if (reloadCoroutine != null || reloadCoroutine!=null || performingFinisher || currentAmmo == weaponStats[(int)weaponType].ammoPerClip || weaponStats[(int)weaponType].reserveAmmo == 0) return;
         reloadCoroutine = StartCoroutine(ReloadRoutine());
@@ -247,6 +269,10 @@ public class PlayerAttack : MonoBehaviour
         weaponStats[(int)weaponType].reserveAmmo -= ammoToLoad;
         UpdateAmmoUI();
 
+        if (weaponType == WeaponType.Rifle) { SoundManager.PlaySound(SoundManager.SoundType.RIFLERELOAD); }
+        else if (weaponType == WeaponType.SMG) { SoundManager.PlaySound(SoundManager.SoundType.SMGRELOAD); }
+        else if (weaponType == WeaponType.Shotgun) { SoundManager.PlaySound(SoundManager.SoundType.SHOTGUNRELOAD); }
+
         progressWheel.SetActive(false);
         reloadCoroutine = null;
 
@@ -274,9 +300,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void FireRaycast()
     {
-        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, 25, LayerMask.GetMask("Default"));
-        Vector2 targetPosition = hit.collider ? hit.point : (Vector2)firePoint.position + (Vector2)(firePoint.right * 25);
-        Debug.DrawLine(firePoint.position, targetPosition, Color.red);
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, 9, LayerMask.GetMask("Default"));
+        Vector2 targetPosition = hit.collider ? hit.point : (Vector2)firePoint.position + (Vector2)(firePoint.right * 9);
         GameObject trail = ObjectPooler.Instance.GetFromPool("Bullet Trail", firePoint.position, Quaternion.identity);
         StartCoroutine(MoveTrail(trail, targetPosition));
 
@@ -285,7 +310,10 @@ public class PlayerAttack : MonoBehaviour
             if (hit.collider.TryGetComponent<Enemy>(out var enemy))
             {
                 enemy.TakeDamage(weaponStats[(int)weaponType].damage);
-                ScoreSystem.Instance.RegisterHit(weaponType, weaponStats[(int)weaponType].fireRate);
+                float attackTime = weaponStats[(int)weaponType].fireRate;
+                totalAttackTime += attackTime;
+                if (Vector2.Distance(transform.position, enemy.transform.position) < aggressionDistance) { aggressiveAttackTime += attackTime; }
+                ScoreSystem.Instance.RegisterHit(weaponType, attackTime);
             }
             else if (hit.collider.TryGetComponent<DestructibleObject>(out var destructibleObject))
             {
@@ -317,9 +345,18 @@ public class PlayerAttack : MonoBehaviour
                 GameObject bullet = ObjectPooler.Instance.GetFromPool("Bullet", firePoint.position, pelletRotation);
                 Bullet bulletScript = bullet.GetComponent<Bullet>();
                 bulletScript.Shooter = gameObject;
-                bulletScript.damage = weaponStats[(int)weaponType].damage;
+                bulletScript.damage = weaponStats[(int)weaponType].damage / shotgunPelletCount;
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
                 bulletRb.AddForce(bullet.transform.right * 20f, ForceMode2D.Impulse);
+            }
+
+            RaycastHit2D hit = Physics2D.Raycast(firePoint.position, firePoint.right, 8, LayerMask.GetMask("Default"));
+            if (hit.collider != null && hit.collider.TryGetComponent<Enemy>(out var enemy))
+            {
+                float attackTime = weaponStats[(int)weaponType].fireRate;
+                totalAttackTime += attackTime;
+                if (Vector2.Distance(transform.position, enemy.transform.position) < aggressionDistance - 1) { aggressiveAttackTime += attackTime; } 
+                // Aggression distance for shotguns is smaller to compensate for otherwise high average aggression
             }
         }
     }
@@ -327,6 +364,8 @@ public class PlayerAttack : MonoBehaviour
     public void TakeDamage(int damage)
     {
         if (performingFinisher) { return; } // Invincible when performing a finisher
+
+        damageTakenInCurrentRoom += damage;
 
         if (armour > 0)
         {
@@ -338,15 +377,22 @@ public class PlayerAttack : MonoBehaviour
 
         if (damage > 0)
         {
-            health -= damage;
+            health = Mathf.Max(health - damage, 0);
+            if (health <= maxHealth*0.7f && !heartbeat.isPlaying) { heartbeat.Play(); }
         }
+
+        percent_health_armour_remaining = (float) (health + armour) / (maxHealth + maxArmour);
 
         if (health <= 0)
         {
+            heartbeat.Stop();
             collider2d.enabled = false;
             spriteRenderer.sortingOrder = 0;
             animator.SetTrigger("Death");
-            playerController.SetMovementLocked(true);
+            SoundManager.PlaySound(SoundManager.SoundType.DEATH);
+            transform.Rotate(0, 0, 180f);
+            PlayerController.Instance.SetMovementLocked(true);
+            PlayerController.PlayerInput.SwitchCurrentActionMap("UI");
             StartCoroutine(GameManager.Instance.OnPlayerDeath());
         }
 
@@ -358,6 +404,8 @@ public class PlayerAttack : MonoBehaviour
     {
         health += healthToAdd;
         health = Mathf.Min(health, maxHealth);
+        if (health > maxHealth/2) { heartbeat.Stop(); }
+        hudManager.UpdateHealthArmour(health, armour);
     }
 
     public void ReplenishArmour(int numOfBars)
@@ -413,20 +461,29 @@ public class PlayerAttack : MonoBehaviour
         ammoGainedCoroutine = null;
     }
 
-    public float EvaluatePerformance()
+    public (float enemyEffectiveness, float aggression) GetPerformanceData()
     {
-        return initialHealthArmour - (health + armour); // How much damage was taken completing the current room
-        // Will be negative if player replenished an armor plate and took no damage
+        float rawEnemyEffectiveness = damageTakenInCurrentRoom / maxHealthArmour;
+        aggression = aggressiveAttackTime / totalAttackTime;
+        return (rawEnemyEffectiveness, aggression);
     }
 
     public void ProceedToNextRoom()
     {
-        initialHealthArmour = health + armour;
+        aggressiveAttackTime = 0f;
+        totalAttackTime = 0f;
+        damageTakenInCurrentRoom = 0;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(firePoint.position, .3f);
+        Gizmos.DrawWireSphere(transform.position, aggressionDistance);
+    }
+
+    public void PlayFinisherSound()
+    {
+        SoundManager.PlaySound(SoundManager.SoundType.MELEEATTACK);
     }
 }

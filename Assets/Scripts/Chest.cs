@@ -3,23 +3,31 @@ using System.Collections;
 
 public class Chest : MonoBehaviour
 {
-    private Coroutine dropLootCoroutine;
+    public Coroutine dropLootCoroutine;
     [SerializeField] private Animator animator;
+
+    private void Start()
+    {
+        if (gameObject.CompareTag("Start Chest"))
+        {
+            StartCoroutine(DropLootCoroutine(0));
+        }
+    }
 
     public void Open()
     {
-        dropLootCoroutine ??= StartCoroutine(DropLootCoroutine());
+        dropLootCoroutine ??= StartCoroutine(DropLootCoroutine(0.583f));
     }
 
-    private IEnumerator DropLootCoroutine()
+    private IEnumerator DropLootCoroutine(float delay)
     {
         animator.SetTrigger("Opened");
-        yield return new WaitForSeconds(.583f);
-        int lootCount = Random.Range(1, 4); // Random between 1 and 3
+        if (!gameObject.CompareTag("Start Chest")) { SoundManager.PlaySound(SoundManager.SoundType.CHESTOPEN); }
+        yield return new WaitForSeconds(delay);
 
-        for (int i = 0; i < lootCount; i++)
+        for (int i = 0; i < 3; i++)
         {
-            GameObject loot = LootSystem.Instance.DropLoot("Chest", transform.position);
+            GameObject loot = LootSystem.Instance.DropLoot(transform.position);
 
             if (loot != null)
             {

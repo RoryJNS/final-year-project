@@ -133,13 +133,11 @@ public class PlayerController : MonoBehaviour
             DropWeapon(interactCollider.transform.position);
             interactCollider.gameObject.SetActive(false);
             playerAttack.SetWeapon((PlayerAttack.WeaponType)newWeapon.type, newWeapon.amount);
+            SoundManager.PlaySound(SoundManager.SoundType.ITEMPICKUP);
         }
 
-        if (interactCollider.CompareTag("Chest"))
-        {
-            if (!interactCollider.TryGetComponent<Chest>(out var chest)) return;
+        if (interactCollider.TryGetComponent<Chest>(out var chest))
             chest.Open();
-        }
     }
     
     private void OnFinisher(InputAction.CallbackContext context)
@@ -245,22 +243,26 @@ public class PlayerController : MonoBehaviour
             {
                 playerAttack.AddHealth(resourcePickup.amount);
                 collision.gameObject.SetActive(false);
+                SoundManager.PlaySound(SoundManager.SoundType.ITEMPICKUP);
             }
             else if (collision.CompareTag("Armour"))
             {
                 playerAttack.ReplenishArmour(4);
                 collision.gameObject.SetActive(false);
+                SoundManager.PlaySound(SoundManager.SoundType.ITEMPICKUP);
             }
             else if (collision.CompareTag("Ammo"))
             {
                 playerAttack.AddReserveAmmo(resourcePickup.type, resourcePickup.amount);
                 collision.gameObject.SetActive(false);
+                SoundManager.PlaySound(SoundManager.SoundType.ITEMPICKUP);
             }
         }
 
         else if (collision.CompareTag("Exit"))
         {
             SetMovementLocked(true);
+            if (AnalyticsManager.Instance != null) { DifficultyManager.Instance.SendLevelData(); }
             ScoreSystem.Instance.LevelCleared();
         }
     }

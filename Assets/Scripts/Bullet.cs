@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject == Shooter) return; // Prevent self-hit
 
-        if (collision.gameObject.TryGetComponent<Enemy>(out var enemy))
+        if (Shooter.CompareTag("Player") && collision.gameObject.TryGetComponent<Enemy>(out var enemy))
         {
             enemy.TakeDamage(damage);
             ScoreSystem.Instance.RegisterHit(PlayerAttack.WeaponType.Shotgun, 0.2f);

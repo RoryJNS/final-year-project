@@ -10,12 +10,15 @@ public class Enemy : MonoBehaviour
     private float angleStep, startAngle, timeSinceLastLOS;
     private PlayerAttack playerAttack;
     private EnemyCluster cluster;
-    private Coroutine staggeredCoroutine, deathCoroutine, reactionCoroutine;
+    private Coroutine staggeredCoroutine, deathCoroutine;
 
     private readonly Color originalColor = Color.white;
     private readonly int FOV = 80;
     private bool hasBeenStaggered;
     private Vector3 previousPlayerPos;
+
+    [SerializeField] private RuntimeAnimatorController rifleAnimator, smgAnimator, shotgunAnimator;
+    [SerializeField] private AudioSource audioSource;
 
     [Header("Taking damage")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -36,6 +39,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float reloadSpeed, attackRange, fireRate, lastAttackTime, waitTime, shotgunSpreadAngle, baseAccuracy, accuracy;
     [SerializeField] private int damage, currentAmmo, ammoPerClip;
 
+
     private void Awake()
     {
         playerAttack = GameObject.Find("Player").GetComponent<PlayerAttack>();
@@ -55,7 +59,7 @@ public class Enemy : MonoBehaviour
     private void AssignWeapon()
     {
         weaponType = (WeaponType)Random.Range(0, System.Enum.GetValues(typeof(WeaponType)).Length);
-        GeneticAlgorithm.EnemyWeaponStats stats = GeneticAlgorithm.Instance.enemyWeaponStats[(int)weaponType];
+        DifficultyManager.EnemyWeaponStats stats = DifficultyManager.Instance.enemyWeaponStats[(int)weaponType];
         damage = stats.damage;
         ammoPerClip = stats.ammoPerClip;
         fireRate = stats.fireRate;
@@ -63,6 +67,19 @@ public class Enemy : MonoBehaviour
         attackRange = stats.attackRange;
         accuracy = baseAccuracy = stats.accuracy;
         currentAmmo = ammoPerClip;
+
+        switch (weaponType)
+        {
+            case WeaponType.Rifle:
+                animator.runtimeAnimatorController = rifleAnimator;
+                break;
+            case WeaponType.SMG:
+                animator.runtimeAnimatorController = smgAnimator;
+                break;
+            case WeaponType.Shotgun:
+                animator.runtimeAnimatorController = shotgunAnimator;
+                break;
+        }
     }
 
     public void ResetEnemy()
@@ -71,16 +88,18 @@ public class Enemy : MonoBehaviour
         agent.Warp(startingPosition);
         agent.ResetPath();
         agent.velocity = Vector3.zero;
+        transform.Rotate(0, 0, 180f);
         roamPosition = GetRoamingPosition();
         animator.SetBool("Alert", false);
         state = State.Roaming;
         coll.enabled = true;
+        rb.bodyType = RigidbodyType2D.Dynamic;
         hasBeenStaggered = false;
         spriteRenderer.color = originalColor;
         AssignWeapon();
     }
 
-    public void SetCluster(EnemyCluster cluster, GeneticAlgorithm.DifficultyChromosome difficulty)
+    public void SetCluster(EnemyCluster cluster, DifficultyManager.DifficultyChromosome difficulty)
     {
         this.cluster = cluster;
         maxHealth = difficulty.health;
@@ -98,6 +117,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0 && deathCoroutine == null)
         {
             animator.SetTrigger("Death"); // Trigger death animation
+            transform.Rotate(0, 0, 180f);
             deathCoroutine = StartCoroutine(Die(false)); // Start fading after 1s, fade over 2s
         }
         else if (health < maxHealth * 0.3 && !hasBeenStaggered) // Less than 30% health and hasn't been staggered
@@ -115,16 +135,14 @@ public class Enemy : MonoBehaviour
             flash.CallDamageFlash();
             animator.SetBool("Alert", true);
             timeSinceLastLOS = 0;
-            if (state != State.Chasing && reactionCoroutine == null)
-            {
-                reactionCoroutine = StartCoroutine(ReactionDelay());
-            }
+            state = State.Chasing;
         }
     }
 
     private IEnumerator Die(bool wasFinisher)
     {
         ScoreSystem.Instance.RegisterKill(gameObject.transform, wasFinisher);
+        SoundManager.PlaySound(SoundManager.SoundType.DEATH, audioSource);
 
         if (staggeredCoroutine != null)
         {
@@ -134,11 +152,13 @@ public class Enemy : MonoBehaviour
             DungeonGenerator.Instance.staggeredEnemies.Remove(this);
         }
 
+        if (wasFinisher) { yield return new WaitForSeconds(0.667f); } // Wait for finisher animation to end before dropping loot etc.
+
         cluster.RemoveEnemy(this);
-        DungeonGenerator.Instance.staggeredEnemies.Remove(this);
         agent.isStopped = true;
         coll.enabled = false;
-        LootSystem.Instance.DropLoot(weaponType.ToString() + " Enemy", transform.position); // Drop loot according to this enemy type
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        LootSystem.Instance.DropLoot(transform.position, weaponType.ToString());
         yield return new WaitForSeconds(1); // Wait for death animation to play
         
         float elapsedTime = 0f;
@@ -163,6 +183,8 @@ public class Enemy : MonoBehaviour
 
         while (elapsedTime < staggerDuration)
         {
+            if (playerAttack.performingFinisher) { yield break; }
+
             spriteRenderer.color = isFlashing ? originalColor : Color.red;
             isFlashing = !isFlashing;
 
@@ -180,8 +202,8 @@ public class Enemy : MonoBehaviour
     public void Finish()
     {
         transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + 180);
-        animator.SetTrigger("Finished"); // Alternate death animation
-        StartCoroutine(Die(true));
+        animator.SetTrigger("Death"); // Alternate death animation
+        deathCoroutine = StartCoroutine(Die(true));
     }
 
     private void Update()
@@ -192,11 +214,11 @@ public class Enemy : MonoBehaviour
 
         if ((playerAttack.transform.position - previousPlayerPos).sqrMagnitude < 0.01f)
         {
-            accuracy = baseAccuracy * 1.1f; // Player is standing still
+            accuracy = baseAccuracy * 1.2f; // 20% more accurate if player is standing still
         }
         else
         {
-            accuracy = baseAccuracy; // Player is moving
+            accuracy = baseAccuracy;
         }
 
         previousPlayerPos = playerAttack.transform.position;
@@ -227,7 +249,7 @@ public class Enemy : MonoBehaviour
         }
 
         // Player fired a shot nearby
-        if (Time.time - playerAttack.lastAttackTime == 0 && Vector3.Distance(transform.position, playerAttack.transform.position) < attackRange + 2)
+        if (Time.time - playerAttack.lastAttackTime == 0 && Vector3.Distance(transform.position, playerAttack.transform.position) < attackRange + 3)
         {
             cluster.Alert(playerAttack.transform.position);
         }
@@ -276,7 +298,7 @@ public class Enemy : MonoBehaviour
         if (timeSinceLastLOS == 0)
         {
             animator.SetBool("Alert", true);
-            reactionCoroutine = StartCoroutine(ReactionDelay());
+            state = State.Chasing;
         }
 
         // This or another enemy detected the player nearby
@@ -294,11 +316,10 @@ public class Enemy : MonoBehaviour
             state = State.Attacking; // Start shooting player
             return;
         }
-        else if (timeSinceLastLOS < 2f) 
+        else if (timeSinceLastLOS < 3f) 
         {
             agent.SetDestination(playerAttack.transform.position); // Infer where the player is and go there
-            accuracy = baseAccuracy * 0.9f; // Decrease accuracy by 10% when chasing
-            if (currentAmmo > 0 && Time.time - lastAttackTime > fireRate * 2) // Shoot at half the fire rate
+            if (currentAmmo > 0 && Time.time - lastAttackTime > fireRate * 1.3) // Shoot 30% slower
             {
                 lastAttackTime = Time.time;
                 Attack();
@@ -311,7 +332,6 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            accuracy = baseAccuracy;
             cluster.investigatePos = playerAttack.transform.position;
             state = State.Investigating;
         }
@@ -326,18 +346,11 @@ public class Enemy : MonoBehaviour
             state = State.Chasing;
         }
 
-        if (cluster.investigateTimer > 6) // 5 seconds have passed since this enemy was alerted
+        if (cluster.investigateTimer > 4) // 4 seconds have passed since this enemy was alerted
         {
             animator.SetBool("Alert", false);
             state = State.Roaming;
         }
-    }
-
-    private IEnumerator ReactionDelay()
-    {
-        yield return new WaitForSeconds(1f);
-        state = State.Chasing;
-        reactionCoroutine = null;
     }
 
     private void HandleAttacking()
@@ -381,15 +394,24 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        if (weaponType == WeaponType.Rifle || weaponType == WeaponType.SMG)
+        switch (weaponType)
         {
-            FireRaycast();
+            case WeaponType.Rifle:
+                SoundManager.PlaySound(SoundManager.SoundType.RIFLESHOT, audioSource);
+                FireRaycast();
+                break;
+            case WeaponType.SMG:
+                SoundManager.PlaySound(SoundManager.SoundType.SMGSHOT, audioSource);
+                FireRaycast();
+                break;
+            case WeaponType.Shotgun:
+                SoundManager.PlaySound(SoundManager.SoundType.SHOTGUNSHOT, audioSource);
+                FireProjectile();
+                break;
         }
-        else
-        {
-            FireProjectile();
-        }
+
         currentAmmo--;
+        if (currentAmmo > 0 && weaponType== WeaponType.Shotgun) { SoundManager.PlaySound(SoundManager.SoundType.SHOTGUNPUMP, audioSource); }
     }
 
     private void FireRaycast()
@@ -432,7 +454,9 @@ public class Enemy : MonoBehaviour
             {
                 Quaternion pelletRotation = firePoint.rotation * Quaternion.Euler(0, 0, startAngle + (angleStep * i));
                 GameObject bullet = ObjectPooler.Instance.GetFromPool("Bullet", firePoint.position, pelletRotation);
-                bullet.GetComponent<Bullet>().Shooter = gameObject;
+                Bullet bulletScript = bullet.GetComponent<Bullet>();
+                bulletScript.Shooter = gameObject;
+                bulletScript.damage = damage / 5;
                 Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
                 bulletRb.AddForce(bullet.transform.right * 20f, ForceMode2D.Impulse);
             }
@@ -441,13 +465,7 @@ public class Enemy : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        float maxAngle = FOV / 2f;
-        Vector2 leftBound = Quaternion.Euler(0, 0, -maxAngle) * firePoint.right;
-        Vector2 rightBound = Quaternion.Euler(0, 0, maxAngle) * firePoint.right;
-        Gizmos.DrawRay(firePoint.position, leftBound * attackRange);  // Left boundary
-        Gizmos.DrawRay(firePoint.position, rightBound * attackRange); // Right boundary
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, attackRange + 2); // Hearing range
+        Gizmos.DrawWireSphere(transform.position, attackRange + 3); // Hearing range
     }
 }

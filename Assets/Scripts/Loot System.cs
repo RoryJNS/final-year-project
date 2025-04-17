@@ -32,8 +32,27 @@ public class LootSystem : MonoBehaviour
             Destroy(gameObject);
     }
 
-    public GameObject DropLoot(Vector3 position, string enemyType = null)
+    public GameObject DropLoot(Vector3 position, string enemyType = null, bool forceWeaponDrop = false)
     {
+        if (forceWeaponDrop)
+        {
+            var weapons = baseLootTable.Where(item => item.prefab.CompareTag("Weapon")).ToList();
+
+            if (weapons.Count > 0)
+            {
+                var weaponToDrop = weapons[Random.Range(0, weapons.Count)];
+                GameObject loot = ObjectPooler.Instance.GetFromPool(weaponToDrop.prefab.name, position, Quaternion.identity);
+
+                if (loot.TryGetComponent<ResourcePickup>(out var pickup))
+                {
+                    int amount = Random.Range(weaponToDrop.minAmount, weaponToDrop.maxAmount + 1);
+                    pickup.amount = amount;
+                }
+
+                return loot;
+            }
+        }
+
         List<(LootEntry item, float weight)> adjustedLoot = new(); // Clear old weights first
 
         var (healthRatio, armourRatio, weaponType, rifleAmmoRatio, smgAmmoRatio, shotgunAmmoRatio) = playerAttack.GetInventory(); // Get inventory info

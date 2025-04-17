@@ -24,10 +24,26 @@ public class Chest : MonoBehaviour
         animator.SetTrigger("Opened");
         if (!gameObject.CompareTag("Start Chest")) { SoundManager.PlaySound(SoundManager.SoundType.CHESTOPEN); }
         yield return new WaitForSeconds(delay);
+        bool hasDroppedWeapon = false;
 
         for (int i = 0; i < 3; i++)
         {
-            GameObject loot = LootSystem.Instance.DropLoot(transform.position);
+            GameObject loot;
+
+            // If it's the last drop and no weapon has been dropped, force a weapon
+            if (gameObject.CompareTag("Start Chest") && i == 2 && !hasDroppedWeapon)
+            {
+                loot = LootSystem.Instance.DropLoot(transform.position, forceWeaponDrop: true);
+            }
+            else
+            {
+                loot = LootSystem.Instance.DropLoot(transform.position);
+
+                if (loot != null && loot.CompareTag("Weapon"))
+                {
+                    hasDroppedWeapon = true;
+                }
+            }
 
             if (loot != null)
             {

@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour
     private void HandleMovement()
     {
         moveInput = PlayerInput.actions["Move"].ReadValue<Vector2>();
-        if (moveInput.sqrMagnitude > controllerDeadzone * controllerDeadzone)
+        bool isUsingGamepad = PlayerInput.currentControlScheme == "Gamepad";
+        if ((isUsingGamepad && moveInput.sqrMagnitude > controllerDeadzone * controllerDeadzone) || (!isUsingGamepad && moveInput.sqrMagnitude > 0.001f))
         {
             transform.position += (Vector3)(moveSpeed * Time.deltaTime * moveInput);
             animator.SetBool("Moving", true);
@@ -146,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
         Enemy nearestEnemy = null;
         float nearestDistance = float.MaxValue;
-        float finisherRange = 4f; // Adjust the range as needed
+        float finisherRange = 4f;
 
         if (DungeonGenerator.Instance.currentMainRoom.roomNumber >= 0) // Check there is an active enemy cluster
         {

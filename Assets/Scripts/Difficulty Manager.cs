@@ -96,12 +96,12 @@ public class DifficultyManager : MonoBehaviour
 
         // Elitism: Retain the best-performing chromosome
         population.Sort((a, b) => b.fairness.CompareTo(a.fairness));
-        newPopulation.Add(population[0].Clone()); // Use Clone() to avoid modifying original
+        newPopulation.Add(population[0].Clone()); // Avoid modifying original
         newPopulation[0].fairness = 0; // Reset fairness cloned from the original
 
         while (newPopulation.Count < population.Count)
         {
-            DifficultyChromosome child = Mutate(population[0].Clone(), newPopulation.Count-1);
+            DifficultyChromosome child = Mutate(population[0].Clone());
             newPopulation.Add(child);
         }
 
@@ -118,8 +118,10 @@ public class DifficultyManager : MonoBehaviour
         }
     }
 
-    private DifficultyChromosome Mutate(DifficultyChromosome child, int geneIndex)
+    private DifficultyChromosome Mutate(DifficultyChromosome child)
     {
+        int geneIndex = Random.Range(0, 4); // Choose one of the 4 genes at random
+
         switch (geneIndex)
         {
             case 0: child.health = Mathf.Max(50, child.health + Random.Range(-50, 51)); break;

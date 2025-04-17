@@ -154,7 +154,7 @@ MonoBehaviour:
     size: 27
   - tag: Teleporter
     prefab: {fileID: 3533461065964830381, guid: d35581719855a704282b61845fcc6ba5, type: 3}
-    size: 18
+    size: 6
   - tag: Bullet
     prefab: {fileID: 4415243234494112869, guid: 273eed4160bad464ca4413954c3fc352, type: 3}
     size: 10
@@ -6940,7 +6940,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802125129}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 166b01d614665f44f9c20dabac0e0762, type: 3}
   m_Name: 
@@ -7677,19 +7677,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWeaponStats:
-  - damage: 18
+  - damage: 12
     ammoPerClip: 30
     fireRate: 0.125
     reloadSpeed: 1
     attackRange: 3
     accuracy: 0.8
-  - damage: 12
+  - damage: 8
     ammoPerClip: 25
     fireRate: 0.1
     reloadSpeed: 0.7
     attackRange: 2.5
     accuracy: 0.6
-  - damage: 30
+  - damage: 100
     ammoPerClip: 5
     fireRate: 0.5
     reloadSpeed: 1
@@ -7701,12 +7701,12 @@ MonoBehaviour:
     accuracyModifier: 1
     damageModifier: 1
     fairness: 0
-  - health: 200
+  - health: 125
     attackRangeModifier: 0.8
     accuracyModifier: 1.1
     damageModifier: 1.2
     fairness: 0
-  - health: 125
+  - health: 150
     attackRangeModifier: 1.2
     accuracyModifier: 1.3
     damageModifier: 1.5
@@ -7722,30 +7722,30 @@ MonoBehaviour:
     damageModifier: 1
     fairness: 0
   staticPopulation:
-  - health: 200
+  - health: 150
     attackRangeModifier: 1
     accuracyModifier: 1
     damageModifier: 1
     fairness: 0
-  - health: 200
+  - health: 150
     attackRangeModifier: 1
     accuracyModifier: 1
     damageModifier: 1
     fairness: 0
-  - health: 200
+  - health: 150
     attackRangeModifier: 1
     accuracyModifier: 1
     damageModifier: 1
     fairness: 0
-  - health: 200
+  - health: 150
     attackRangeModifier: 1
     accuracyModifier: 1
     damageModifier: 1
     fairness: 0
-  - health: 0
-    attackRangeModifier: 0
-    accuracyModifier: 0
-    damageModifier: 0
+  - health: 150
+    attackRangeModifier: 1
+    accuracyModifier: 1
+    damageModifier: 1
     fairness: 0
   population: []
   dynamic: 1
@@ -7765,28 +7765,28 @@ MonoBehaviour:
   baseLootTable:
   - prefab: {fileID: 4998770129286105637, guid: 9a253e756e3fa1d4ba3961db626a9319, type: 3}
     baseDropRate: 0.5
-    minAmount: 10
-    maxAmount: 25
+    minAmount: 15
+    maxAmount: 30
   - prefab: {fileID: 8976892752611084269, guid: d4c7eecd7f30b4f4f93fac05abd8abe3, type: 3}
     baseDropRate: 0.5
-    minAmount: 10
-    maxAmount: 20
+    minAmount: 15
+    maxAmount: 25
   - prefab: {fileID: 89665034074054175, guid: 2f0425cc1126449489c12375d796d9fa, type: 3}
     baseDropRate: 0.5
     minAmount: 2
-    maxAmount: 4
+    maxAmount: 5
   - prefab: {fileID: 3833120388429002154, guid: 46e127efe2943884ca5f7d74b21bb7db, type: 3}
-    baseDropRate: 1
+    baseDropRate: 1.2
     minAmount: 15
-    maxAmount: 30
+    maxAmount: 35
   - prefab: {fileID: 3833120388429002154, guid: 3d2952511f514b14ea18bef04eccc5b2, type: 3}
-    baseDropRate: 1
-    minAmount: 15
+    baseDropRate: 1.2
+    minAmount: 20
     maxAmount: 40
   - prefab: {fileID: 3833120388429002154, guid: cc046c6d97776054ba5364a47d86679f, type: 3}
-    baseDropRate: 1
-    minAmount: 1
-    maxAmount: 2
+    baseDropRate: 1.2
+    minAmount: 2
+    maxAmount: 4
   - prefab: {fileID: 1839902964473944413, guid: ff6f667639457f0438e6575002bc315c, type: 3}
     baseDropRate: 0.4
     minAmount: 100
